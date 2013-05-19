@@ -598,3 +598,20 @@ object {
 .infinity-end.neverending .site-footer {
 	display: block;
 }
+
+
+/*	LOWERMEDIA STYLES 	*/
+
+.lm-opt-page-wrap {
+
+}
+
+#lm-opt-117 {
+background:blue;
+}
+#lm-opt-119 {
+background:green;
+}
+#lm-opt-2 {
+background:red;
+}
