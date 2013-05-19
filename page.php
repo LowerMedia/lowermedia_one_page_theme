@@ -24,7 +24,7 @@ get_header(); ?>
 				foreach ($pages as $page_data) {
 				    $content = apply_filters('the_content', $page_data->post_content); 
 				    $title = $page_data->post_title; 
-				    echo $content; 
+				    echo "<div id='lm-opt-".$title."' class='lm-opt-page-wrap' >".$content."</div>"; 
 				}
 
 				?>
