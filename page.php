@@ -17,7 +17,18 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php
+
+				get_template_part( 'content', 'page' ); 
+				$pages = get_pages(); 
+
+				foreach ($pages as $page_data) {
+				    $content = apply_filters('the_content', $page_data->post_content); 
+				    $title = $page_data->post_title; 
+				    echo $content; 
+				}
+
+				?>
 
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
