@@ -603,6 +603,13 @@ object {
 /*	LOWERMEDIA STYLES 	*/
 
 
+.lm-opt-page-wrap {
+	padding: 2% 10%;
+}
+
+.lm-opt-page-wrap p:last-child {
+	margin:0;
+}
 
 #masthead {
 	background: yellow;
@@ -612,20 +619,12 @@ footer#colophon {
 	background: black;
 }
 
-.lm-opt-page-wrap {
-
-}
-
-.lm-opt-page-wrap p:last-child {
-	margin:0;
-}
-
 #lm-opt-117 {
-background:blue;
+	background:blue;
 }
 #lm-opt-119 {
-background:green;
+	background:green;
 }
 #lm-opt-2 {
-background:red;
+	background:red;
 }
