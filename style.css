@@ -602,6 +602,14 @@ object {
 
 /*	LOWERMEDIA STYLES 	*/
 
+#masthead {
+	background: yellow;
+}
+
+footer#colophon {
+	background: black;
+}
+
 .lm-opt-page-wrap {
 
 }
