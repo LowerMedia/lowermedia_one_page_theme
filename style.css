@@ -602,6 +602,8 @@ object {
 
 /*	LOWERMEDIA STYLES 	*/
 
+
+
 #masthead {
 	background: yellow;
 }
@@ -612,6 +614,10 @@ footer#colophon {
 
 .lm-opt-page-wrap {
 
+}
+
+.lm-opt-page-wrap p:last-child {
+	margin:0;
 }
 
 #lm-opt-117 {
