@@ -19,7 +19,9 @@ get_header(); ?>
 
 				<?php
 				
-				$pages = get_pages(); 
+
+				$args = array('sort_column' => 'menu_order'); 
+				$pages = get_pages($args); 
 
 				foreach ($pages as $page_data) {
 				    $content = apply_filters('the_content', $page_data->post_content); 
