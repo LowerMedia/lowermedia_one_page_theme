@@ -602,11 +602,7 @@ object {
 
 /*	LOWERMEDIA STYLES 	*/
 
-/*#masthead, #main, #colophon {
-	padding: 10% 20%;
-}*/
-
-.lm-opt-page-wrap {
+.lm-opt-page-wrap, #masthead, #colophon {
 	padding: 2% 10%;
 }
 
@@ -618,7 +614,7 @@ object {
 	background: yellow;
 }
 
-footer#colophon {
+#colophon {
 	background: black;
 }
 
