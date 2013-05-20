@@ -606,7 +606,7 @@ object {
 	padding: 2% 10%;
 }
 .lm-opt-page-wrap, #main, #colophon {
-	border-radius:0px 0px 50px 0px;
+	box-shadow:0px 0px 50px 0px;
 }
 .lm-opt-page-wrap p:last-child {
 	margin:0;
