@@ -611,19 +611,19 @@ object {
 }
 
 #masthead {
-	background: yellow;
-}
-
-#colophon {
-	background: black;
+	background: #99FF87;
 }
 
 #lm-opt-117 {
-	background:blue;
+	background:#4DB23B;
 }
 #lm-opt-119 {
-	background:green;
+	background:#84FF6D;
 }
 #lm-opt-2 {
-	background:red;
+	background:#B2298C;
+}
+
+#colophon {
+	background: #FF6DD6;
 }
