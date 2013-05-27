@@ -256,26 +256,26 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function check_ID($input){
         if(is_numeric($input['some_id'])){
-	    $mid = $input['some_id'];			
-	    if(get_option('test_some_id') === FALSE){
-		add_option('test_some_id', $mid);
-	    }else{
-		update_option('test_some_id', $mid);
-	    }
-	}else{
-	    $mid = '';
-	}
-	return $mid;
+	    	$mid = $input['some_id'];			
+		    if(get_option('test_some_id') === FALSE){
+				add_option('test_some_id', $mid);
+		    }else{
+				update_option('test_some_id', $mid);
+		    }
+		}else{
+		    $mid = '';
+		}
+		return $mid;
     }
 
     public function check_name($input){
 	    if($input['some_name']=='checked'){
 		    $mname = 'checked';			
-			    if(get_option('test_some_name') === FALSE){
-					add_option('test_some_name', $mname);
-			    }else{
-					update_option('test_some_name', $mname);
-			    }
+		    if(get_option('test_some_name') === FALSE){
+				add_option('test_some_name', $mname);
+		    }else{
+				update_option('test_some_name', $mname);
+		    }
 		}else{
 		    $mname = '';
 		}
@@ -287,7 +287,7 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function create_an_id_field(){
-        ?><input type="text" id="input_whatever_unique_id_I_want" name="lowermedia_opt_id[some_id]" value="<?=get_option('test_some_id');?>" /><?php
+        ?><input type="text" id="input_whatever_unique_id_I_want" name="lowermedia_opt_id[some_id]" value='<?=get_option('test_some_id');?>' /><?php
     }
 
     public function create_a_name_field(){
