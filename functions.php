@@ -220,8 +220,8 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function page_init(){		
-		register_setting('lowermedia-one-page-theme_option_group', 'array_key', array($this, 'check_ID'));
-		register_setting('lowermedia-one-page-theme_name', 'array_key', array($this, 'check_name'));
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID'));
+		register_setting('lowermedia-one-page-theme_name', 'lowermedia_opt_name', array($this, 'check_name'));
 		
         add_settings_section(
 		    'setting_section_id',
@@ -287,11 +287,11 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function create_an_id_field(){
-        ?><input type="text" id="input_whatever_unique_id_I_want" name="array_key[some_id]" value="<?=get_option('test_some_id');?>" /><?php
+        ?><input type="text" id="input_whatever_unique_id_I_want" name="lowermedia_opt_id[some_id]" value="<?=get_option('test_some_id');?>" /><?php
     }
 
     public function create_a_name_field(){
-        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="array_key[some_name]" value="<?=get_option('test_some_name');?>" />
+        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="lowermedia_opt_name[some_name]" value="<?=get_option('test_some_name');?>" />
 		<!-- <input 
 			id="input_whatever_unique_name_I_want"
 			name="array_key[some_name]" 
