@@ -150,7 +150,7 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 
 /** Step 1. */
 function lowermedia_one_page_theme_menu() {
-	add_options_page( 'One Page Theme Options', 'LowerMedia One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
+	add_menu_page( 'One Page Theme Options', 'LowerMedia One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
 }
 /** Step 2 (from codex). */
 add_action( 'admin_menu', 'lowermedia_one_page_theme_menu' );
