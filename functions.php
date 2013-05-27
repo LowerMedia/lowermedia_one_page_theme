@@ -253,20 +253,6 @@ class lowermedia_one_page_theme_admin_options{
 		    'setting_section_name'			
 		);		
     }
-	
-  //   public function check_ID($input){
-  //       if(is_numeric($input['some_id'])){
-	 //    	$mid = $input['some_id'];			
-		//     if(get_option('test_some_id') === FALSE){
-		// 		add_option('test_some_id', $mid);
-		//     }else{
-		// 		update_option('test_some_id', $mid);
-		//     }
-		// }else{
-		//     $mid = '';
-		// }
-		// return $mid;
-  //   }
 
      public function check_ID($input){
         if(is_numeric($input['some_id'])){
@@ -282,19 +268,34 @@ class lowermedia_one_page_theme_admin_options{
 	return $mid;
     }
 
-    public function check_name($input){
-	    if($input['some_name']==1){
-		    $mname = 'checked';			
-		    if(get_option('test_some_name') === FALSE){
-				add_option('test_some_name', $mname);
-		    }else{
-				update_option('test_some_name', $mname);
-		    }
-		}else{
-		    $mname = '';
-		}
-		return $mname;
+
+ 	public function check_name($input){
+        if(is_numeric($input['some_name'])){
+	    $mname = $input['some_name'];			
+	    if(get_option('test_some_name') === FALSE){
+		add_option('test_some_name', $mname);
+	    }else{
+		update_option('test_some_name', $mname);
+	    }
+	}else{
+	    $mname = '';
+	}
+	return $mname;
     }
+
+  //   public function check_name($input){
+	 //    if($input['some_name']==1){
+		//     $mname = 'checked';			
+		//     if(get_option('test_some_name') === FALSE){
+		// 		add_option('test_some_name', $mname);
+		//     }else{
+		// 		update_option('test_some_name', $mname);
+		//     }
+		// }else{
+		//     $mname = '';
+		// }
+		// return $mname;
+  //   }
 	
     public function print_section_info(){
 	print 'Enter your setting below:';
