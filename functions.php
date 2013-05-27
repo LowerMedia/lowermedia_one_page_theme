@@ -150,7 +150,7 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 
 /** Step 1. */
 function lowermedia_one_page_theme_menu() {
-	add_menu_page( 'One Page Theme Options', 'LowerMedia One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
+	add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
 }
 /** Step 2 (from codex). */
 add_action( 'admin_menu', 'lowermedia_one_page_theme_menu' );
@@ -160,9 +160,14 @@ function lowermedia_one_page_theme_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
-	echo '<div class="wrap">';
-	echo '<p>Here is where the form would go if I actually had options.</p>';
-	echo '</div>';
+	echo "<div class='wrap'>
+	<h2>LowerMedia One Page Theme Options</h2>
+	<p>
+	-Combine All Pages  OR<br/>
+	-Activate home page as splash page  OR<br/>
+	-Normal Setup
+	</p>
+	</div>";
 }
 
 
