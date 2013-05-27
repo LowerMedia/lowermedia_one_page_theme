@@ -197,7 +197,7 @@ class lowermedia_one_page_theme_admin_options{
         ?>
 	<div class="wrap">
 	    <?php screen_icon(); ?>
-	    <h2>Settings</h2>			
+	    <h2>LowerMedia One Page Theme Options</h2>			
 	    <form method="post" action="options.php">
 	        <?php
                     // This prints out all hidden setting fields
@@ -226,6 +226,14 @@ class lowermedia_one_page_theme_admin_options{
 	    array($this, 'create_an_id_field'), 
 	    'lowermedia-one-page-theme',
 	    'setting_section_id'			
+	);
+
+	add_settings_field(
+	    'some_name', 
+	    'Some Name(Name)', 
+	    array($this, 'create_a_name_field'), 
+	    'lowermedia-one-page-theme',
+	    'setting_section_name'			
 	);		
     }
 	
@@ -249,6 +257,10 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function create_an_id_field(){
         ?><input type="text" id="input_whatever_unique_id_I_want" name="array_key[some_id]" value="<?=get_option('test_some_id');?>" /><?php
+    }
+
+    public function create_a_name_field(){
+        ?><input type="text" id="input_whatever_unique_name_I_want" name="array_key[some_name]" value="<?=get_option('test_some_name');?>" /><?php
     }
 }
 
