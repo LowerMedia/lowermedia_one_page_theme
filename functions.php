@@ -146,3 +146,24 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
  * Implement the Custom Header feature
  */
 //require( get_template_directory() . '/inc/custom-header.php' );
+
+
+/** Step 1. */
+function lowermedia_one_page_theme_menu() {
+	add_options_page( 'One Page Theme Options', 'LowerMedia One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
+}
+/** Step 2 (from codex). */
+add_action( 'admin_menu', 'lowermedia_one_page_theme_menu' );
+
+/** Step 3. */
+function lowermedia_one_page_theme_options() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	echo '<div class="wrap">';
+	echo '<p>Here is where the form would go if I actually had options.</p>';
+	echo '</div>';
+}
+
+
+
