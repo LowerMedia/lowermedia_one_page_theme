@@ -252,4 +252,4 @@ class lowermedia_one_page_theme_admin_options{
     }
 }
 
-$wctest = new wctest();
+$lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_options();
