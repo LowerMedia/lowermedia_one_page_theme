@@ -269,17 +269,17 @@ class lowermedia_one_page_theme_admin_options{
     }
 
     public function check_name($input){
-        if(is_numeric($input['some_name'])){
-	    $mid = $input['some_name'];			
-	    if(get_option('test_some_name') === FALSE){
-		add_option('test_some_name', $mid);
-	    }else{
-		update_option('test_some_name', $mid);
-	    }
-	}else{
-	    $mid = '';
-	}
-	return $mid;
+	    if($input['some_name']=='checked'){
+		    $mname = 'checked';			
+			    if(get_option('test_some_name') === FALSE){
+					add_option('test_some_name', $mname);
+			    }else{
+					update_option('test_some_name', $mname);
+			    }
+		}else{
+		    $mname = '';
+		}
+		return $mname;
     }
 	
     public function print_section_info(){
@@ -292,13 +292,13 @@ class lowermedia_one_page_theme_admin_options{
 
     public function create_a_name_field(){
         ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="array_key[some_name]" value="<?=get_option('test_some_name');?>" />
-		<input 
+		<!-- <input 
 			id="input_whatever_unique_name_I_want"
 			name="array_key[some_name]" 
 			type="checkbox" 
 			value="1" 
-			<?php if ( $input['some_name'] ) echo 'checked="checked"'; ?>
-		/>
+			<?php# if ( $input['some_name'] ) echo 'checked="checked"'; ?>
+		/> -->
         <?php
     }
 }
