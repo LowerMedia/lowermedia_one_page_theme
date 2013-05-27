@@ -166,6 +166,16 @@ function lowermedia_one_page_theme_options() {
 	-Combine All Pages  OR<br/>
 	-Activate home page as splash page  OR<br/>
 	-Normal Setup
+
+	<form method='post' action='options.php'> 
+	".settings_fields( 'lowermedia_one_page_theme_options' ).do_settings_fields( 'lowermedia_one_page_theme_options' ).submit_button()."
+	
+</form>
+
+
+	</p>
+	<p>
+	-upload background image?
 	</p>
 	</div>";
 }
