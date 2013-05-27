@@ -218,23 +218,30 @@ class lowermedia_one_page_theme_admin_options{
 	    'Setting',
 	    array($this, 'print_section_info'),
 	    'lowermedia-one-page-theme'
-	);	
-		
-	add_settings_field(
-	    'some_id', 
-	    'Some ID(Title)', 
-	    array($this, 'create_an_id_field'), 
-	    'lowermedia-one-page-theme',
-	    'setting_section_id'			
-	);
+		);	
 
-	add_settings_field(
-	    'some_name', 
-	    'Some Name(Name)', 
-	    array($this, 'create_a_name_field'), 
-	    'lowermedia-one-page-theme',
-	    'setting_section_name'			
-	);		
+		add_settings_section(
+	    'setting_section_name',
+	    'Setting',
+	    array($this, 'print_section_info'),
+	    'lowermedia-one-page-theme'
+		);	
+		
+		add_settings_field(
+		    'some_id', 
+		    'Some ID(Title)', 
+		    array($this, 'create_an_id_field'), 
+		    'lowermedia-one-page-theme',
+		    'setting_section_id'			
+		);
+
+		add_settings_field(
+		    'some_name', 
+		    'Some Name(Name)', 
+		    array($this, 'create_a_name_field'), 
+		    'lowermedia-one-page-theme',
+		    'setting_section_name'			
+		);		
     }
 	
     public function check_ID($input){
