@@ -224,14 +224,14 @@ class lowermedia_one_page_theme_admin_options{
 		
         add_settings_section(
 	    'setting_section_id',
-	    'Setting',
+	    'Text Field',
 	    array($this, 'print_section_info'),
 	    'lowermedia-one-page-theme'
 		);	
 
 		add_settings_section(
 	    'setting_section_name',
-	    'Setting',
+	    'Check Box',
 	    array($this, 'print_section_info'),
 	    'lowermedia-one-page-theme'
 		);	
@@ -276,7 +276,15 @@ class lowermedia_one_page_theme_admin_options{
     }
 
     public function create_a_name_field(){
-        ?><input type="text" id="input_whatever_unique_name_I_want" name="array_key[some_name]" value="<?=get_option('test_some_name');?>" /><?php
+        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="array_key[some_name]" value="<?=get_option('test_some_name');?>" />
+		<input 
+			id="input_whatever_unique_name_I_want"
+			name="array_key[some_name]" 
+			type="checkbox" 
+			value="1" 
+			<?php if ( get_option('test_some_name') ) echo 'checked="checked"'; ?>
+		/>
+        <?php
     }
 }
 
