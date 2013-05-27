@@ -220,20 +220,21 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function page_init(){		
-	register_setting('lowermedia-one-page-theme_option_group', 'array_key', array($this, 'check_ID'));
+		register_setting('lowermedia-one-page-theme_option_group', 'array_key', array($this, 'check_ID'));
+		register_setting('lowermedia-one-page-theme_name', 'array_key', array($this, 'check_name'));
 		
         add_settings_section(
-	    'setting_section_id',
-	    'Text Field',
-	    array($this, 'print_section_info'),
-	    'lowermedia-one-page-theme'
+		    'setting_section_id',
+		    'Text Field',
+		    array($this, 'print_section_info'),
+		    'lowermedia-one-page-theme'
 		);	
 
 		add_settings_section(
-	    'setting_section_name',
-	    'Check Box',
-	    array($this, 'print_section_info'),
-	    'lowermedia-one-page-theme'
+		    'setting_section_name',
+		    'Check Box',
+		    array($this, 'print_section_info'),
+		    'lowermedia-one-page-theme'
 		);	
 		
 		add_settings_field(
@@ -266,6 +267,20 @@ class lowermedia_one_page_theme_admin_options{
 	}
 	return $mid;
     }
+
+    public function check_name($input){
+        if(is_numeric($input['some_name'])){
+	    $mid = $input['some_name'];			
+	    if(get_option('test_some_name') === FALSE){
+		add_option('test_some_name', $mid);
+	    }else{
+		update_option('test_some_name', $mid);
+	    }
+	}else{
+	    $mid = '';
+	}
+	return $mid;
+    }
 	
     public function print_section_info(){
 	print 'Enter your setting below:';
@@ -282,7 +297,7 @@ class lowermedia_one_page_theme_admin_options{
 			name="array_key[some_name]" 
 			type="checkbox" 
 			value="1" 
-			<?php if ( get_option('test_some_name') ) echo 'checked="checked"'; ?>
+			<?php if ( $input['some_name'] ) echo 'checked="checked"'; ?>
 		/>
         <?php
     }
