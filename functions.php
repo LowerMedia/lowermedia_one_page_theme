@@ -175,6 +175,8 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 // 	</p>
 // 	<p>
 // 	-upload background image?
+//  -header/footer on of switch
+//
 // 	</p>
 // 	</div>";
 // }
@@ -206,6 +208,13 @@ class lowermedia_one_page_theme_admin_options{
 		?>
 	        <?php submit_button(); ?>
 	    </form>
+	    	<p>
+				-Combine All Pages  OR<br/>
+				-Activate home page as splash page  OR<br/>
+				-Normal Setup<br/><br/>
+				-upload background image?<br/>
+				-header/footer on of switch<br/>
+			</p>
 	</div>
 	<?php
     }
