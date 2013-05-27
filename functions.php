@@ -306,7 +306,7 @@ class lowermedia_one_page_theme_admin_options{
     }
 
     public function create_a_name_field(){
-        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="lowermedia_opt_name[some_name]" value="<?=get_option('test_some_name');?>" />
+        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="lowermedia_opt_name[some_name]" value="<?=get_option('test_some_name');?>" <?php if ( $input['some_name'] ) echo 'checked="checked"'; ?> />
 		<!-- <input 
 			id="input_whatever_unique_name_I_want"
 			name="array_key[some_name]" 
