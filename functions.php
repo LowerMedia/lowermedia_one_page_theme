@@ -201,8 +201,8 @@ class lowermedia_one_page_theme_admin_options{
 	    <form method="post" action="options.php">
 	        <?php
                     // This prints out all hidden setting fields
-		    settings_fields('test_option_group');	
-		    do_settings_sections('test-setting-admin');
+		    settings_fields('lowermedia-one-page-theme_option_group');	
+		    do_settings_sections('lowermedia-one-page-theme');
 		?>
 	        <?php submit_button(); ?>
 	    </form>
@@ -211,20 +211,20 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function page_init(){		
-	register_setting('test_option_group', 'array_key', array($this, 'check_ID'));
+	register_setting('lowermedia-one-page-theme_option_group', 'array_key', array($this, 'check_ID'));
 		
         add_settings_section(
 	    'setting_section_id',
 	    'Setting',
 	    array($this, 'print_section_info'),
-	    'test-setting-admin'
+	    'lowermedia-one-page-theme'
 	);	
 		
 	add_settings_field(
 	    'some_id', 
 	    'Some ID(Title)', 
 	    array($this, 'create_an_id_field'), 
-	    'test-setting-admin',
+	    'lowermedia-one-page-theme',
 	    'setting_section_id'			
 	);		
     }
