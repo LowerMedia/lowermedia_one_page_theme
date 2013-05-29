@@ -35,12 +35,15 @@ get_header(); ?>
 				} else {
 					get_template_part( 'content', 'page' ); 
 				}
-				
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() )
-					comments_template();
-					
 				?>
+				
+				<div id='lm-opt-comment-wrap' class='lm-opt-page-wrap' >
+					<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() )
+						comments_template();
+					?>
+				</div>
 
 			<?php endwhile; // end of the loop. ?>
 
