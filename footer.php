@@ -9,7 +9,7 @@
 ?>
 
 	</div><!-- #main -->
-
+	<?php if(get_option('lmopt_header_option')===FALSE) { ?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<?php do_action( 'lowermedia_one_page_theme_credits' ); ?>
@@ -18,6 +18,7 @@
 			<?php printf( __( 'Theme: %1$s by %2$s.', 'lowermedia_one_page_theme' ), 'lowermedia_one_page_theme', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+	<?php } ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

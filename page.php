@@ -18,9 +18,8 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php
-				
-				
-			    if(get_option('test_some_name')) {
+
+			    if(get_option('lmopt_onepage_option')) {
 					
 			    	$args = array('sort_column' => 'menu_order'); 
 					$pages = get_pages($args); 
@@ -33,16 +32,19 @@ get_header(); ?>
 					}
 
 				} else {
-					get_template_part( 'content', 'page' ); 
+					get_template_part( 'content', 'page' );
 				}
+
 				?>
-				
+
 				<div id='lm-opt-comment-wrap' class='lm-opt-page-wrap' >
-					<?php
+				
+				<?php
 					// If comments are open or we have at least one comment, load up the comment template
 					if ( comments_open() || '0' != get_comments_number() )
 						comments_template();
-					?>
+				?>
+				
 				</div>
 
 			<?php endwhile; // end of the loop. ?>

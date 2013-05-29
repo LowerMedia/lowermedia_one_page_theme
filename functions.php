@@ -223,22 +223,43 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function page_init(){		
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID')); //only accepts numbers
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_name', array($this, 'check_name'));
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
+
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 		
+		/*--------------ADD SECTION-------------*/
+        
         add_settings_section(
 		    'setting_section_id',
-		    'Text Field',
+		    '<!-- Text Field -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
 		);	
 
 		add_settings_section(
-		    'setting_section_name',
-		    'Check Box',
+		    'lowermedia_opt_onepage',
+		    '<!-- Check Box -->',
+		    array($this, 'print_section_info'),
+		    'lowermedia-one-page-theme'
+		);	
+
+		add_settings_section(
+		    'lowermedia_opt_header',
+		    '<!-- Check Box -->',
+		    array($this, 'print_section_info'),
+		    'lowermedia-one-page-theme'
+		);	
+
+		add_settings_section(
+		    'lowermedia_opt_footer',
+		    '<!-- Check Box -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
 		);	
 		
+		/*--------------ADD FIELD-------------*/
+
 		add_settings_field(
 		    'some_id', 
 		    'Some ID(Must be #)', 
@@ -248,11 +269,27 @@ class lowermedia_one_page_theme_admin_options{
 		);
 
 		add_settings_field(
-		    'some_name', 
-		    'Some Name(Name)', 
-		    array($this, 'create_a_name_field'), 
+		    'lmopt_onepage', 
+		    'One Page Style Output?', 
+		    array($this, 'lmopt_onepage'), 
 		    'lowermedia-one-page-theme',
-		    'setting_section_name'			
+		    'lowermedia_opt_onepage'			
+		);	
+
+		add_settings_field(
+		    'lmopt_header', 
+		    'Hide Header?', 
+		    array($this, 'lmopt_header'), 
+		    'lowermedia-one-page-theme',
+		    'lowermedia_opt_header'			
+		);	
+
+		add_settings_field(
+		    'lmopt_footer', 
+		    'Hide Footer?', 
+		    array($this, 'lmopt_footer'), 
+		    'lowermedia-one-page-theme',
+		    'lowermedia_opt_footer'			
 		);		
     }
 
@@ -271,26 +308,62 @@ class lowermedia_one_page_theme_admin_options{
     }
 
 
- 	public function check_name($input){
+ 	public function check_onepage($input){
 
- 		$output = $input['some_name'];
+ 		$output = $input['lmopt_onepage'];
 
  		//check if the checkbox was checked
  		//if it was add or update the option
-    	if(isset($input['some_name'])) {
-		    if(get_option('test_some_name') === FALSE){
-				add_option('test_some_name', $output);
+    	if(isset($input['lmopt_onepage'])) {
+		    if(get_option('lmopt_onepage_option') === FALSE){
+				add_option('lmopt_onepage_option', $output);
 		    }else{
-				update_option('test_some_name', $output);
+				update_option('lmopt_onepage_option', $output);
 		    }
 		}else{//if it wasn't delete the option
-				delete_option('test_some_name');
+				delete_option('lmopt_onepage_option');
+		}
+		return $output;
+    }
+
+    public function check_header($input){
+
+ 		$output = $input['lmopt_header'];
+
+ 		//check if the checkbox was checked
+ 		//if it was add or update the option
+    	if(isset($input['lmopt_header'])) {
+		    if(get_option('lmopt_header_option') === FALSE){
+				add_option('lmopt_header_option', $output);
+		    }else{
+				update_option('lmopt_header_option', $output);
+		    }
+		}else{//if it wasn't delete the option
+				delete_option('lmopt_header_option');
+		}
+		return $output;
+    }
+
+    public function check_footer($input){
+
+ 		$output = $input['lmopt_footer'];
+
+ 		//check if the checkbox was checked
+ 		//if it was add or update the option
+    	if(isset($input['lmopt_footer'])) {
+		    if(get_option('lmopt_footer_option') === FALSE){
+				add_option('lmopt_footer_option', $output);
+		    }else{
+				update_option('lmopt_footer_option', $output);
+		    }
+		}else{//if it wasn't delete the option
+				delete_option('lmopt_footer_option');
 		}
 		return $output;
     }
 	
-    public function print_section_info(){
-		print 'Enter your setting below:';
+    public function print_section_info(){//CALLBACK FUNCTION
+		print '<!-- Enter your setting below:-->';
     }
 	
     public function create_an_id_field(){
@@ -304,15 +377,45 @@ class lowermedia_one_page_theme_admin_options{
         <?php
     }
 
-    public function create_a_name_field(){
+    public function lmopt_onepage(){
         ?>
 	        <input 
 		        type="checkbox" 
 		        id="input_whatever_unique_name_I_want" 
-		        name="lowermedia_opt_name[some_name]" 
+		        name="lowermedia_opt_onepage[lmopt_onepage]" 
 		        value="1" 
 		        <?php 
-		        if ( get_option('test_some_name') ) {echo 'checked="checked"'; }
+		        if ( get_option('lmopt_onepage_option') ) {echo 'checked="checked"'; }
+	        ?> 
+        />
+
+        <?php
+    }
+
+    public function lmopt_header(){
+        ?>
+	        <input 
+		        type="checkbox" 
+		        id="input_whatever_unique_header_I_want" 
+		        name="lowermedia_opt_header[lmopt_header]" 
+		        value="1" 
+		        <?php 
+		        if ( get_option('lmopt_header_option') ) {echo 'checked="checked"'; }
+	        ?> 
+        />
+
+        <?php
+    }
+
+    public function lmopt_footer(){
+        ?>
+	        <input 
+		        type="checkbox" 
+		        id="input_whatever_unique_footer_I_want" 
+		        name="lowermedia_opt_footer[lmopt_footer]" 
+		        value="1" 
+		        <?php 
+		        if ( get_option('lmopt_footer_option') ) {echo 'checked="checked"'; }
 	        ?> 
         />
 
