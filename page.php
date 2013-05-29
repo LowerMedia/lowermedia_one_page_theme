@@ -21,7 +21,7 @@ get_header(); ?>
 
 			    if(get_option('lmopt_onepage_option')) {
 					
-			    	$args = array('sort_column' => 'menu_order','number' => get_option('test_some_id')); 
+			    	$args = array('sort_column' => 'menu_order','number' => get_option('lmopt_numpages_option')); 
 					$pages = get_pages($args); 
 
 					foreach ($pages as $page_data) {

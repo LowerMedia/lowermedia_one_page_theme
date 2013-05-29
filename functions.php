@@ -210,18 +210,13 @@ class lowermedia_one_page_theme_admin_options{
 		?>
 	        <?php submit_button(); ?>
 	    </form>
-	    	<p>
-				-upload background image<br/>
-			</p>
 	</div>
 	<?php
     }
 	
     public function page_init(){		
     	register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID')); //only accepts numbers
-		
-
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 		
@@ -235,7 +230,7 @@ class lowermedia_one_page_theme_admin_options{
 		);	
 
 		add_settings_section(
-		    'setting_section_id',
+		    'lowermedia_opt_numpages',
 		    '<!-- Text Field -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
@@ -267,11 +262,11 @@ class lowermedia_one_page_theme_admin_options{
 		);	
 
 		add_settings_field(
-		    'some_id', 
+		    'lmopt_numpages', 
 		    'Number of Pages to Combine:', 
-		    array($this, 'create_an_id_field'), 
+		    array($this, 'lmopt_numpages'), 
 		    'lowermedia-one-page-theme',
-		    'setting_section_id'			
+		    'lowermedia_opt_numpages'			
 		);
 
 		add_settings_field(
@@ -291,13 +286,13 @@ class lowermedia_one_page_theme_admin_options{
 		);		
     }
 
-    public function check_ID($input){//only accepts numbers
-	    if(is_numeric($input['some_id'])){
-		    	$mid = $input['some_id'];			
-			    if(get_option('test_some_id') === FALSE){
-					add_option('test_some_id', $mid);
+    public function check_numpages($input){//only accepts numbers
+	    if(is_numeric($input['lmopt_numpages'])){
+		    	$mid = $input['lmopt_numpages'];			
+			    if(get_option('lmopt_numpages_option') === FALSE){
+					add_option('lmopt_numpages_option', $mid);
 			    }else{
-					update_option('test_some_id', $mid);
+					update_option('lmopt_numpages_option', $mid);
 			    }
 			}else{
 			    $mid = '';
@@ -368,7 +363,7 @@ class lowermedia_one_page_theme_admin_options{
         ?>
 	        <input 
 		        type="checkbox" 
-		        id="input_whatever_unique_name_I_want" 
+		        id="lmopt_onepage" 
 		        name="lowermedia_opt_onepage[lmopt_onepage]" 
 		        value="1" 
 		        <?php 
@@ -379,13 +374,13 @@ class lowermedia_one_page_theme_admin_options{
         <?php
     }
 
-    public function create_an_id_field(){
+    public function lmopt_numpages(){
         ?>
         <input 
 	        type="text" 
-	        id="input_whatever_unique_id_I_want" 
-	        name="lowermedia_opt_id[some_id]" 
-	        value='<?=get_option('test_some_id');?>' 
+	        id="lmopt_numpages" 
+	        name="lowermedia_opt_numpages[lmopt_numpages]" 
+	        value='<?=get_option('lmopt_numpages_option');?>' 
 	        size='1'
         />
         <?php
@@ -395,7 +390,7 @@ class lowermedia_one_page_theme_admin_options{
         ?>
 	        <input 
 		        type="checkbox" 
-		        id="input_whatever_unique_header_I_want" 
+		        id="lmopt_header" 
 		        name="lowermedia_opt_header[lmopt_header]" 
 		        value="1" 
 		        <?php 
@@ -410,7 +405,7 @@ class lowermedia_one_page_theme_admin_options{
         ?>
 	        <input 
 		        type="checkbox" 
-		        id="input_whatever_unique_footer_I_want" 
+		        id="lmopt_footer" 
 		        name="lowermedia_opt_footer[lmopt_footer]" 
 		        value="1" 
 		        <?php 
