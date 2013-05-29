@@ -180,19 +180,21 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 // 	</p>
 // 	</div>";
 // }
-/*----------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------*/
 class lowermedia_one_page_theme_admin_options{
     public function __construct(){
         if(is_admin()){
-	    add_action('admin_menu', array($this, 'lowermedia_one_page_theme_menu'));
-	    add_action('admin_init', array($this, 'page_init'));
-	}
+		    add_action('admin_menu', array($this, 'lowermedia_one_page_theme_menu'));
+		    add_action('admin_init', array($this, 'page_init'));
+		}
     }
 	
     public function lowermedia_one_page_theme_menu(){
-        // This page will be under "Settings"
-	//add_options_page('Settings Admin', 'Settings', 'manage_options', 'test-setting-admin', array($this, 'create_admin_page'));
-	add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', array($this, 'create_admin_page') );
+	    // This page will be under "Settings"
+		//add_options_page('Settings Admin', 'Settings', 'manage_options', 'test-setting-admin', array($this, 'create_admin_page'));
+		add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', array($this, 'create_admin_page') );
     }
 
     public function create_admin_page(){
@@ -212,7 +214,7 @@ class lowermedia_one_page_theme_admin_options{
 				-Combine All Pages  OR<br/>
 				-Activate home page as splash page  OR<br/>
 				-Normal Setup<br/><br/>
-				-upload background image?<br/>
+				-upload background image<br/>
 				-header/footer on of switch<br/>
 			</p>
 	</div>
@@ -220,8 +222,8 @@ class lowermedia_one_page_theme_admin_options{
     }
 	
     public function page_init(){		
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID'));
-		register_setting('lowermedia-one-page-theme_name', 'lowermedia_opt_name', array($this, 'check_name'));
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID')); //only accepts numbers
+		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_name', array($this, 'check_name'));
 		
         add_settings_section(
 		    'setting_section_id',
@@ -239,7 +241,7 @@ class lowermedia_one_page_theme_admin_options{
 		
 		add_settings_field(
 		    'some_id', 
-		    'Some ID(Title)', 
+		    'Some ID(Must be #)', 
 		    array($this, 'create_an_id_field'), 
 		    'lowermedia-one-page-theme',
 		    'setting_section_id'			
@@ -254,68 +256,76 @@ class lowermedia_one_page_theme_admin_options{
 		);		
     }
 
-     public function check_ID($input){
-        if(is_numeric($input['some_id'])){
-	    $mid = $input['some_id'];			
-	    if(get_option('test_some_id') === FALSE){
-		add_option('test_some_id', $mid);
-	    }else{
-		update_option('test_some_id', $mid);
-	    }
-	}else{
-	    $mid = '';
-	}
-	return $mid;
+    public function check_ID($input){//only accepts numbers
+	    if(is_numeric($input['some_id'])){
+		    	$mid = $input['some_id'];			
+			    if(get_option('test_some_id') === FALSE){
+					add_option('test_some_id', $mid);
+			    }else{
+					update_option('test_some_id', $mid);
+			    }
+			}else{
+			    $mid = '';
+		}
+		return $mid;
     }
 
 
  	public function check_name($input){
-        if(is_numeric($input['some_name'])){
-	    $mname = $input['some_name'];			
-	    if(get_option('test_some_name') === FALSE){
-		add_option('test_some_name', $mname);
-	    }else{
-		update_option('test_some_name', $mname);
-	    }
-	}else{
-	    $mname = '';
-	}
-	return $mname;
-    }
 
-  //   public function check_name($input){
-	 //    if($input['some_name']==1){
-		//     $mname = 'checked';			
-		//     if(get_option('test_some_name') === FALSE){
-		// 		add_option('test_some_name', $mname);
-		//     }else{
-		// 		update_option('test_some_name', $mname);
-		//     }
-		// }else{
-		//     $mname = '';
-		// }
-		// return $mname;
-  //   }
+ 		$output = $input['some_name'];
+
+ 		//check if the checkbox was checked
+ 		//if it was add or update the option
+    	if(isset($input['some_name'])) {
+		    if(get_option('test_some_name') === FALSE){
+				add_option('test_some_name', $output);
+		    }else{
+				update_option('test_some_name', $output);
+		    }
+		}else{//if it wasn't delete the option
+				delete_option('test_some_name');
+		}
+		return $output;
+    }
 	
     public function print_section_info(){
-	print 'Enter your setting below:';
+		print 'Enter your setting below:';
     }
 	
     public function create_an_id_field(){
-        ?><input type="text" id="input_whatever_unique_id_I_want" name="lowermedia_opt_id[some_id]" value='<?=get_option('test_some_id');?>' /><?php
+        ?>
+        <input 
+	        type="text" 
+	        id="input_whatever_unique_id_I_want" 
+	        name="lowermedia_opt_id[some_id]" 
+	        value='<?=get_option('test_some_id');?>' 
+        />
+        <?php
     }
 
     public function create_a_name_field(){
-        ?><input type="checkbox" id="input_whatever_unique_name_I_want" name="lowermedia_opt_name[some_name]" value="<?=get_option('test_some_name');?>" <?php if ( get_option('test_some_name') ) echo 'checked="checked"'; ?> />
-		<!-- <input 
-			id="input_whatever_unique_name_I_want"
-			name="array_key[some_name]" 
-			type="checkbox" 
-			value="1" 
-			<?php# if ( $input['some_name'] ) echo 'checked="checked"'; ?>
-		/> -->
+        ?>
+	        <input 
+		        type="checkbox" 
+		        id="input_whatever_unique_name_I_want" 
+		        name="lowermedia_opt_name[some_name]" 
+		        value="1" 
+		        <?php 
+		        if ( get_option('test_some_name') ) {echo 'checked="checked"'; }
+	        ?> 
+        />
+
         <?php
     }
 }
 
 $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_options();
+
+
+
+
+
+
+
+/* THE END */

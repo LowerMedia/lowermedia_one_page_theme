@@ -19,16 +19,24 @@ get_header(); ?>
 
 				<?php
 				
+				
+			    if(get_option('test_some_name')) {
+					
+			    	$args = array('sort_column' => 'menu_order'); 
+					$pages = get_pages($args); 
 
-				$args = array('sort_column' => 'menu_order'); 
-				$pages = get_pages($args); 
+					foreach ($pages as $page_data) {
+					    $content = apply_filters('the_content', $page_data->post_content); 
+					    $title = $page_data->post_title;
+					    $ID = $page_data->ID;
+					    echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
+					}
 
-				foreach ($pages as $page_data) {
-				    $content = apply_filters('the_content', $page_data->post_content); 
-				    $title = $page_data->post_title;
-				    $ID = $page_data->ID;
-				    echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
+				} else {
+					get_template_part( 'content', 'page' ); 
 				}
+				
+				
 
 				?>
 
