@@ -211,35 +211,32 @@ class lowermedia_one_page_theme_admin_options{
 	        <?php submit_button(); ?>
 	    </form>
 	    	<p>
-				-Combine All Pages  OR<br/>
-				-Activate home page as splash page  OR<br/>
-				-Normal Setup<br/><br/>
 				-upload background image<br/>
-				-header/footer on of switch<br/>
 			</p>
 	</div>
 	<?php
     }
 	
     public function page_init(){		
+    	register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_id', array($this, 'check_ID')); //only accepts numbers
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
+		
 
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 		
 		/*--------------ADD SECTION-------------*/
-        
-        add_settings_section(
-		    'setting_section_id',
-		    '<!-- Text Field -->',
+
+		add_settings_section(
+		    'lowermedia_opt_onepage',
+		    '<!-- Check Box -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
 		);	
 
 		add_settings_section(
-		    'lowermedia_opt_onepage',
-		    '<!-- Check Box -->',
+		    'setting_section_id',
+		    '<!-- Text Field -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
 		);	
@@ -260,13 +257,6 @@ class lowermedia_one_page_theme_admin_options{
 		
 		/*--------------ADD FIELD-------------*/
 
-		add_settings_field(
-		    'some_id', 
-		    'Some ID(Must be #)', 
-		    array($this, 'create_an_id_field'), 
-		    'lowermedia-one-page-theme',
-		    'setting_section_id'			
-		);
 
 		add_settings_field(
 		    'lmopt_onepage', 
@@ -275,6 +265,14 @@ class lowermedia_one_page_theme_admin_options{
 		    'lowermedia-one-page-theme',
 		    'lowermedia_opt_onepage'			
 		);	
+
+		add_settings_field(
+		    'some_id', 
+		    'Number of Pages to Combine:', 
+		    array($this, 'create_an_id_field'), 
+		    'lowermedia-one-page-theme',
+		    'setting_section_id'			
+		);
 
 		add_settings_field(
 		    'lmopt_header', 
@@ -365,17 +363,6 @@ class lowermedia_one_page_theme_admin_options{
     public function print_section_info(){//CALLBACK FUNCTION
 		print '<!-- Enter your setting below:-->';
     }
-	
-    public function create_an_id_field(){
-        ?>
-        <input 
-	        type="text" 
-	        id="input_whatever_unique_id_I_want" 
-	        name="lowermedia_opt_id[some_id]" 
-	        value='<?=get_option('test_some_id');?>' 
-        />
-        <?php
-    }
 
     public function lmopt_onepage(){
         ?>
@@ -389,6 +376,18 @@ class lowermedia_one_page_theme_admin_options{
 	        ?> 
         />
 
+        <?php
+    }
+
+    public function create_an_id_field(){
+        ?>
+        <input 
+	        type="text" 
+	        id="input_whatever_unique_id_I_want" 
+	        name="lowermedia_opt_id[some_id]" 
+	        value='<?=get_option('test_some_id');?>' 
+	        size='1'
+        />
         <?php
     }
 
