@@ -419,10 +419,4 @@ class lowermedia_one_page_theme_admin_options{
 
 $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_options();
 
-
-
-
-
-
-
 /* THE END */

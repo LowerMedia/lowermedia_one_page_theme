@@ -23,12 +23,14 @@ get_header(); ?>
 					
 			    	$args = array('sort_column' => 'menu_order','number' => get_option('lmopt_numpages_option')); 
 					$pages = get_pages($args); 
-
+					$counter = 1;
 					foreach ($pages as $page_data) {
 					    $content = apply_filters('the_content', $page_data->post_content); 
 					    $title = $page_data->post_title;
 					    $ID = $page_data->ID;
-					    echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
+					    //echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
+					    echo "<section id='lm-opt-".$counter."' class='lm-opt-page-wrap' >".$content."</section>"; 
+					    $counter++;
 					}
 
 				} else {

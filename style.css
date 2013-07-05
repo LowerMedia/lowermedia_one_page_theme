@@ -631,3 +631,57 @@ object {
 #colophon {
 	background: #FF6DD6;
 }*/
+
+
+
+/**
+ * Parallax Scrolling Tutorial
+ * For Smashing Magazine
+ * July 2011
+ *  
+ * Author: Richard Shepherd
+ *		   www.richardshepherd.com
+ * 		   @richardshepherd   
+ */
+
+
+article h2 { font-family: 'Lobster Two'; font-size: 60px; margin: 25px 0; line-height: 1em; text-shadow:0 1px 0 #CCCCCC, 0 2px 0 #C9C9C9, 0 3px 0 #BBBBBB, 0 4px 0 #B9B9B9, 0 5px 0 #AAAAAA, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);}
+
+.story { height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 50px rgba(0,0,0,0.8);}
+
+//#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }
+#lm-opt-1 { background: url(images/slide1.png) 50% 0 no-repeat fixed; }
+#lm-opt-2 { background: url(images/slide2.jpg) 50% 0 no-repeat fixed; }
+#lm-opt-3 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; }
+#lm-opt-4 { background: url(images/item-9-mad-hatters-los-angeles.JPG) 50% 0 no-repeat fixed; }
+#theend { background: url(images/puckered.png) 50% bottom no-repeat fixed; }
+
+/* Introduction 
+#lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+*/
+#lm-opt-1 article { width: 100%; top: 300px; position: absolute; text-align: center; }
+#lm-opt-1 article p,
+#lm-opt-1 article a { color: #ccc; }
+#lm-opt-1 article a { text-decoration: underline; }
+#lm-opt-1 article a:hover { color: #fff; }
+
+/* Background Only */
+#lm-opt-2 { padding: 50px 0;}
+#lm-opt-2 article { background: url(images/grain.png) repeat #333; color: #fff; width: 600px; margin-left: 100px; padding: 10px 20px; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; box-shadow: 0 0 25px rgba(0,0,0,0.3); border: 1px solid rgba(150,150,150,0.1); }
+#lm-opt-2 article p { margin-bottom: 25px; }
+#lm-opt-2 article a { color: #ff0;}
+
+/* Photograph */
+#lm-opt-3 article {  background: url(images/grain.png) repeat #333; color: #fff; padding: 10px 20px; margin: 100px 0 0 60%; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; color: #fff; position: absolute; top: 0; box-shadow: 0 0 25px rgba(0,0,0,0.3); border: 1px solid rgba(150,150,150,0.1); }
+#lm-opt-3 .photograph { background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+#lm-opt-3 article p { width: 300px; margin-bottom: 25px; }
+
+/* HTML5 Video */
+#lm-opt-4 article {  margin-left: 10%; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; color: #fff; position: absolute; top: 0; }
+#lm-opt-4 article p { width: 300px; margin: 50px 0; }
+#lm-opt-4 video { position: fixed; left: 50%; box-shadow: 0 0 25px rgba(0,0,0,0.7); z-index: 1;}
+
+/* The End */
+#theend .byebye { background: url(images/theend.png) 40% 100px no-repeat fixed; height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+
+
