@@ -649,7 +649,7 @@ article h2 { font-family: 'Lobster Two'; font-size: 60px; margin: 25px 0; line-h
 
 .story { height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 50px rgba(0,0,0,0.8);}
 
-//#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }
+/*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/
 #lm-opt-1 { background: url(images/slide1.png) 50% 0 no-repeat fixed; }
 #lm-opt-2 { background: url(images/slide2.jpg) 50% 0 no-repeat fixed; }
 #lm-opt-3 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; }

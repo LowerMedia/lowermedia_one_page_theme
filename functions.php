@@ -142,6 +142,20 @@ function lowermedia_one_page_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 
+ /**
+ * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
+ */
+add_action( 'wp_enqueue_scripts', 'lmsjsm_add_stylesheet' );
+
+/**
+ * Enqueue plugin style-file
+ */
+function lmsjsm_add_stylesheet() {
+    // Respects SSL, Style.css is relative to the current file
+    wp_register_style( 'lmsjsm-styles', plugins_url('lmsjsm-styles.css', __FILE__) );
+    wp_enqueue_style( 'lmsjsm-styles' );
+}					
+
 /**
  * Implement the Custom Header feature
  */
@@ -252,6 +266,17 @@ class lowermedia_one_page_theme_admin_options{
 				    $func_name			
 				);
 
+				if(get_option($setting_name)) {
+			    	$file = 'lmsjsm-styles.css';
+			    	echo "here----";
+					// Open the file to get existing content
+					$current = file_get_contents($file);
+					// Append a new person to the file
+					$current .= 'background-image:url("'.get_option($setting_name).'");';
+					// Write the contents back to the file
+					file_put_contents($file, $current);
+				}
+
 				$myvar--;
 			}
 		}
@@ -324,26 +349,27 @@ class lowermedia_one_page_theme_admin_options{
 
     /*---------BACKGROUND FUNCTIONS-----------*/
 
+    
 
 	public function check_bkgrnd_1($input){//only accepts numbers
     	$valid_url = $input['lmopt_bkgrnd_1'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
 		    $exists = false;
+		    $valid_url = "";
 		} else {
 			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_1_option') === FALSE){
-				add_option('lmopt_bkgrnd_1_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_1_option', $valid_url);
-		    }
-		
-			return $valid_url;
-		}
+	    if(get_option('lmopt_bkgrnd_1_option') === FALSE){
+			add_option('lmopt_bkgrnd_1_option', $valid_url);
+	    }else{
+			update_option('lmopt_bkgrnd_1_option', $valid_url);
+	    }
+	
+		return $valid_url;
+
 	}
 
 	public function lmopt_bkgrnd_1(){
