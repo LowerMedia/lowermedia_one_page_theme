@@ -673,37 +673,37 @@ $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_o
 #   //This function adds to the begining of the body tag
 */	
 
-	function lowermedia_add_opt_styles() {
-		//check if enabled option is selected
-		
-		$myvar = get_option('lmopt_numpages_option');
-		$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
-		$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
-		
-		if ($myvar != 0 ) {
+function lowermedia_add_opt_styles() {
+	//check if enabled option is selected
+	
+	$myvar = get_option('lmopt_numpages_option');
+	$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
+	$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
+	
+	if ($myvar != 0 ) {
 
-			while ($myvar != 0) {
+		while ($myvar != 0) {
 
-				if(get_option($setting_name)) {
+			if(get_option($setting_name)) {
 
 
-							//$filename = 'lmopt-styles.css';
-							$style_from_setting = get_option($setting_name);
-							$lmopt_styles .='
-								#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
-							';
-							//echo $myvar.':'.$lmopt_styles.'<br/>';
-							$myvar--;
+						//$filename = 'lmopt-styles.css';
+						$style_from_setting = get_option($setting_name);
+						$lmopt_styles .='
+							#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
+						';
+						//echo $myvar.':'.$lmopt_styles.'<br/>';
+						$myvar--;
 
-				}
 			}
 		}
-		$lmopt_styles.='</style>';
-		echo $lmopt_styles;
-		// $output = $lmopt_styles;
-		// echo '----'.$output.'-----'.$lmopt_styles;
-		// return $output;
 	}
-	add_action('wp_head', 'lowermedia_add_opt_styles');
+	$lmopt_styles.='</style>';
+	echo $lmopt_styles;
+	// $output = $lmopt_styles;
+	// echo '----'.$output.'-----'.$lmopt_styles;
+	// return $output;
+}
+add_action('wp_head', 'lowermedia_add_opt_styles');
 
 /* THE END */
