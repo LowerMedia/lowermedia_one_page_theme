@@ -145,15 +145,15 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
  /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
-//add_action( 'wp_enqueue_scripts', 'lmsjsm_add_stylesheet' );
+//add_action( 'wp_enqueue_scripts', 'lowermedia_add_stylesheet' );
 
 /**
  * Enqueue plugin style-file
  */
-// function lmsjsm_add_stylesheet() {
+// function lowermedia_add_stylesheet() {
 //     // Respects SSL, Style.css is relative to the current file
-//     //wp_register_style( 'lmsjsm-styles', plugins_url('lmsjsm-styles.css', __FILE__) );
-//     //wp_enqueue_style( 'lmsjsm-styles' );
+//     //wp_register_style( 'lowermedia-styles', plugins_url('lowermedia-styles.css', __FILE__) );
+//     //wp_enqueue_style( 'lowermedia-styles' );
 // }					
 
 /**
@@ -207,7 +207,6 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function lowermedia_one_page_theme_menu(){
 	    // This page will be under "Settings"
-		//add_options_page('Settings Admin', 'Settings', 'manage_options', 'test-setting-admin', array($this, 'create_admin_page'));
 		add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', array($this, 'create_admin_page') );
     }
 
@@ -218,7 +217,7 @@ class lowermedia_one_page_theme_admin_options{
 	    <h2>LowerMedia One Page Theme Options</h2>			
 	    <form method="post" action="options.php">
 	        <?php
-                    // This prints out all hidden setting fields
+            // This prints out all hidden setting fields
 		    settings_fields('lowermedia-one-page-theme_option_group');	
 		    do_settings_sections('lowermedia-one-page-theme');
 		?>
@@ -228,95 +227,14 @@ class lowermedia_one_page_theme_admin_options{
 	<?php
     }
 	
-    public function page_init(){		
+    public function page_init(){	
+
+    	/*REGISTER DEFAULT OPTIONS*/	
     	register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 
-		$myvar = get_option('lmopt_numpages_option');
-		$lmopt_styles='';
-		
-		if ($myvar != 0 ) {
-
-			while ($myvar != 0) {
-
-				//$check_name='check_bkgrnd_'.$myvar;
-				$check_name='check_bkgrnd_'.$myvar;
-				$func_name='lowermedia_opt_bkgrnd_'.$myvar;
-				$setting_name='lmopt_bkgrnd_'.$myvar;
-				$form_txt='Background image url for page '.$myvar.':';
-				
-
-				register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
-				/*--------------ADD SECTION-------------*/
-				add_settings_section(
-				    $func_name,
-				    '<!-- Text Field -->',
-				    array($this, 'print_section_info'),
-				    'lowermedia-one-page-theme'
-				);
-
-				add_settings_field(
-				    $setting_name, 
-				    $form_txt, 
-				    array($this, $setting_name), 
-				    'lowermedia-one-page-theme',
-				    $func_name			
-				);
-
-				$myvar--;
-			}
-		}
-
-				// if(get_option($setting_name.'_option')) {
-				// 	//$filename = 'lmopt-styles.css';
-				// 	//$style_from_setting = get_option($setting_name.'_option');
-				// 	//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
-				// 	//echo $myvar.':'.$lmopt_styles.'<br/>';
-				// 	// Let's make sure the file exists and is writable first.
-				// 	// if (is_writable($filename)) {
-
-				// 	//     // In our example we're opening $filename in append mode.
-				// 	//     // The file pointer is at the bottom of the file hence
-				// 	//     // that's where $somecontent will go when we fwrite() it.
-				// 	//     if (!$handle = fopen($filename, 'a')) {
-				// 	//          echo "Cannot open file ($filename)";
-				// 	//          exit;
-				// 	//     }
-
-				// 	//     // Write $somecontent to our opened file.
-				// 	//     if (fwrite($handle, $somecontent) === FALSE) {
-				// 	//         echo "Cannot write to file ($filename)";
-				// 	//         exit;
-				// 	//     }
-
-				// 	//     echo "Success, wrote ($somecontent) to file ($filename)";
-
-				// 	//     fclose($handle);
-
-				// 	// } else {
-				// 	//     echo "The file $filename is not writable";
-				// 	// }
-
-				//  //    	$file = 'lmsjsm-styles.php';
-				//  //    	//echo $file;
-				// 	// 	// Open the file to get existing content
-				// 	// 	$current = file_get_contents($file);
-				// 	// 	//echo $current;
-				// 	// 	// Append a new person to the file
-				// 	// 	$current .= get_option($setting_name.'_option');
-				// 	// 	//echo 'current:'.$current;
-				// 	// 	// Write the contents back to the file
-				// 	// 	if (file_put_contents($file, $current))
-				// 	// 		{echo 'pass';}
-				// 	// 	else{//echo'fail';
-				// 	// 		}
-				// 	// } else {
-				// 	// 	echo '<br/>Failed: failed';
-				// 	// 	echo '<br/>Setting Name:'.$setting_name;
-				// 	// 	echo '<br/>Get Option:'.get_option($setting_name);
-				// 	// // }
 		/*--------------ADD SECTION-------------*/
 
 		add_settings_section(
@@ -381,6 +299,93 @@ class lowermedia_one_page_theme_admin_options{
 		    'lowermedia-one-page-theme',
 		    'lowermedia_opt_footer'			
 		);		
+
+		if (get_option('lmopt_numpages_option')) {
+
+			$numpages = get_option('lmopt_numpages_option');
+			$lmopt_styles='';
+			
+			if ($numpages != 0 ) {
+
+				while ($numpages != 0) {
+
+					//$check_name='check_bkgrnd_'.$bkgrnd_style;
+					$check_name='check_bkgrnd_'.$numpages;
+					$func_name='lowermedia_opt_bkgrnd_'.$numpages;
+					$setting_name='lmopt_bkgrnd_'.$numpages;
+					$form_txt='Background image url for page '.$numpages.':';
+					
+
+					register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
+					/*--------------ADD SECTION-------------*/
+					add_settings_section(
+					    $func_name,
+					    '<!-- Text Field -->',
+					    array($this, 'print_section_info'),
+					    'lowermedia-one-page-theme'
+					);
+
+					add_settings_field(
+					    $setting_name, 
+					    $form_txt, 
+					    array($this, $setting_name), 
+					    'lowermedia-one-page-theme',
+					    $func_name			
+					);
+					$numpages--;
+				}
+			}
+		}
+
+				// if(get_option($setting_name.'_option')) {
+				// 	//$filename = 'lmopt-styles.css';
+				// 	//$style_from_setting = get_option($setting_name.'_option');
+				// 	//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
+				// 	//echo $myvar.':'.$lmopt_styles.'<br/>';
+				// 	// Let's make sure the file exists and is writable first.
+				// 	// if (is_writable($filename)) {
+
+				// 	//     // In our example we're opening $filename in append mode.
+				// 	//     // The file pointer is at the bottom of the file hence
+				// 	//     // that's where $somecontent will go when we fwrite() it.
+				// 	//     if (!$handle = fopen($filename, 'a')) {
+				// 	//          echo "Cannot open file ($filename)";
+				// 	//          exit;
+				// 	//     }
+
+				// 	//     // Write $somecontent to our opened file.
+				// 	//     if (fwrite($handle, $somecontent) === FALSE) {
+				// 	//         echo "Cannot write to file ($filename)";
+				// 	//         exit;
+				// 	//     }
+
+				// 	//     echo "Success, wrote ($somecontent) to file ($filename)";
+
+				// 	//     fclose($handle);
+
+				// 	// } else {
+				// 	//     echo "The file $filename is not writable";
+				// 	// }
+
+				//  //    	$file = 'lmsjsm-styles.php';
+				//  //    	//echo $file;
+				// 	// 	// Open the file to get existing content
+				// 	// 	$current = file_get_contents($file);
+				// 	// 	//echo $current;
+				// 	// 	// Append a new person to the file
+				// 	// 	$current .= get_option($setting_name.'_option');
+				// 	// 	//echo 'current:'.$current;
+				// 	// 	// Write the contents back to the file
+				// 	// 	if (file_put_contents($file, $current))
+				// 	// 		{echo 'pass';}
+				// 	// 	else{//echo'fail';
+				// 	// 		}
+				// 	// } else {
+				// 	// 	echo '<br/>Failed: failed';
+				// 	// 	echo '<br/>Setting Name:'.$setting_name;
+				// 	// 	echo '<br/>Get Option:'.get_option($setting_name);
+				// 	// // }
+		
     }
 
     /*---------BACKGROUND FUNCTIONS-----------*/
@@ -670,22 +675,22 @@ $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_o
 function lowermedia_add_opt_styles() {
 	//check if enabled option is selected
 	
-	$myvar = get_option('lmopt_numpages_option');
+	$numpages = get_option('lmopt_numpages_option');
 	$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
 	
 	
-	if ($myvar != 0 ) {
+	if ($numpages != 0 ) {
 
-		while ($myvar != 0) {
-			$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
+		while ($numpages != 0) {
+			$setting_name='lmopt_bkgrnd_'.$numpages.'_option';
 			if(get_option($setting_name)) {
 
 						$style_from_setting = get_option($setting_name);
 						$lmopt_styles .='
-							#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
+							#lm-opt-'.$numpages.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
 						';
-						//echo $myvar.':'.$lmopt_styles.'<br/>';
-						$myvar--;
+						//echo $numpages.':'.$lmopt_styles.'<br/>';
+						$numpages--;
 
 			}
 		}
