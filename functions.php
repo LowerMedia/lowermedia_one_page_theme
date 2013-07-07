@@ -247,6 +247,7 @@ class lowermedia_one_page_theme_admin_options{
 		    'lowermedia_opt_onepage'			
 		);	
 
+		//if the one page option is checked and not set to zero
 		if (get_option('lmopt_onepage_option') && get_option('lmopt_onepage_option') != 0) { 
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
@@ -748,32 +749,31 @@ $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_o
 
 function lowermedia_add_opt_styles() {
 	//check if enabled option is selected
-	
-	$numpages = get_option('lmopt_numpages_option');
-	$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
-	
-	
-	if ($numpages != 0 ) {
+	if (get_option('lmopt_numpages_option')) {
+		$numpages = get_option('lmopt_numpages_option');
+		$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
+		
+		if ($numpages != 0 ) {
 
-		while ($numpages != 0) {
-			$setting_name='lmopt_bkgrnd_'.$numpages.'_option';
-			if(get_option($setting_name)) {
-
-						$style_from_setting = get_option($setting_name);
-						$lmopt_styles .='
-							#lm-opt-'.$numpages.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
-						';
-						//echo $numpages.':'.$lmopt_styles.'<br/>';
-						$numpages--;
-
+			while ($numpages != 0) {
+				$setting_name='lmopt_bkgrnd_'.$numpages.'_option';
+				$setting_data=get_option($setting_name);
+				if(get_option($setting_name) && $setting_data != NULL) {
+					$style_from_setting = $setting_data;
+					$lmopt_styles .='
+						#lm-opt-'.$numpages.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
+					';
+					//echo $numpages.':'.$lmopt_styles.'<br/>';
+				}
+				$numpages--;
 			}
 		}
-	}
-	$lmopt_styles.='</style>';
-	echo $lmopt_styles;
-	// $output = $lmopt_styles;
-	// echo '----'.$output.'-----'.$lmopt_styles;
-	// return $output;
+		$lmopt_styles.='</style>';
+		echo $lmopt_styles;
+		// $output = $lmopt_styles;
+		// echo '----'.$output.'-----'.$lmopt_styles;
+		// return $output;
+	}else{echo'';}
 }
 add_action('wp_head', 'lowermedia_add_opt_styles');
 
