@@ -29,7 +29,7 @@ get_header(); ?>
 					    $title = $page_data->post_title;
 					    $ID = $page_data->ID;
 					    //echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
-					    echo "<section id='lm-opt-".$counter."' class='lm-opt-page-wrap' >".$content."</section>"; 
+					    echo "<section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >".$content."</section>"; 
 					    $counter++;
 					}
 
