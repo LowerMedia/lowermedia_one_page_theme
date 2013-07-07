@@ -229,44 +229,15 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function page_init(){	
 
-    	/*REGISTER DEFAULT OPTIONS*/	
+    	/*REGISTER DEFAULT OPTION*/	
     	register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
-		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 
-		/*--------------ADD SECTION-------------*/
-
-		add_settings_section(
+    	add_settings_section(
 		    'lowermedia_opt_onepage',
 		    '<!-- Check Box -->',
 		    array($this, 'print_section_info'),
 		    'lowermedia-one-page-theme'
 		);	
-
-		add_settings_section(
-		    'lowermedia_opt_numpages',
-		    '<!-- Text Field -->',
-		    array($this, 'print_section_info'),
-		    'lowermedia-one-page-theme'
-		);
-
-		add_settings_section(
-		    'lowermedia_opt_header',
-		    '<!-- Check Box -->',
-		    array($this, 'print_section_info'),
-		    'lowermedia-one-page-theme'
-		);	
-
-		add_settings_section(
-		    'lowermedia_opt_footer',
-		    '<!-- Check Box -->',
-		    array($this, 'print_section_info'),
-		    'lowermedia-one-page-theme'
-		);	
-		
-		/*--------------ADD FIELD-------------*/
-
 
 		add_settings_field(
 		    'lmopt_onepage', 
@@ -276,63 +247,93 @@ class lowermedia_one_page_theme_admin_options{
 		    'lowermedia_opt_onepage'			
 		);	
 
-		add_settings_field(
-		    'lmopt_numpages', 
-		    'Number of Pages to Combine:', 
-		    array($this, 'lmopt_numpages'), 
-		    'lowermedia-one-page-theme',
-		    'lowermedia_opt_numpages'			
-		);
+		if (get_option('lmopt_onepage_option') && get_option('lmopt_onepage_option') != 0) { 
+			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
+			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
+			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 
-		add_settings_field(
-		    'lmopt_header', 
-		    'Hide Header?', 
-		    array($this, 'lmopt_header'), 
-		    'lowermedia-one-page-theme',
-		    'lowermedia_opt_header'			
-		);	
+			/*--------------ADD SECTION-------------*/
 
-		add_settings_field(
-		    'lmopt_footer', 
-		    'Hide Footer?', 
-		    array($this, 'lmopt_footer'), 
-		    'lowermedia-one-page-theme',
-		    'lowermedia_opt_footer'			
-		);		
+			add_settings_section(
+			    'lowermedia_opt_numpages',
+			    '<!-- Text Field -->',
+			    array($this, 'print_section_info'),
+			    'lowermedia-one-page-theme'
+			);
 
-		//If the numpages option in the database is set and not set to 0, we add the styles to the head
-		if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
-			//set numpages variable with number of pages making up one page theme
-			$numpages = get_option('lmopt_numpages_option');
+			add_settings_section(
+			    'lowermedia_opt_header',
+			    '<!-- Check Box -->',
+			    array($this, 'print_section_info'),
+			    'lowermedia-one-page-theme'
+			);	
 
-			while ($numpages != 0) {
+			add_settings_section(
+			    'lowermedia_opt_footer',
+			    '<!-- Check Box -->',
+			    array($this, 'print_section_info'),
+			    'lowermedia-one-page-theme'
+			);	
+			
+			/*--------------ADD FIELD-------------*/
 
-				//$check_name='check_bkgrnd_'.$bkgrnd_style;
-				$check_name='check_bkgrnd_'.$numpages;
-				$func_name='lowermedia_opt_bkgrnd_'.$numpages;
-				$setting_name='lmopt_bkgrnd_'.$numpages;
-				$form_txt='Background image url for page '.$numpages.':';
-				
+			add_settings_field(
+			    'lmopt_numpages', 
+			    'Number of Pages to Combine:', 
+			    array($this, 'lmopt_numpages'), 
+			    'lowermedia-one-page-theme',
+			    'lowermedia_opt_numpages'			
+			);
 
-				register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
-				/*--------------ADD SECTION-------------*/
-				add_settings_section(
-				    $func_name,
-				    '<!-- Text Field -->',
-				    array($this, 'print_section_info'),
-				    'lowermedia-one-page-theme'
-				);
+			add_settings_field(
+			    'lmopt_header', 
+			    'Hide Header?', 
+			    array($this, 'lmopt_header'), 
+			    'lowermedia-one-page-theme',
+			    'lowermedia_opt_header'			
+			);	
 
-				add_settings_field(
-				    $setting_name, 
-				    $form_txt, 
-				    array($this, $setting_name), 
-				    'lowermedia-one-page-theme',
-				    $func_name			
-				);
-				$numpages--;
-			}
-		}		
+			add_settings_field(
+			    'lmopt_footer', 
+			    'Hide Footer?', 
+			    array($this, 'lmopt_footer'), 
+			    'lowermedia-one-page-theme',
+			    'lowermedia_opt_footer'			
+			);		
+
+			//If the numpages option in the database is set and not set to 0, we add the styles to the head
+			if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
+				//set numpages variable with number of pages making up one page theme
+				$numpages = get_option('lmopt_numpages_option');
+
+				while ($numpages != 0) {
+					//$check_name='check_bkgrnd_'.$bkgrnd_style;
+					$check_name='check_bkgrnd_'.$numpages;
+					$func_name='lowermedia_opt_bkgrnd_'.$numpages;
+					$setting_name='lmopt_bkgrnd_'.$numpages;
+					$form_txt='Background image url for page '.$numpages.':';
+					//register db option holding style into the options group
+					register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
+
+					/*--------------ADD SECTION-------------*/
+					add_settings_section(
+					    $func_name,
+					    '<!-- Text Field -->',
+					    array($this, 'print_section_info'),
+					    'lowermedia-one-page-theme'
+					);
+
+					add_settings_field(
+					    $setting_name, 
+					    $form_txt, 
+					    array($this, $setting_name), 
+					    'lowermedia-one-page-theme',
+					    $func_name			
+					);
+					$numpages--;
+				}
+			}	
+		}	
     }
 
     /*---------BACKGROUND FUNCTIONS-----------*/
@@ -469,18 +470,159 @@ class lowermedia_one_page_theme_admin_options{
 	    <?php
 	}
 
+	/* #5 background funcs */
+	public function check_bkgrnd_5($input){
+    	$valid_url = $input['lmopt_bkgrnd_5'];
+		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		    $exists = false;
+		    $valid_url = "";
+		} else {
+			$exists = true;
+			$valid_url = esc_attr($valid_url);
+		}
+	    if(get_option('lmopt_bkgrnd_5_option') === FALSE){
+			add_option('lmopt_bkgrnd_5_option', $valid_url);
+	    }else{
+			update_option('lmopt_bkgrnd_5_option', $valid_url);
+	    }
+		return $valid_url;
+	}
+	public function lmopt_bkgrnd_5(){
+		//echo '<br/>----------lmopt background 1----------';
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_5" 
+	        name="lowermedia_opt_bkgrnd_5[lmopt_bkgrnd_5]" 
+	        value='<?=get_option('lmopt_bkgrnd_5_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
+
+
+	/* #6 background funcs */
+	public function check_bkgrnd_6($input){
+    	$valid_url = $input['lmopt_bkgrnd_6'];
+
+		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		    $exists = false;
+		} else {
+			$exists = true;
+			$valid_url = esc_attr($valid_url);
+		}
+
+	    if ($exists==true){
+		    if(get_option('lmopt_bkgrnd_6_option') === FALSE){
+				add_option('lmopt_bkgrnd_6_option', $valid_url);
+		    }else{
+				update_option('lmopt_bkgrnd_6_option', $valid_url);
+		    }
+		
+			return $valid_url;
+		}
+	}
+	public function lmopt_bkgrnd_6(){
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_6" 
+	        name="lowermedia_opt_bkgrnd_6[lmopt_bkgrnd_6]" 
+	        value='<?=get_option('lmopt_bkgrnd_6_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
+
+	/* #7 background funcs */
+	public function check_bkgrnd_7($input){
+    	$valid_url = $input['lmopt_bkgrnd_7'];
+
+		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		    $exists = false;
+		} else {
+			$exists = true;
+			$valid_url = esc_attr($valid_url);
+		}
+
+	    if ($exists==true){
+		    if(get_option('lmopt_bkgrnd_7_option') === FALSE){
+				add_option('lmopt_bkgrnd_7_option', $valid_url);
+		    }else{
+				update_option('lmopt_bkgrnd_7_option', $valid_url);
+		    }
+		
+			return $valid_url;
+		}
+	}
+	public function lmopt_bkgrnd_7(){
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_7" 
+	        name="lowermedia_opt_bkgrnd_7[lmopt_bkgrnd_7]" 
+	        value='<?=get_option('lmopt_bkgrnd_7_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
+
+	/* #8 background funcs */
+	public function check_bkgrnd_8($input){
+
+    	$valid_url = $input['lmopt_bkgrnd_8'];
+
+		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		    $exists = false;
+		} else {
+			$exists = true;
+			$valid_url = esc_attr($valid_url);
+		}
+
+	    if ($exists==true){
+		    if(get_option('lmopt_bkgrnd_8_option') === FALSE){
+				add_option('lmopt_bkgrnd_8_option', $valid_url);
+		    }else{
+				update_option('lmopt_bkgrnd_8_option', $valid_url);
+		    }
+		
+			return $valid_url;
+		}
+	}
+	public function lmopt_bkgrnd_8(){
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_8" 
+	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_8]" 
+	        value='<?=get_option('lmopt_bkgrnd_8_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
 
 /*--------------------*/
 
     public function check_numpages($input){//only accepts numbers
-
+		$pages = get_pages($args); 
+		$counter = 0;
+		foreach ($pages as $page_data) {$counter++;}
 	    if(is_numeric($input['lmopt_numpages'])){
-		    	$mid = $input['lmopt_numpages'];			
-			    if(get_option('lmopt_numpages_option') === FALSE){
-					add_option('lmopt_numpages_option', $mid);
-			    }else{
-					update_option('lmopt_numpages_option', $mid);
-			    }
+		    	$mid = $input['lmopt_numpages'];
+		    	//check to make sure there are enough pages created to support the number of pages making up the one page, if there isn't wp will break
+		    	if ($mid <= $counter) {		
+				    if(get_option('lmopt_numpages_option') === FALSE){
+						add_option('lmopt_numpages_option', $mid);
+				    }else{
+						update_option('lmopt_numpages_option', $mid);
+				    }
+				}else{
+					$lmerrmsg = "Please Enter a number equal to or lower than the number of pages created in the page's section of wordpress
+					your site has ".$counter." pages, you can not add more 'Number of Pages to Combine' than this";
+					//On page 1
+
+					$_POST['lmerrmsg'] = $lmerrmsg;
+				}
 			}else{
 			    $mid = '';
 		}
@@ -496,7 +638,8 @@ class lowermedia_one_page_theme_admin_options{
 	        value='<?=get_option('lmopt_numpages_option');?>' 
 	        size='1'
         />
-        <?php
+        <?php 
+        echo'*must be less than or equal to number of pages';
     }
 
  	public function check_onepage($input){
