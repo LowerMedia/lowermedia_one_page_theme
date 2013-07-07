@@ -624,6 +624,10 @@ object {
  * 		   @richardshepherd   
  */
 
+.navigation-main {
+	position: relative;
+	z-index: 100;
+}
 
 article h2 { 
 	font-family: 'Lobster Two'; 
@@ -644,6 +648,15 @@ article h2 {
 	border-top: 1px solid rgba(255,255,255,0.3); 
 	border-bottom: 1px solid rgba(0,0,0,0.4); 
 	box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+.story-nav { 
+	padding: 2% 10%; 
+	margin: 0; 
+	width: 100%; 
+	max-width: 1000px;/*1920px; */
+	position: relative; 
+	margin: 0 auto; 
 }
 
 /*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/

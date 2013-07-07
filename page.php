@@ -20,7 +20,7 @@ get_header();
 				
 			
 			<?php while ( have_posts() ) : the_post(); ?>
-				<div class='navigation-main'>
+				<div class='navigation-main story-nav'>
 				<?php
 
 				$defaults = array(
