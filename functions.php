@@ -231,13 +231,11 @@ class lowermedia_one_page_theme_admin_options{
     public function page_init(){		
     	register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_onepage', array($this, 'check_onepage'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
-		//register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_bkgrnd_one', array($this, 'check_bkgrnd_one')); //only accepts numbers
-
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 
 		$myvar = get_option('lmopt_numpages_option');
-		$lmopt_styles='';;
+		$lmopt_styles='';
 		
 		if ($myvar != 0 ) {
 
@@ -267,62 +265,58 @@ class lowermedia_one_page_theme_admin_options{
 				    $func_name			
 				);
 
-				if(get_option($setting_name.'_option')) {
-
-
-					//$filename = 'lmopt-styles.css';
-					//$style_from_setting = get_option($setting_name.'_option');
-					//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
-					//echo $myvar.':'.$lmopt_styles.'<br/>';
-					// Let's make sure the file exists and is writable first.
-					// if (is_writable($filename)) {
-
-					//     // In our example we're opening $filename in append mode.
-					//     // The file pointer is at the bottom of the file hence
-					//     // that's where $somecontent will go when we fwrite() it.
-					//     if (!$handle = fopen($filename, 'a')) {
-					//          echo "Cannot open file ($filename)";
-					//          exit;
-					//     }
-
-					//     // Write $somecontent to our opened file.
-					//     if (fwrite($handle, $somecontent) === FALSE) {
-					//         echo "Cannot write to file ($filename)";
-					//         exit;
-					//     }
-
-					//     echo "Success, wrote ($somecontent) to file ($filename)";
-
-					//     fclose($handle);
-
-					// } else {
-					//     echo "The file $filename is not writable";
-					// }
-
-				 //    	$file = 'lmsjsm-styles.php';
-				 //    	//echo $file;
-					// 	// Open the file to get existing content
-					// 	$current = file_get_contents($file);
-					// 	//echo $current;
-					// 	// Append a new person to the file
-					// 	$current .= get_option($setting_name.'_option');
-					// 	//echo 'current:'.$current;
-					// 	// Write the contents back to the file
-					// 	if (file_put_contents($file, $current))
-					// 		{echo 'pass';}
-					// 	else{//echo'fail';
-					// 		}
-					// } else {
-					// 	echo '<br/>Failed: failed';
-					// 	echo '<br/>Setting Name:'.$setting_name;
-					// 	echo '<br/>Get Option:'.get_option($setting_name);
-					// // }
-
-					$myvar--;
-				}
+				$myvar--;
 			}
 		}
-		
+
+				// if(get_option($setting_name.'_option')) {
+				// 	//$filename = 'lmopt-styles.css';
+				// 	//$style_from_setting = get_option($setting_name.'_option');
+				// 	//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
+				// 	//echo $myvar.':'.$lmopt_styles.'<br/>';
+				// 	// Let's make sure the file exists and is writable first.
+				// 	// if (is_writable($filename)) {
+
+				// 	//     // In our example we're opening $filename in append mode.
+				// 	//     // The file pointer is at the bottom of the file hence
+				// 	//     // that's where $somecontent will go when we fwrite() it.
+				// 	//     if (!$handle = fopen($filename, 'a')) {
+				// 	//          echo "Cannot open file ($filename)";
+				// 	//          exit;
+				// 	//     }
+
+				// 	//     // Write $somecontent to our opened file.
+				// 	//     if (fwrite($handle, $somecontent) === FALSE) {
+				// 	//         echo "Cannot write to file ($filename)";
+				// 	//         exit;
+				// 	//     }
+
+				// 	//     echo "Success, wrote ($somecontent) to file ($filename)";
+
+				// 	//     fclose($handle);
+
+				// 	// } else {
+				// 	//     echo "The file $filename is not writable";
+				// 	// }
+
+				//  //    	$file = 'lmsjsm-styles.php';
+				//  //    	//echo $file;
+				// 	// 	// Open the file to get existing content
+				// 	// 	$current = file_get_contents($file);
+				// 	// 	//echo $current;
+				// 	// 	// Append a new person to the file
+				// 	// 	$current .= get_option($setting_name.'_option');
+				// 	// 	//echo 'current:'.$current;
+				// 	// 	// Write the contents back to the file
+				// 	// 	if (file_put_contents($file, $current))
+				// 	// 		{echo 'pass';}
+				// 	// 	else{//echo'fail';
+				// 	// 		}
+				// 	// } else {
+				// 	// 	echo '<br/>Failed: failed';
+				// 	// 	echo '<br/>Setting Name:'.$setting_name;
+				// 	// 	echo '<br/>Get Option:'.get_option($setting_name);
+				// 	// // }
 		/*--------------ADD SECTION-------------*/
 
 		add_settings_section(
@@ -678,16 +672,14 @@ function lowermedia_add_opt_styles() {
 	
 	$myvar = get_option('lmopt_numpages_option');
 	$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
-	$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
+	
 	
 	if ($myvar != 0 ) {
 
 		while ($myvar != 0) {
-
+			$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
 			if(get_option($setting_name)) {
 
-
-						//$filename = 'lmopt-styles.css';
 						$style_from_setting = get_option($setting_name);
 						$lmopt_styles .='
 							#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
