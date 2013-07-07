@@ -145,16 +145,16 @@ add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
  /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
-add_action( 'wp_enqueue_scripts', 'lmsjsm_add_stylesheet' );
+//add_action( 'wp_enqueue_scripts', 'lmsjsm_add_stylesheet' );
 
 /**
  * Enqueue plugin style-file
  */
-function lmsjsm_add_stylesheet() {
-    // Respects SSL, Style.css is relative to the current file
-    wp_register_style( 'lmsjsm-styles', plugins_url('lmsjsm-styles.css', __FILE__) );
-    wp_enqueue_style( 'lmsjsm-styles' );
-}					
+// function lmsjsm_add_stylesheet() {
+//     // Respects SSL, Style.css is relative to the current file
+//     //wp_register_style( 'lmsjsm-styles', plugins_url('lmsjsm-styles.css', __FILE__) );
+//     //wp_enqueue_style( 'lmsjsm-styles' );
+// }					
 
 /**
  * Implement the Custom Header feature
@@ -237,6 +237,7 @@ class lowermedia_one_page_theme_admin_options{
 		register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 
 		$myvar = get_option('lmopt_numpages_option');
+		$lmopt_styles='';;
 		
 		if ($myvar != 0 ) {
 
@@ -266,18 +267,59 @@ class lowermedia_one_page_theme_admin_options{
 				    $func_name			
 				);
 
-				if(get_option($setting_name)) {
-			    	$file = 'lmsjsm-styles.css';
-			    	echo "here----";
-					// Open the file to get existing content
-					$current = file_get_contents($file);
-					// Append a new person to the file
-					$current .= 'background-image:url("'.get_option($setting_name).'");';
-					// Write the contents back to the file
-					file_put_contents($file, $current);
-				}
+				if(get_option($setting_name.'_option')) {
 
-				$myvar--;
+
+					//$filename = 'lmopt-styles.css';
+					//$style_from_setting = get_option($setting_name.'_option');
+					//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
+					//echo $myvar.':'.$lmopt_styles.'<br/>';
+					// Let's make sure the file exists and is writable first.
+					// if (is_writable($filename)) {
+
+					//     // In our example we're opening $filename in append mode.
+					//     // The file pointer is at the bottom of the file hence
+					//     // that's where $somecontent will go when we fwrite() it.
+					//     if (!$handle = fopen($filename, 'a')) {
+					//          echo "Cannot open file ($filename)";
+					//          exit;
+					//     }
+
+					//     // Write $somecontent to our opened file.
+					//     if (fwrite($handle, $somecontent) === FALSE) {
+					//         echo "Cannot write to file ($filename)";
+					//         exit;
+					//     }
+
+					//     echo "Success, wrote ($somecontent) to file ($filename)";
+
+					//     fclose($handle);
+
+					// } else {
+					//     echo "The file $filename is not writable";
+					// }
+
+				 //    	$file = 'lmsjsm-styles.php';
+				 //    	//echo $file;
+					// 	// Open the file to get existing content
+					// 	$current = file_get_contents($file);
+					// 	//echo $current;
+					// 	// Append a new person to the file
+					// 	$current .= get_option($setting_name.'_option');
+					// 	//echo 'current:'.$current;
+					// 	// Write the contents back to the file
+					// 	if (file_put_contents($file, $current))
+					// 		{echo 'pass';}
+					// 	else{//echo'fail';
+					// 		}
+					// } else {
+					// 	echo '<br/>Failed: failed';
+					// 	echo '<br/>Setting Name:'.$setting_name;
+					// 	echo '<br/>Get Option:'.get_option($setting_name);
+					// // }
+
+					$myvar--;
+				}
 			}
 		}
 		
@@ -624,5 +666,44 @@ class lowermedia_one_page_theme_admin_options{
 }
 
 $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_options();
+
+/*############################################################################################
+#
+#   ADD WIDGET AREA OUTPUT TO THE END OF THE WP_HEAD (BEGINING OF BODY TAG)
+#   //This function adds to the begining of the body tag
+*/	
+
+	function lowermedia_add_opt_styles() {
+		//check if enabled option is selected
+		
+		$myvar = get_option('lmopt_numpages_option');
+		$lmopt_styles='<style type="text/css" id="LowerMedia-opt-styles">';
+		$setting_name='lmopt_bkgrnd_'.$myvar.'_option';
+		
+		if ($myvar != 0 ) {
+
+			while ($myvar != 0) {
+
+				if(get_option($setting_name)) {
+
+
+							//$filename = 'lmopt-styles.css';
+							$style_from_setting = get_option($setting_name);
+							$lmopt_styles .='
+								#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
+							';
+							echo $myvar.':'.$lmopt_styles.'<br/>';
+							$myvar--;
+
+				}
+			}
+		}
+		$lmopt_styles.='</style>';
+		//echo $lmopt_styles;
+		// $output = $lmopt_styles;
+		// echo '----'.$output.'-----'.$lmopt_styles;
+		// return $output;
+	}
+	add_action('wp_head', 'lowermedia_add_opt_styles');
 
 /* THE END */
