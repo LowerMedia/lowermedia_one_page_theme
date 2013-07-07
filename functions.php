@@ -373,8 +373,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_1[lmopt_bkgrnd_1]" 
 	        value='<?=get_option('lmopt_bkgrnd_1_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_1_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	    if(get_option('lmopt_bkgrnd_1_option')){echo"<img src='".get_option('lmopt_bkgrnd_1_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 
@@ -404,10 +405,10 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
 	        value='<?=get_option('lmopt_bkgrnd_2_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_2_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	     if(get_option('lmopt_bkgrnd_2_option')){echo"<img src='".get_option('lmopt_bkgrnd_2_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
-
 	/* #3 background funcs */
 	public function check_bkgrnd_3($input){
     	$valid_url = $input['lmopt_bkgrnd_3'];
@@ -434,8 +435,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
 	        value='<?=get_option('lmopt_bkgrnd_3_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_3_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	    if(get_option('lmopt_bkgrnd_3_option')){echo"<img src='".get_option('lmopt_bkgrnd_3_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 	/* #4 background funcs */
@@ -465,8 +467,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_4]" 
 	        value='<?=get_option('lmopt_bkgrnd_4_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_4_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	   if(get_option('lmopt_bkgrnd_4_option')){echo"<img src='".get_option('lmopt_bkgrnd_4_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 	/* #5 background funcs */
@@ -495,8 +498,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_5[lmopt_bkgrnd_5]" 
 	        value='<?=get_option('lmopt_bkgrnd_5_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_5_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	   if(get_option('lmopt_bkgrnd_5_option')){echo"<img src='".get_option('lmopt_bkgrnd_5_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 
@@ -526,8 +530,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_6[lmopt_bkgrnd_6]" 
 	        value='<?=get_option('lmopt_bkgrnd_6_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_6_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	    if(get_option('lmopt_bkgrnd_6_option')){echo"<img src='".get_option('lmopt_bkgrnd_6_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 	/* #7 background funcs */
@@ -556,8 +561,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_7[lmopt_bkgrnd_7]" 
 	        value='<?=get_option('lmopt_bkgrnd_7_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_7_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	    if(get_option('lmopt_bkgrnd_7_option')){echo"<img src='".get_option('lmopt_bkgrnd_7_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 	/* #8 background funcs */
@@ -588,8 +594,9 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_8]" 
 	        value='<?=get_option('lmopt_bkgrnd_8_option');?>' 
 	        size='20'
-	    /><img src='<?=get_option('lmopt_bkgrnd_8_option');?>' height=150px width=150px />
+	    />
 	    <?php
+	    if(get_option('lmopt_bkgrnd_8_option')){echo"<img src='".get_option('lmopt_bkgrnd_8_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
 /*--------------------*/
@@ -764,7 +771,7 @@ function lowermedia_add_opt_styles() {
 						#lm-opt-'.$numpages.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
 					';
 					//echo $numpages.':'.$lmopt_styles.'<br/>';
-				}
+				} 
 				$numpages--;
 			}
 		}
@@ -773,7 +780,7 @@ function lowermedia_add_opt_styles() {
 		// $output = $lmopt_styles;
 		// echo '----'.$output.'-----'.$lmopt_styles;
 		// return $output;
-	}else{echo'';}
+	} else {echo'';}
 }
 add_action('wp_head', 'lowermedia_add_opt_styles');
 
