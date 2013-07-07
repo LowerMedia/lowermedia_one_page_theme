@@ -692,14 +692,14 @@ $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_o
 							$lmopt_styles .='
 								#lm-opt-'.$myvar.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
 							';
-							echo $myvar.':'.$lmopt_styles.'<br/>';
+							//echo $myvar.':'.$lmopt_styles.'<br/>';
 							$myvar--;
 
 				}
 			}
 		}
 		$lmopt_styles.='</style>';
-		//echo $lmopt_styles;
+		echo $lmopt_styles;
 		// $output = $lmopt_styles;
 		// echo '----'.$output.'-----'.$lmopt_styles;
 		// return $output;
