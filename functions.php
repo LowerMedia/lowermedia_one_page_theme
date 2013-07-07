@@ -338,15 +338,22 @@ class lowermedia_one_page_theme_admin_options{
 
     /*---------BACKGROUND FUNCTIONS-----------*/
 
-    
+  //   public function lowermedia_validate_url($input){
+  //   	$valid_url = $input;
+		// if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		//     $valid_url = "";
+		// } else {
+		// 	$valid_url = esc_attr($valid_url);
+		// }
+
+		// return $valid_url;
+  //   }
     /* #1 background funcs */
 	public function check_bkgrnd_1($input){
     	$valid_url = $input['lmopt_bkgrnd_1'];
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
 		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 	    if(get_option('lmopt_bkgrnd_1_option') === FALSE){
@@ -365,7 +372,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_1[lmopt_bkgrnd_1]" 
 	        value='<?=get_option('lmopt_bkgrnd_1_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_1_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -373,23 +380,20 @@ class lowermedia_one_page_theme_admin_options{
 	/* #2 background funcs */
 	public function check_bkgrnd_2($input){
     	$valid_url = $input['lmopt_bkgrnd_2'];
-
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_2_option') === FALSE){
-				add_option('lmopt_bkgrnd_2_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_2_option', $valid_url);
-		    }
-		
-			return $valid_url;
-		}
+	    if(get_option('lmopt_bkgrnd_2_option') === FALSE){
+			add_option('lmopt_bkgrnd_2_option', $valid_url);
+	    }else{
+			update_option('lmopt_bkgrnd_2_option', $valid_url);
+	    }
+	
+		return $valid_url;
+
 	}
 	public function lmopt_bkgrnd_2(){
 	    ?>
@@ -399,7 +403,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
 	        value='<?=get_option('lmopt_bkgrnd_2_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_2_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -408,21 +412,18 @@ class lowermedia_one_page_theme_admin_options{
     	$valid_url = $input['lmopt_bkgrnd_3'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_3_option') === FALSE){
+	    if(get_option('lmopt_bkgrnd_3_option') === FALSE){
 				add_option('lmopt_bkgrnd_3_option', $valid_url);
 		    }else{
 				update_option('lmopt_bkgrnd_3_option', $valid_url);
 		    }
 		
-			return $valid_url;
-		}
+		return $valid_url;
 	}
 	public function lmopt_bkgrnd_3(){
 	    ?>
@@ -432,7 +433,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
 	        value='<?=get_option('lmopt_bkgrnd_3_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_3_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -442,21 +443,18 @@ class lowermedia_one_page_theme_admin_options{
     	$valid_url = $input['lmopt_bkgrnd_4'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_4_option') === FALSE){
-				add_option('lmopt_bkgrnd_4_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_4_option', $valid_url);
-		    }
-		
-			return $valid_url;
-		}
+	    if(get_option('lmopt_bkgrnd_4_option') === FALSE){
+			add_option('lmopt_bkgrnd_4_option', $valid_url);
+	    }else{
+			update_option('lmopt_bkgrnd_4_option', $valid_url);
+	    }
+	
+		return $valid_url;
 	}
 	public function lmopt_bkgrnd_4(){
 	    ?>
@@ -466,7 +464,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_4]" 
 	        value='<?=get_option('lmopt_bkgrnd_4_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_4_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -496,7 +494,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_5[lmopt_bkgrnd_5]" 
 	        value='<?=get_option('lmopt_bkgrnd_5_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_5_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -506,21 +504,18 @@ class lowermedia_one_page_theme_admin_options{
     	$valid_url = $input['lmopt_bkgrnd_6'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_6_option') === FALSE){
+	    if(get_option('lmopt_bkgrnd_6_option') === FALSE){
 				add_option('lmopt_bkgrnd_6_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_6_option', $valid_url);
-		    }
-		
-			return $valid_url;
-		}
+	    }else{
+			update_option('lmopt_bkgrnd_6_option', $valid_url);
+	    }
+	
+		return $valid_url;
 	}
 	public function lmopt_bkgrnd_6(){
 	    ?>
@@ -530,7 +525,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_6[lmopt_bkgrnd_6]" 
 	        value='<?=get_option('lmopt_bkgrnd_6_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_6_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -539,21 +534,18 @@ class lowermedia_one_page_theme_admin_options{
     	$valid_url = $input['lmopt_bkgrnd_7'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_7_option') === FALSE){
+	   if(get_option('lmopt_bkgrnd_7_option') === FALSE){
 				add_option('lmopt_bkgrnd_7_option', $valid_url);
 		    }else{
 				update_option('lmopt_bkgrnd_7_option', $valid_url);
 		    }
 		
-			return $valid_url;
-		}
+		return $valid_url;
 	}
 	public function lmopt_bkgrnd_7(){
 	    ?>
@@ -563,7 +555,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_7[lmopt_bkgrnd_7]" 
 	        value='<?=get_option('lmopt_bkgrnd_7_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_7_option');?>' height=150px width=150px />
 	    <?php
 	}
 
@@ -573,21 +565,19 @@ class lowermedia_one_page_theme_admin_options{
     	$valid_url = $input['lmopt_bkgrnd_8'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
+		    $valid_url = "";
 		} else {
-			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
 
-	    if ($exists==true){
-		    if(get_option('lmopt_bkgrnd_8_option') === FALSE){
+	   if(get_option('lmopt_bkgrnd_8_option') === FALSE){
 				add_option('lmopt_bkgrnd_8_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_8_option', $valid_url);
-		    }
-		
-			return $valid_url;
-		}
+	    }else{
+			update_option('lmopt_bkgrnd_8_option', $valid_url);
+	    }
+	
+		return $valid_url;
+
 	}
 	public function lmopt_bkgrnd_8(){
 	    ?>
@@ -597,7 +587,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_8]" 
 	        value='<?=get_option('lmopt_bkgrnd_8_option');?>' 
 	        size='20'
-	    />
+	    /><img src='<?=get_option('lmopt_bkgrnd_8_option');?>' height=150px width=150px />
 	    <?php
 	}
 
