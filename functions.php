@@ -335,66 +335,15 @@ class lowermedia_one_page_theme_admin_options{
 					$numpages--;
 				}
 			}
-		}
-
-				// if(get_option($setting_name.'_option')) {
-				// 	//$filename = 'lmopt-styles.css';
-				// 	//$style_from_setting = get_option($setting_name.'_option');
-				// 	//$lmopt_styles .='#lm-opt-'.$myvar.' { background-image:'.$style_from_setting.' }';
-				// 	//echo $myvar.':'.$lmopt_styles.'<br/>';
-				// 	// Let's make sure the file exists and is writable first.
-				// 	// if (is_writable($filename)) {
-
-				// 	//     // In our example we're opening $filename in append mode.
-				// 	//     // The file pointer is at the bottom of the file hence
-				// 	//     // that's where $somecontent will go when we fwrite() it.
-				// 	//     if (!$handle = fopen($filename, 'a')) {
-				// 	//          echo "Cannot open file ($filename)";
-				// 	//          exit;
-				// 	//     }
-
-				// 	//     // Write $somecontent to our opened file.
-				// 	//     if (fwrite($handle, $somecontent) === FALSE) {
-				// 	//         echo "Cannot write to file ($filename)";
-				// 	//         exit;
-				// 	//     }
-
-				// 	//     echo "Success, wrote ($somecontent) to file ($filename)";
-
-				// 	//     fclose($handle);
-
-				// 	// } else {
-				// 	//     echo "The file $filename is not writable";
-				// 	// }
-
-				//  //    	$file = 'lmsjsm-styles.php';
-				//  //    	//echo $file;
-				// 	// 	// Open the file to get existing content
-				// 	// 	$current = file_get_contents($file);
-				// 	// 	//echo $current;
-				// 	// 	// Append a new person to the file
-				// 	// 	$current .= get_option($setting_name.'_option');
-				// 	// 	//echo 'current:'.$current;
-				// 	// 	// Write the contents back to the file
-				// 	// 	if (file_put_contents($file, $current))
-				// 	// 		{echo 'pass';}
-				// 	// 	else{//echo'fail';
-				// 	// 		}
-				// 	// } else {
-				// 	// 	echo '<br/>Failed: failed';
-				// 	// 	echo '<br/>Setting Name:'.$setting_name;
-				// 	// 	echo '<br/>Get Option:'.get_option($setting_name);
-				// 	// // }
-		
+		}		
     }
 
     /*---------BACKGROUND FUNCTIONS-----------*/
 
     
-
-	public function check_bkgrnd_1($input){//only accepts numbers
+    /* #1 background funcs */
+	public function check_bkgrnd_1($input){
     	$valid_url = $input['lmopt_bkgrnd_1'];
-
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
 		    $exists = false;
 		    $valid_url = "";
@@ -402,17 +351,13 @@ class lowermedia_one_page_theme_admin_options{
 			$exists = true;
 			$valid_url = esc_attr($valid_url);
 		}
-
 	    if(get_option('lmopt_bkgrnd_1_option') === FALSE){
 			add_option('lmopt_bkgrnd_1_option', $valid_url);
 	    }else{
 			update_option('lmopt_bkgrnd_1_option', $valid_url);
 	    }
-	
 		return $valid_url;
-
 	}
-
 	public function lmopt_bkgrnd_1(){
 		//echo '<br/>----------lmopt background 1----------';
 	    ?>
@@ -426,7 +371,9 @@ class lowermedia_one_page_theme_admin_options{
 	    <?php
 	}
 
-	public function check_bkgrnd_2($input){//only accepts numbers
+
+	/* #2 background funcs */
+	public function check_bkgrnd_2($input){
     	$valid_url = $input['lmopt_bkgrnd_2'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
@@ -446,8 +393,20 @@ class lowermedia_one_page_theme_admin_options{
 			return $valid_url;
 		}
 	}
+	public function lmopt_bkgrnd_2(){
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_2" 
+	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
+	        value='<?=get_option('lmopt_bkgrnd_2_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
 
-	public function check_bkgrnd_3($input){//only accepts numbers
+	/* #3 background funcs */
+	public function check_bkgrnd_3($input){
     	$valid_url = $input['lmopt_bkgrnd_3'];
 
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
@@ -467,8 +426,20 @@ class lowermedia_one_page_theme_admin_options{
 			return $valid_url;
 		}
 	}
+	public function lmopt_bkgrnd_3(){
+	    ?>
+	    <input 
+	        type="text" 
+	        id="lmopt_bkgrnd_3" 
+	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
+	        value='<?=get_option('lmopt_bkgrnd_3_option');?>' 
+	        size='20'
+	    />
+	    <?php
+	}
 
-	public function check_bkgrnd_4($input){//only accepts numbers
+	/* #4 background funcs */
+	public function check_bkgrnd_4($input){
 
     	$valid_url = $input['lmopt_bkgrnd_4'];
 
@@ -489,33 +460,6 @@ class lowermedia_one_page_theme_admin_options{
 			return $valid_url;
 		}
 	}
-
-
-
-	public function lmopt_bkgrnd_2(){
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_2" 
-	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
-	        value='<?=get_option('lmopt_bkgrnd_2_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	}
-
-	public function lmopt_bkgrnd_3(){
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_3" 
-	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
-	        value='<?=get_option('lmopt_bkgrnd_3_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	}
-
 	public function lmopt_bkgrnd_4(){
 	    ?>
 	    <input 
