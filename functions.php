@@ -300,40 +300,37 @@ class lowermedia_one_page_theme_admin_options{
 		    'lowermedia_opt_footer'			
 		);		
 
-		if (get_option('lmopt_numpages_option')) {
-
+		//If the numpages option in the database is set and not set to 0, we add the styles to the head
+		if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
+			//set numpages variable with number of pages making up one page theme
 			$numpages = get_option('lmopt_numpages_option');
-			$lmopt_styles='';
-			
-			if ($numpages != 0 ) {
 
-				while ($numpages != 0) {
+			while ($numpages != 0) {
 
-					//$check_name='check_bkgrnd_'.$bkgrnd_style;
-					$check_name='check_bkgrnd_'.$numpages;
-					$func_name='lowermedia_opt_bkgrnd_'.$numpages;
-					$setting_name='lmopt_bkgrnd_'.$numpages;
-					$form_txt='Background image url for page '.$numpages.':';
-					
+				//$check_name='check_bkgrnd_'.$bkgrnd_style;
+				$check_name='check_bkgrnd_'.$numpages;
+				$func_name='lowermedia_opt_bkgrnd_'.$numpages;
+				$setting_name='lmopt_bkgrnd_'.$numpages;
+				$form_txt='Background image url for page '.$numpages.':';
+				
 
-					register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
-					/*--------------ADD SECTION-------------*/
-					add_settings_section(
-					    $func_name,
-					    '<!-- Text Field -->',
-					    array($this, 'print_section_info'),
-					    'lowermedia-one-page-theme'
-					);
+				register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
+				/*--------------ADD SECTION-------------*/
+				add_settings_section(
+				    $func_name,
+				    '<!-- Text Field -->',
+				    array($this, 'print_section_info'),
+				    'lowermedia-one-page-theme'
+				);
 
-					add_settings_field(
-					    $setting_name, 
-					    $form_txt, 
-					    array($this, $setting_name), 
-					    'lowermedia-one-page-theme',
-					    $func_name			
-					);
-					$numpages--;
-				}
+				add_settings_field(
+				    $setting_name, 
+				    $form_txt, 
+				    array($this, $setting_name), 
+				    'lowermedia-one-page-theme',
+				    $func_name			
+				);
+				$numpages--;
 			}
 		}		
     }
