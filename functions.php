@@ -784,4 +784,20 @@ function lowermedia_add_opt_styles() {
 }
 add_action('wp_head', 'lowermedia_add_opt_styles');
 
+/*############################################################################################
+#
+#   ADD MENUS
+#   //
+*/	
+
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'lmopt-top-menu' => __( 'OnePageTheme Top Menu' )
+    )
+  );
+}
+
+add_action( 'init', 'register_my_menus' );
+
 /* THE END */
