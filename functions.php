@@ -800,4 +800,10 @@ function register_my_menus() {
 
 add_action( 'init', 'register_my_menus' );
 
+/*############################################################################################
+#
+#   Add post images to page
+#   //
+*/	
+add_theme_support( 'post-thumbnails', array( 'page' ) );          // Pages only
 /* THE END */
