@@ -643,6 +643,7 @@ article h2 {
 	margin: 0; 
 	width: 100%; 
 	max-width: 1250px;/*1000px;/*1920px; */
+	overflow:hidden;
 	position: relative; 
 	margin: 0 auto; 
 	border-top: 1px solid rgba(255,255,255,0.3); 
