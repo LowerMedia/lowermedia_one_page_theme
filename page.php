@@ -20,27 +20,6 @@ get_header();
 			<?php while ( have_posts() ) : the_post(); ?>
 				<div id='site-navigation' class='navigation-main story-nav'>
 					<?php
-						// $defaults = array(
-						// 		'theme_location'  => 'lmopt-top-menu',
-						// 		'menu'            => '',
-						// 		'container'       => 'nav',
-						// 		'container_class' => 'navigation-main',
-						// 		'container_id'    => 'site-navigation',
-						// 		'menu_class'      => 'menu',
-						// 		'menu_id'         => '',
-						// 		'echo'            => true,
-						// 		'fallback_cb'     => 'wp_page_menu',
-						// 		'before'          => '',
-						// 		'after'           => '',
-						// 		'link_before'     => '',
-						// 		'link_after'      => '',
-						// 		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-						// 		'depth'           => 0,
-						// 		'walker'          => ''
-						// 	);
-							//$one_page_menu_holder = wp_nav_menu( $defaults );
-							//echo wp_get_nav_menu_items( 'lmopt-top-menu' );
-
 							// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
 						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
 
@@ -62,8 +41,6 @@ get_header();
 						    } else {
 								$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
 						    }
-						    // $menu_list now ready to output
-
 						    echo $menu_list;
 					?>
 				</div>
