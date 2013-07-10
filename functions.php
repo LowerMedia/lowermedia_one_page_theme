@@ -802,8 +802,7 @@ add_action( 'init', 'register_my_menus' );
 
 /*############################################################################################
 #
-#   Add post images to page
+#   ADD FEATURED IMAGE TO PAGES
 #   //
 */	
 add_theme_support( 'post-thumbnails', array( 'page' ) );          // Pages only
-/* THE END */
