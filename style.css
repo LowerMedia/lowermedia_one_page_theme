@@ -671,6 +671,20 @@ article h2 {
 #lm-opt-8 { background: url(images/slide3.jpg) 50% 0 no-repeat fixed; }
 #theend { background: url(images/puckered.png) 50% bottom no-repeat fixed; }
 
+
+.photograph { 
+	background: url('') transparent 40% 100px no-repeat fixed; 
+	min-height: 1000px; 
+	padding: 0; 
+	margin: 0; 
+	width: 100%; 
+	max-width: 1920px; 
+	position: relative; 
+	margin: 0 auto; 
+}
+
+#lm-opt-1 .photograph { background: url('') transparent 50% 100px no-repeat fixed; }
+
 /* Introduction 
 #lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
 */
