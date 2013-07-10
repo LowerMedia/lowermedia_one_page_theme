@@ -55,36 +55,14 @@ get_header();
 						    $title = $page_data->post_title;
 						    $ID = $page_data->ID;
 						    $lmopt_paralax_img;
-						    //if ( has_post_thumbnail() ) { the_post_thumbnail();}	
-						    //echo "<div id='lm-opt-".$ID."' class='lm-opt-page-wrap' >".$content."</div>"; 
-						    //preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', get_the_post_thumbnail(), $match);
-						    //echo '------'.var_dump($match).'----';
-						    //echo $match[2][1];
 
-						    // The Regular Expression filter
-							// $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
 
-							// // The Text you want to filter for urls
-							// $text = get_the_post_thumbnail();
-							// $thumbnail_url;
-							// // Check if there is a url in the text
-							// if(preg_match($reg_exUrl, $text, $url)) {
-
-							//        // make the urls hyper links
-							//        //$thumbnail_url = preg_replace($reg_exUrl, '<a href="'.$url[0].'" rel="nofollow">'.$url[0].'</a>', $text);
-							//        $thumbnail_url = preg_replace($reg_exUrl, $url[0], $text);
-
-							// } else {
-
-							//        // if no urls in the text just return the text
-							//        $thumbnail_url = '';
-
-							// }
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						    $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
 								    <div id='lm-opt-content' class=''>".$content."</div>
-								    <div id='lmopt-img' class='photograph' style='background-image:url(".$url.");'></div>
+								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
 						    $counter++;
 						}
