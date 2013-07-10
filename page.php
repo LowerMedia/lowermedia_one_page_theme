@@ -18,27 +18,53 @@ get_header();
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
-				<div class='navigation-main story-nav'>
+				<div id='site-navigation' class='navigation-main story-nav'>
 					<?php
-						$defaults = array(
-								'theme_location'  => 'lmopt-top-menu',
-								'menu'            => '',
-								'container'       => 'nav',
-								'container_class' => 'navigation-main',
-								'container_id'    => 'site-navigation',
-								'menu_class'      => 'menu',
-								'menu_id'         => '',
-								'echo'            => true,
-								'fallback_cb'     => 'wp_page_menu',
-								'before'          => '',
-								'after'           => '',
-								'link_before'     => '',
-								'link_after'      => '',
-								'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-								'depth'           => 0,
-								'walker'          => ''
-							);
-							echo wp_nav_menu( $defaults );
+						// $defaults = array(
+						// 		'theme_location'  => 'lmopt-top-menu',
+						// 		'menu'            => '',
+						// 		'container'       => 'nav',
+						// 		'container_class' => 'navigation-main',
+						// 		'container_id'    => 'site-navigation',
+						// 		'menu_class'      => 'menu',
+						// 		'menu_id'         => '',
+						// 		'echo'            => true,
+						// 		'fallback_cb'     => 'wp_page_menu',
+						// 		'before'          => '',
+						// 		'after'           => '',
+						// 		'link_before'     => '',
+						// 		'link_after'      => '',
+						// 		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						// 		'depth'           => 0,
+						// 		'walker'          => ''
+						// 	);
+							//$one_page_menu_holder = wp_nav_menu( $defaults );
+							//echo wp_get_nav_menu_items( 'lmopt-top-menu' );
+
+							// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
+						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
+
+						    $menu_name = 'lmopt-top-menu';
+
+						    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+								$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+
+								$menu_items = wp_get_nav_menu_items($menu->term_id);
+
+								$menu_list = '<ul id="menu-' . $menu_name . '" class="menu">';
+
+								foreach ( (array) $menu_items as $key => $menu_item ) {
+								    $title = $menu_item->title;
+								    $url = $menu_item->url;
+								    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+								}
+								$menu_list .= '</ul>';
+						    } else {
+								$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
+						    }
+						    // $menu_list now ready to output
+
+						    echo $menu_list;
 					?>
 				</div>
 				<?php
@@ -55,12 +81,13 @@ get_header();
 						    $title = $page_data->post_title;
 						    $ID = $page_data->ID;
 						    $lmopt_paralax_img;
-
+						    //if($counter!=1){$one_page_menu_holder='';}
 						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						    $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
+							    	
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
