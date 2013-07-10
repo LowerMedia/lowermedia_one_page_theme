@@ -18,7 +18,7 @@ get_header();
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
-				<div id='site-navigation' class='navigation-main story-nav'>
+				
 					<?php
 							// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
 						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
@@ -30,20 +30,20 @@ get_header();
 
 								$menu_items = wp_get_nav_menu_items($menu->term_id);
 
-								$menu_list = '<ul id="menu-' . $menu_name . '" class="menu">';
+								$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
 
 								foreach ( (array) $menu_items as $key => $menu_item ) {
 								    $title = $menu_item->title;
 								    $url = $menu_item->url;
 								    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
 								}
-								$menu_list .= '</ul>';
+								$menu_list .= '</ul></div>';
 						    } else {
 								$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
 						    }
 						    echo $menu_list;
 					?>
-				</div>
+				
 				<?php
 				    if(get_option('lmopt_onepage_option')) {
 
