@@ -687,7 +687,7 @@ article h2 {
 
 /* Photograph */
 #lm-opt-3 article {  background: url(images/grain.png) repeat #333; color: #fff; padding: 10px 20px; margin: 100px 0 0 60%; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; color: #fff; position: absolute; top: 0; box-shadow: 0 0 25px rgba(0,0,0,0.3); border: 1px solid rgba(150,150,150,0.1); }
-#lm-opt-3 .photograph { background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+.photograph { background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
 #lm-opt-3 article p { width: 300px; margin-bottom: 25px; }
 
 /* HTML5 Video */
