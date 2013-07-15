@@ -24,21 +24,29 @@ get_header();
 						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
 
 						    $menu_name = 'lmopt-top-menu';
+						    //var_dump(get_nav_menu_locations());
+						    //echo $menus_holder["lmopt-top-menu"];
 
 						    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
 							    {
-									$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-	
-									$menu_items = wp_get_nav_menu_items($menu->term_id);
-	
-									$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
-	
-									foreach ( (array) $menu_items as $key => $menu_item ) {
-									    $title = $menu_item->title;
-									    $url = $menu_item->url;
-									    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
-									}
-									$menu_list .= '</ul></div>';
+							    		$menus_holder=(get_nav_menu_locations());
+							    		//check to make sure the menu spot is not empty
+							    		if ($menus_holder["lmopt-top-menu"]!=0) {
+											$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			
+											$menu_items = wp_get_nav_menu_items($menu->term_id);
+			
+											$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
+			
+											foreach ( (array) $menu_items as $key => $menu_item ) {
+											    $title = $menu_item->title;
+											    $url = $menu_item->url;
+											    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+											}
+											$menu_list .= '</ul></div>';
+										} else {
+											$menu_list = '';
+										}
 							    } 
 						    else 
 							    {
@@ -62,11 +70,13 @@ get_header();
 						    $ID = $page_data->ID;
 						    $lmopt_paralax_img;
 						    //if($counter!=1){$one_page_menu_holder='';}
+						    //use modulo operator to add even odd to correct divs
 						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
-
+						    if($counter  == 1){$menu_holder=$menu_list;}else{$menu_holder='';}
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
+							    	".$menu_holder."
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
