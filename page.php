@@ -18,7 +18,6 @@ get_header();
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 			<?php while ( have_posts() ) : the_post(); ?>
-				
 					<?php
 							// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
 						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
@@ -53,6 +52,29 @@ get_header();
 									$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
 							    }
 						    echo $menu_list;
+
+						    $section_menu_name = 'lmopt-section-menu';
+						    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $section_menu_name ] ) ) 
+							    {
+							    		$section_menus_holder=(get_nav_menu_locations());
+							    		//check to make sure the menu spot is not empty
+							    		if ($section_menus_holder["lmopt-top-menu"]!=0) {
+											$section_menu = wp_get_nav_menu_object( $locations[ $section_menu_name ] );
+			
+											$section_menu_items = wp_get_nav_menu_items($section_menu->term_id);
+			
+											$section_menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $section_menu_name . '" class="menu">';
+			
+											foreach ( (array) $section_menu_items as $key => $section_menu_item ) {
+											    $title = $section_menu_item->title;
+											    $url = $section_menu_item->url;
+											    $section_menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+											}
+											$section_menu_list .= '</ul></div>';
+										} else {
+											$section_menu_list = '';
+										}
+							    } 
 					?>
 				
 				<?php
@@ -76,7 +98,7 @@ get_header();
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
-							    	".$menu_holder."
+							    	".$section_menu_holder."
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
