@@ -602,7 +602,7 @@ class lowermedia_one_page_theme_admin_options{
 /*--------------------*/
 
     public function check_numpages($input){//only accepts numbers
-		$pages = get_pages($args); 
+		$pages = get_pages($input); 
 		$counter = 0;
 		foreach ($pages as $page_data) {$counter++;}
 	    if(is_numeric($input['lmopt_numpages'])){

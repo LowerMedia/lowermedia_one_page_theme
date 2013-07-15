@@ -25,22 +25,25 @@ get_header();
 
 						    $menu_name = 'lmopt-top-menu';
 
-						    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
-								$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-
-								$menu_items = wp_get_nav_menu_items($menu->term_id);
-
-								$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
-
-								foreach ( (array) $menu_items as $key => $menu_item ) {
-								    $title = $menu_item->title;
-								    $url = $menu_item->url;
-								    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
-								}
-								$menu_list .= '</ul></div>';
-						    } else {
-								$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
-						    }
+						    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
+							    {
+									$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+	
+									$menu_items = wp_get_nav_menu_items($menu->term_id);
+	
+									$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
+	
+									foreach ( (array) $menu_items as $key => $menu_item ) {
+									    $title = $menu_item->title;
+									    $url = $menu_item->url;
+									    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+									}
+									$menu_list .= '</ul></div>';
+							    } 
+						    else 
+							    {
+									$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
+							    }
 						    echo $menu_list;
 					?>
 				
@@ -50,7 +53,7 @@ get_header();
 				    	$args = array('sort_column' => 'menu_order','number' => get_option('lmopt_numpages_option')); 
 						$pages = get_pages($args); 
 						$counter = 1;
-						$one_page_content;
+						$one_page_content='';
 
 						foreach ($pages as $page_data) {
 						    $content = apply_filters('the_content', $page_data->post_content); 
@@ -62,9 +65,8 @@ get_header();
 						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
-						    $one_page_content .= "
+						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
-							    	
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
