@@ -36,7 +36,7 @@ get_header();
 				
 												$menu_items = wp_get_nav_menu_items($menu->term_id);
 				
-												$menu_list = '<div id="site-navigation" class="navigation-main story-nav"><ul id="menu-' . $menu_name . '" class="menu">';
+												$menu_list = '<div id="site-navigation" class="navigation-main parallax-nav"><ul id="menu-' . $menu_name . '" class="menu">';
 				
 												foreach ( (array) $menu_items as $key => $menu_item ) {
 												    $title = $menu_item->title;
@@ -56,7 +56,7 @@ get_header();
 							}
 
 							echo lowermedia_return_menu("lmopt-top-menu");
-							
+
 						   //  $menu_name = 'lmopt-top-menu';
 						   //  //var_dump(get_nav_menu_locations());
 						   //  //echo $menus_holder["lmopt-top-menu"];
@@ -133,7 +133,7 @@ get_header();
 						    if($counter  == 1){$section_menu_holder=lowermedia_return_menu("lmopt-section-menu");}else{$section_menu_holder='';}
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
-							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
+							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section' >
 							    	".$section_menu_holder."
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
