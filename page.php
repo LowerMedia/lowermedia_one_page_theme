@@ -94,7 +94,7 @@ get_header();
 						    //if($counter!=1){$one_page_menu_holder='';}
 						    //use modulo operator to add even odd to correct divs
 						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
-						    if($counter  == 1){$menu_holder=$menu_list;}else{$menu_holder='';}
+						    if($counter  == 1){$section_menu_holder=$section_menu_list;}else{$section_menu_holder='';}
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap story' >
