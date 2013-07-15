@@ -793,7 +793,8 @@ add_action('wp_head', 'lowermedia_add_opt_styles');
 function register_my_menus() {
   register_nav_menus(
     array(
-      'lmopt-top-menu' => __( 'OnePageTheme Top Menu' )
+      'lmopt-top-menu' => __( 'OnePageTheme Top Menu' ),
+      'lmopt-section-menu' => __( 'OnePageTheme Section One Menu' )
     )
   );
 }
