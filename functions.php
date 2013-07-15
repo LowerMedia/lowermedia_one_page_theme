@@ -142,6 +142,17 @@ function lowermedia_one_page_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 
+function lowermedia_add_sass_styles()  
+{ 
+  // Register the style like this for a theme:  
+  // (First the unique name for the style (custom-style) then the src, 
+  // then dependencies and ver no. and media type)
+  wp_register_style( 'sass-screen-styles', get_template_directory_uri() . '/stylesheets/screen.css',  array(), '20130715', 'all' );
+  // enqueing:
+  wp_enqueue_style( 'sass-screen-styles' );
+}
+add_action('wp_enqueue_scripts', 'lowermedia_add_sass_styles', 100);
+
  /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
  */
