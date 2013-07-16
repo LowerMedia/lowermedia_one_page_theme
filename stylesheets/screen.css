@@ -108,7 +108,7 @@ article h2 {
 /* line 70, ../sass/screen.scss */
 .parallax-section {
   height: 1000px;
-  /*padding: 2% 10%; */
+  padding: 0;
   max-width: 1250px;
   /*1000px;/*1920px; */
   overflow: hidden;
@@ -258,7 +258,7 @@ article {
 .lm-opt-2 article {
   color: #fff;
   width: 600px;
-  margin-left: 100px;
+  margin: 100px;
   padding: 10px 20px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
   line-height: 1.5em;
