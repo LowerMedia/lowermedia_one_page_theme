@@ -4,3 +4,177 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+
+
+@mixin breakpoint($point) {
+  @if $point == standard-plus {
+    @media (max-width: 1670px) { @content; }//1670
+  }
+  @if $point == standard {
+    @media (max-width: 1600px) { @content; }//1670
+  }
+  @else if $point == ipad-horiz {
+    @media (max-width: 1024px) { @content; }
+  }
+  @else if $point == ipad-vert {
+    @media (max-width: 768px)  { @content; }
+  }
+  @else if $point == smartphone {
+    @media (max-width: 640px)  { @content; }
+  }
+  @else if $point == iphone-horiz {
+    @media (max-width: 480px) { @content; }
+  }
+  @else if $point == iphone-vert {
+    @media (max-width: 320px)  { @content; }
+  }
+}
+
+/*	LOWERMEDIA STYLES 	*/
+
+.lm-opt-page-wrap, #masthead, #colophon {
+	padding: 2% 10%;
+}
+
+/*.lm-opt-page-wrap, #main, #colophon {
+	box-shadow:0px 0px 50px 0px;
+}*/
+
+.lm-opt-page-wrap p:last-child {
+	margin:0;
+}
+
+/**
+ * Parallax Scrolling Tutorial
+ * For Smashing Magazine
+ * July 2011
+ *  
+ * Author: Richard Shepherd
+ *		   www.richardshepherd.com
+ * 		   @richardshepherd   
+ */
+
+.navigation-main {
+	position: relative;
+	z-index: 100;
+}
+
+article h2 { 
+	font-family: 'Lobster Two'; 
+	font-size: 60px; 
+	margin: 25px 0; 
+	line-height: 1em; 
+	text-shadow:0 1px 0 #CCCCCC, 0 2px 0 #C9C9C9, 0 3px 0 #BBBBBB, 0 4px 0 #B9B9B9, 0 5px 0 #AAAAAA, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.parallax-section { 
+	height: 1000px; 
+	/*padding: 2% 10%; */
+	max-width: 1250px;/*1000px;/*1920px; */
+	overflow:hidden;
+	position: relative; 
+	margin: 0 auto; 
+	border-top: 1px solid rgba(255,255,255,0.3); 
+	border-bottom: 1px solid rgba(0,0,0,0.4); 
+	box-shadow: 0 0 50px rgba(0,0,0,0.8);
+	width: 100%;
+	@include breakpoint(standard-plus) { max-width: 1600px; }/*width: 100%;*/
+	@include breakpoint(standard) { max-width: 1600px; }
+	@include breakpoint(ipad-horiz) { max-width: 1600px; }
+	@include breakpoint(ipad-vert) { max-width: 1600px; }
+	@include breakpoint(smartphone) { max-width: 1600px; }
+	@include breakpoint(iphone-horiz) { max-width: 1600px; }
+	@include breakpoint(iphone-vert) { max-width: 1600px; }
+}
+
+.parallax-nav { 
+	padding: 2% 10%; 
+	width: 100%; 
+	max-width: 1000px;/*1920px; */
+	position: relative; 
+}
+
+/*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/
+.lm-opt-1, .lm-opt-5 { background: url(../images/slide1.png) 50% 0 no-repeat fixed; }
+.lm-opt-2, .lm-opt-6 { background: url(../images/slide2.jpg) 50% 0 no-repeat fixed; }
+.lm-opt-3, .lm-opt-7 { background: url(../images/slide4.jpg) 50% 0 no-repeat fixed; }
+.lm-opt-4, .lm-opt-8 { background: url(../images/slide3.jpg) 50% 0 no-repeat fixed; }
+.theend { background: url(../images/puckered.png) 50% bottom no-repeat fixed; }
+
+
+.photograph { 
+	background: url('') transparent 40% 100px no-repeat fixed; 
+	min-height: 1000px; 
+	padding: 0; 
+	width: 100%; 
+	max-width: 1920px; 
+	position: relative; 
+	margin: 0 auto; 
+}
+
+.lm-opt-1 .photograph { background: url('') transparent 50% 100px no-repeat fixed; }
+.lm-opt-2 .photograph { background: url('') transparent 20% 100px no-repeat fixed; }
+.lm-opt-3 .photograph { background: url('') transparent 70% 100px no-repeat fixed; }
+
+/* Introduction 
+#lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+*/
+article { background: url(images/grain.png) repeat #333;}
+
+.lm-opt-1 article { 
+	width: 100%; 
+	top: 300px; 
+	position: absolute; 
+	text-align: center; 
+	p, a { color: #ccc; }
+	a { text-decoration: underline; }
+	a:hover { color: #fff; }
+}
+
+
+/* Background Only */
+/*#lm-opt-2 { padding: 50px 0;}*/
+.lm-opt-2 article { 
+		color: #fff; 
+		width: 600px; 
+		margin-left: 100px; 
+		padding: 10px 20px; 
+		text-shadow: 0 -1px 0 rgba(0,0,0,0.5); 
+		line-height: 1.5em; box-shadow: 0 0 25px rgba(0,0,0,0.3); 
+		border: 1px solid rgba(150,150,150,0.1); 
+		p { margin-bottom: 25px; }
+		a { color: #ff0;}
+	}
+
+/* Photograph */
+.lm-opt-3 article {  
+	color: #fff; 
+	padding: 10px 20px; 
+	margin: 100px 0 0 60%; 
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.5); 
+	line-height: 1.5em; 
+	position: absolute; 
+	top: 0; 
+	box-shadow: 0 0 25px rgba(0,0,0,0.3); 
+	border: 1px solid rgba(150,150,150,0.1); 
+	p { width: 300px; margin-bottom: 25px; }
+}
+.photograph { 
+	background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed; 
+	min-height: 1000px; 
+	padding: 0; 
+	margin: 0; 
+	width: 100%; 
+	max-width: 1920px; 
+	position: relative; 
+	margin: 0 auto; 
+}
+
+/* HTML5 Video */
+.lm-opt-4 article {  margin-left: 10%; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; color: #fff; position: absolute; top: 0; }
+.lm-opt-4 article p { width: 300px; margin: 50px 0; }
+.lm-opt-4 video { position: fixed; left: 50%; box-shadow: 0 0 25px rgba(0,0,0,0.7); z-index: 1;}
+
+/* The End */
+.theend .byebye { background: url(images/theend.png) 40% 100px no-repeat fixed; height: 1000px; padding: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
+							

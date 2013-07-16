@@ -133,7 +133,7 @@ get_header();
 						    if($counter  == 1){$section_menu_holder=lowermedia_return_menu("lmopt-section-menu");}else{$section_menu_holder='';}
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
-							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section' >
+							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter."' >
 							    	".$section_menu_holder."
 								    <div id='lm-opt-content' class=''>".$content."</div>
 								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
