@@ -8,25 +8,25 @@
 
 @mixin breakpoint($point) {
   @if $point == standard-plus {
-    @media (max-width: 1670px) { @content; }//1670
+    @media (min-width: 1670px) { @content; }//1670
   }
   @if $point == standard {
-    @media (max-width: 1600px) { @content; }//1670
+    @media (min-width: 1600px) { @content; }//1670
   }
   @else if $point == ipad-horiz {
-    @media (max-width: 1024px) { @content; }
+    @media (min-width: 1024px) { @content; }
   }
   @else if $point == ipad-vert {
-    @media (max-width: 768px)  { @content; }
+    @media (min-width: 768px)  { @content; }
   }
   @else if $point == smartphone {
-    @media (max-width: 640px)  { @content; }
+    @media (min-width: 640px)  { @content; }
   }
   @else if $point == iphone-horiz {
-    @media (max-width: 480px) { @content; }
+    @media (min-width: 480px) { @content; }
   }
   @else if $point == iphone-vert {
-    @media (max-width: 320px)  { @content; }
+    @media (min-width: 320px)  { @content; }
   }
 }
 
