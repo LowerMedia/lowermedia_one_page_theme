@@ -142,16 +142,18 @@ function lowermedia_one_page_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'lowermedia_one_page_theme_scripts' );
 
-function lowermedia_add_sass_styles()  
+function lowermedia_add_styles()  
 { 
   // Register the style like this for a theme:  
   // (First the unique name for the style (custom-style) then the src, 
   // then dependencies and ver no. and media type)
   wp_register_style( 'sass-screen-styles', get_template_directory_uri() . '/stylesheets/screen.css',  array(), '20130715', 'all' );
+  //----wp_register_style( 'user-generated-styles', get_template_directory_uri() . '/user-generated-styles.php',  array(), '20130715', 'all' );
   // enqueing:
   wp_enqueue_style( 'sass-screen-styles' );
+  //----wp_enqueue_style( 'user-generated-styles' );
 }
-add_action('wp_enqueue_scripts', 'lowermedia_add_sass_styles', 100);
+add_action('wp_enqueue_scripts', 'lowermedia_add_styles', 100);
 
  /**
  * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
@@ -264,6 +266,7 @@ class lowermedia_one_page_theme_admin_options{
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_menuloca', array($this, 'check_menuloca'));
+			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_customstyles', array($this, 'check_customstyles'));
 
 			/*--------------ADD SECTION-------------*/
 
@@ -294,6 +297,13 @@ class lowermedia_one_page_theme_admin_options{
 			    array($this, 'print_section_info'),
 			    'lowermedia-one-page-theme'
 			);	
+
+			add_settings_section(
+			    'lowermedia_opt_customstyles',
+			    '<!-- Text Field -->',
+			    array($this, 'print_section_info'),
+			    'lowermedia-one-page-theme'
+			);
 			
 			/*--------------ADD FIELD-------------*/
 
@@ -328,6 +338,14 @@ class lowermedia_one_page_theme_admin_options{
 			    'lowermedia-one-page-theme',
 			    'lowermedia_opt_menuloca'			
 			);	
+
+			add_settings_field(
+			    'lmopt_customstyles', 
+			    'Add Custom CSS Styles Here:', 
+			    array($this, 'lmopt_customstyles'), 
+			    'lowermedia-one-page-theme',
+			    'lowermedia_opt_customstyles'			
+			);
 
 			//If the numpages option in the database is set and not set to 0, we add the styles to the head
 			if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
@@ -618,7 +636,7 @@ class lowermedia_one_page_theme_admin_options{
 	    <input 
 	        type="text" 
 	        id="lmopt_bkgrnd_8" 
-	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_8]" 
+	        name="lowermedia_opt_bkgrnd_8[lmopt_bkgrnd_8]" 
 	        value='<?=get_option('lmopt_bkgrnd_8_option');?>' 
 	        size='20'
 	    />
@@ -803,6 +821,39 @@ class lowermedia_one_page_theme_admin_options{
         <?php
     }
 
+	public function check_customstyles($input){
+
+  		$custom_styles = $input['lmopt_customstyles'];
+
+		// if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+		//     $valid_url = "";
+		// } else {
+		// 	$valid_url = esc_attr($valid_url);
+		// }
+
+	   if(get_option('lmopt_customstyles_option') === FALSE){
+			add_option('lmopt_customstyles_option', $custom_styles);
+	    }else{
+			update_option('lmopt_customstyles_option', $custom_styles);
+	    }
+	
+		return $custom_styles;
+
+	}
+	public function lmopt_customstyles(){
+	    ?>
+
+	    <TEXTAREA type="text" 
+	        id="lmopt_customstyles" 
+	        name="lowermedia_opt_customstyles[lmopt_customstyles]" 
+	        value='' 
+	        ROWS=3 COLS=30 
+	    ><?=get_option('lmopt_customstyles_option');?>
+	    </TEXTAREA>
+	    <?php
+	    //if(get_option('lmopt_customstyles_option')){echo"<img src='".get_option('lmopt_bkgrnd_8_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
+	}
+
 
 }
 
@@ -833,6 +884,10 @@ function lowermedia_add_opt_styles() {
 					//echo $numpages.':'.$lmopt_styles.'<br/>';
 				} 
 				$numpages--;
+			}
+
+			if (get_option('lmopt_customstyles_option')){
+				$lmopt_styles .= get_option('lmopt_customstyles_option');
 			}
 		}
 		$lmopt_styles.='</style>';
