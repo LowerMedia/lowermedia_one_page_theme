@@ -70,7 +70,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*	LOWERMEDIA STYLES 	*/
 /* line 35, ../sass/screen.scss */
 .lm-opt-page-wrap, #masthead, #colophon {
-  padding: 2% 10%;
+  padding: 0% 10%;
 }
 
 /*.lm-opt-page-wrap, #main, #colophon {

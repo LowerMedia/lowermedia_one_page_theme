@@ -26,7 +26,7 @@
 	<?php do_action( 'before' ); 
 	if(get_option('lmopt_header_option')){ }else{?>
 
-		<header id="masthead" class="site-header" role="banner" <?php if(get_option('lmopt_header_option')) { echo "style='position: absolute;top: -9999px;left: -9999px;'";} ?> >
+		<header id="masthead" class="site-header" role="banner" >
 			<div class="site-branding">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
