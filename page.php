@@ -16,46 +16,48 @@ get_header();
 ?>
 	
 	<div id="primary" class="content-area">
+
 		<div id="content" class="site-content" role="main">
+
 			<?php while ( have_posts() ) : the_post(); ?>
 					<?php
 							// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
 						    // This code based on wp_nav_menu's code to get Menu ID from menu slug
 
-							function lowermedia_return_menu($input){//$input is the menu name
-								$menu_name = $input;//'lmopt-top-menu';
-							    //var_dump(get_nav_menu_locations());
-							    //echo $menus_holder["lmopt-top-menu"];
+							// function lowermedia_return_menu($input){//$input is the menu name
+							// 	$menu_name = $input;//'lmopt-top-menu';
+							//     //var_dump(get_nav_menu_locations());
+							//     //echo $menus_holder["lmopt-top-menu"];
 
-							    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
-								    {
-								    		$menus_holder=(get_nav_menu_locations());
-								    		//check to make sure the menu spot is not empty
-								    		if ($menus_holder[$menu_name]!=0) {
-												$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+							//     if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) 
+							// 	    {
+							// 	    		$menus_holder=(get_nav_menu_locations());
+							// 	    		//check to make sure the menu spot is not empty
+							// 	    		if ($menus_holder[$menu_name]!=0) {
+							// 					$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 				
-												$menu_items = wp_get_nav_menu_items($menu->term_id);
+							// 					$menu_items = wp_get_nav_menu_items($menu->term_id);
 				
-												$menu_list = '<div id="site-navigation" class="navigation-main parallax-nav"><ul id="menu-' . $menu_name . '" class="menu">';
+							// 					$menu_list = '<div id="site-navigation" class="navigation-main parallax-nav"><ul id="menu-' . $menu_name . '" class="menu">';
 				
-												foreach ( (array) $menu_items as $key => $menu_item ) {
-												    $title = $menu_item->title;
-												    $url = $menu_item->url;
-												    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
-												}
-												$menu_list .= '</ul></div>';
-											} else {
-												$menu_list = '';
-											}
-								    } 
-							    else 
-								    {
-										$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
-								    }
-							    return $menu_list;
-							}
+							// 					foreach ( (array) $menu_items as $key => $menu_item ) {
+							// 					    $title = $menu_item->title;
+							// 					    $url = $menu_item->url;
+							// 					    $menu_list .= '<li><a href="' . $url . '">' . $title . '</a></li>';
+							// 					}
+							// 					$menu_list .= '</ul></div>';
+							// 				} else {
+							// 					$menu_list = '';
+							// 				}
+							// 	    } 
+							//     else 
+							// 	    {
+							// 			$menu_list = '<div style="display:none;"><ul><li>Menu "' . $menu_name . '" not defined.</li></ul></div>';
+							// 	    }
+							//     return $menu_list;
+							// }
 
-							echo lowermedia_return_menu("lmopt-top-menu");
+							// echo lowermedia_return_menu("lmopt-top-menu");
 
 						   //  $menu_name = 'lmopt-top-menu';
 						   //  //var_dump(get_nav_menu_locations());
@@ -112,8 +114,11 @@ get_header();
 							  //   } 
 							  //  echo $section_menu_list;
 					?>
-				
+					
 				<?php
+
+
+
 				    if(get_option('lmopt_onepage_option')) {
 
 				    	$args = array('sort_column' => 'menu_order','number' => get_option('lmopt_numpages_option')); 
@@ -130,7 +135,23 @@ get_header();
 						    //if($counter!=1){$one_page_menu_holder='';}
 						    //use modulo operator to add even odd to correct divs
 						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
-						    if($counter  == 1){$section_menu_holder=lowermedia_return_menu("lmopt-section-menu");}else{$section_menu_holder='';}
+						    
+						    if($counter  == 1){
+						    	//$section_menu_holder=lowermedia_return_menu("lmopt-section-menu");}else{$section_menu_holder='';
+								if(get_option('lmopt_menuloca_option')) {
+									//$sktc=esc_attr_e( 'Skip to content', 'lowermedia_one_page_theme' );
+									//$menutog=_e( 'Menu', 'lowermedia_one_page_theme' );
+									//$wp_nav_array_holder = wp_nav_menu( array( 'echo'=>'false' ));
+									$primary_menu = wp_nav_menu(array('echo' => false));
+									$section_menu_holder ='
+									<nav id="site-navigation" class="navigation-main" role="navigation">
+									<h1 class="menu-toggle">Menu</h1>
+									<div class="screen-reader-text skip-link">
+									<a href="#content" title="Skip to content">Skip to content</a>
+									</div>'.$primary_menu.'</nav><!-- #site-navigation -->';
+								};
+						    } else {$section_menu_holder ='';}
+
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter."' >

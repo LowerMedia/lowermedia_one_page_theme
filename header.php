@@ -24,19 +24,24 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 	<?php do_action( 'before' ); 
-	if(get_option('lmopt_header_option')){ ?>
+	if(get_option('lmopt_header_option')){ }else{?>
+
 		<header id="masthead" class="site-header" role="banner" <?php if(get_option('lmopt_header_option')) { echo "style='position: absolute;top: -9999px;left: -9999px;'";} ?> >
 			<div class="site-branding">
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</div>
-
-			<nav id="site-navigation" class="navigation-main" role="navigation">
-				<h1 class="menu-toggle"><?php _e( 'Menu', 'lowermedia_one_page_theme' ); ?></h1>
-				<div class="screen-reader-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'lowermedia_one_page_theme' ); ?>"><?php _e( 'Skip to content', 'lowermedia_one_page_theme' ); ?></a></div>
-
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			</nav><!-- #site-navigation -->
 		</header><!-- #masthead -->
-<?php } ?>
+		<?php
+		if(get_option('lmopt_menuloca_option') != 1 ) {
+		?>
+			<nav id="site-navigation" class="navigation-main" role="navigation">
+					<h1 class="menu-toggle"><?php _e( 'Menu', 'lowermedia_one_page_theme' ); ?></h1>
+					<div class="screen-reader-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'lowermedia_one_page_theme' ); ?>"><?php _e( 'Skip to content', 'lowermedia_one_page_theme' ); ?></a></div>
+
+					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+			</nav><!-- #site-navigation -->
+		<?php
+		};
+	} ?>
 	<div id="main" class="site-main">

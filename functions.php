@@ -263,6 +263,7 @@ class lowermedia_one_page_theme_admin_options{
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_numpages', array($this, 'check_numpages')); //only accepts numbers
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_header', array($this, 'check_header'));
 			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_footer', array($this, 'check_footer'));
+			register_setting('lowermedia-one-page-theme_option_group', 'lowermedia_opt_menuloca', array($this, 'check_menuloca'));
 
 			/*--------------ADD SECTION-------------*/
 
@@ -282,6 +283,13 @@ class lowermedia_one_page_theme_admin_options{
 
 			add_settings_section(
 			    'lowermedia_opt_footer',
+			    '<!-- Check Box -->',
+			    array($this, 'print_section_info'),
+			    'lowermedia-one-page-theme'
+			);
+
+			add_settings_section(
+			    'lowermedia_opt_menuloca',
 			    '<!-- Check Box -->',
 			    array($this, 'print_section_info'),
 			    'lowermedia-one-page-theme'
@@ -311,7 +319,15 @@ class lowermedia_one_page_theme_admin_options{
 			    array($this, 'lmopt_footer'), 
 			    'lowermedia-one-page-theme',
 			    'lowermedia_opt_footer'			
-			);		
+			);	
+
+			add_settings_field(
+			    'lmopt_menuloca', 
+			    'Show Primary Menu in First Parallax Section? (Default is in header)', 
+			    array($this, 'lmopt_menuloca'), 
+			    'lowermedia-one-page-theme',
+			    'lowermedia_opt_menuloca'			
+			);	
 
 			//If the numpages option in the database is set and not set to 0, we add the styles to the head
 			if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
@@ -704,6 +720,24 @@ class lowermedia_one_page_theme_admin_options{
 		}
 		return $output;
     }
+
+    public function check_menuloca($input){
+
+ 		$output = $input['lmopt_menuloca'];
+
+ 		//check if the checkbox was checked
+ 		//if it was add or update the option
+    	if(isset($input['lmopt_menuloca'])) {
+		    if(get_option('lmopt_menuloca_option') === FALSE){
+				add_option('lmopt_menuloca_option', $output);
+		    }else{
+				update_option('lmopt_menuloca_option', $output);
+		    }
+		}else{//if it wasn't delete the option
+				delete_option('lmopt_menuloca_option');
+		}
+		return $output;
+    }
 	
     public function print_section_info(){//CALLBACK FUNCTION
 		print '<!-- Enter your setting below:-->';
@@ -748,6 +782,21 @@ class lowermedia_one_page_theme_admin_options{
 		        value="1" 
 		        <?php 
 		        if ( get_option('lmopt_footer_option') ) {echo 'checked="checked"'; }
+	        ?> 
+        />
+
+        <?php
+    }
+
+    public function lmopt_menuloca(){
+        ?>
+	        <input 
+		        type="checkbox" 
+		        id="lmopt_menuloca" 
+		        name="lowermedia_opt_menuloca[lmopt_menuloca]" 
+		        value="1" 
+		        <?php 
+		        if ( get_option('lmopt_menuloca_option') ) {echo 'checked="checked"'; }
 	        ?> 
         />
 
@@ -804,8 +853,8 @@ add_action('wp_head', 'lowermedia_add_opt_styles');
 function register_my_menus() {
   register_nav_menus(
     array(
-      'lmopt-top-menu' => __( 'OnePageTheme Top Menu' ),
-      'lmopt-section-menu' => __( 'OnePageTheme Section One Menu' )
+      //'lmopt-top-menu' => __( 'OnePageTheme Top Menu' ),
+      //'lmopt-section-menu' => __( 'OnePageTheme Section One Menu' )
     )
   );
 }
