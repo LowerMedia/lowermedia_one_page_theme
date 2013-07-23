@@ -343,14 +343,14 @@ article {
 }
 
 /* line 181, ../sass/screen.scss */
-article.no-results.notfount {
+article.no-results.not-found {
   width: 50%;
   margin: auto;
   margin-top: 5%;
   height: 200px;
   border-radius: 20px;
   padding: 2%;
-  box-shadow: 3px 11px 28px 10px;
+  box-shadow: 2px 2px 8px 0px;
   background-color: orange;
   background-color: #f68a28;
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f68a28, endColorstr=#f36c00);
