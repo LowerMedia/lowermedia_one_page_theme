@@ -341,3 +341,19 @@ article {
   position: relative;
   margin: 0 auto;
 }
+
+/* line 181, ../sass/screen.scss */
+article.no-results.notfount {
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  height: 200px;
+  border-radius: 20px;
+  padding: 2%;
+  box-shadow: 3px 11px 28px 10px;
+  background-color: orange;
+  background-color: #f68a28;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f68a28, endColorstr=#f36c00);
+  background-image: -moz-linear-gradient(center top, #f68a28, #f36c00);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f68a28), to(#f36c00));
+}
