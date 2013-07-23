@@ -823,20 +823,24 @@ class lowermedia_one_page_theme_admin_options{
 
 	public function check_customstyles($input){
 
-  		$custom_styles = $input['lmopt_customstyles'];
+		$custom_styles = $input['lmopt_customstyles'];
 
-		// if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		//     $valid_url = "";
-		// } else {
-		// 	$valid_url = esc_attr($valid_url);
-		// }
+		$search = array(
+		'@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+		'@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+		'@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+		'@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+		);
 
-	   if(get_option('lmopt_customstyles_option') === FALSE){
-			add_option('lmopt_customstyles_option', $custom_styles);
-	    }else{
-			update_option('lmopt_customstyles_option', $custom_styles);
-	    }
-	
+		$custom_styles = preg_replace($search, '', $custom_styles);
+		//return $output;
+
+		if(get_option('lmopt_customstyles_option') === FALSE){
+		add_option('lmopt_customstyles_option', $custom_styles);
+		}else{
+		update_option('lmopt_customstyles_option', $custom_styles);
+		}
+
 		return $custom_styles;
 
 	}
