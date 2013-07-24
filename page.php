@@ -44,7 +44,7 @@ get_header();
 						    if($counter % 2 == 0){$parity='even';}else{$parity='odd';}
 						    
 						    if($counter  == 1){
-
+						    	$custom_header_img = "<img src=".header_image()." height=".get_custom_header()->height." width=".get_custom_header()->width." alt='' />";
 								if(get_option('lmopt_menuloca_option')) {
 									$primary_menu = wp_nav_menu(array('echo' => false));
 									$section_menu_holder ='
@@ -52,7 +52,7 @@ get_header();
 									<h1 class="menu-toggle">Menu</h1>
 									<div class="screen-reader-text skip-link">
 									<a href="#content" title="Skip to content">Skip to content</a>
-									</div>'.$primary_menu.'</nav><!-- #site-navigation -->';
+									</div>'.$primary_menu.'</nav><!-- #site-navigation -->'.$custom_header_img;
 								};
 						    } else {
 						    	$section_menu_holder ='';
