@@ -44,19 +44,33 @@
 	margin:0;
 }
 
-/**
- * Parallax Scrolling Tutorial
- * For Smashing Magazine
- * July 2011
- *  
- * Author: Richard Shepherd
- *		   www.richardshepherd.com
- * 		   @richardshepherd   
- */
-
 .navigation-main {
 	position: relative;
 	z-index: 100;
+
+	li {
+		float: left;
+		position: relative;
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
+		padding: 1%;
+	}
+}
+
+.lm-opt-content {
+	background: white;
+	width: 50%;
+	padding: 2%;
+	margin: 5%;
+}
+.lm-opt-content.middle.odd {
+	float:right;
+}
+
+.lm-opt-content.first, 
+.lm-opt-content.last {
+	margin:auto;
+	margin-top:5%;
 }
 
 article h2 { 
@@ -78,13 +92,19 @@ article h2 {
 	border-bottom: 1px solid rgba(0,0,0,0.4); 
 	box-shadow: 0 0 50px rgba(0,0,0,0.8);
 	width: 100%;
-	@include breakpoint(standard-plus) { max-width: 1600px; }/*width: 100%;*/
-	@include breakpoint(standard) { max-width: 1600px; }
+	
+	
+	
+	
+	
+	@include breakpoint(iphone-vert) { max-width: 480px; }
+	@include breakpoint(iphone-horiz) { max-width: 640px; }
+	@include breakpoint(smartphone) { max-width: 768px; }
+	@include breakpoint(ipad-vert) { max-width: 1024px; }
 	@include breakpoint(ipad-horiz) { max-width: 1600px; }
-	@include breakpoint(ipad-vert) { max-width: 1600px; }
-	@include breakpoint(smartphone) { max-width: 1600px; }
-	@include breakpoint(iphone-horiz) { max-width: 1600px; }
-	@include breakpoint(iphone-vert) { max-width: 1600px; }
+	@include breakpoint(standard) { max-width: 1600px; }
+	@include breakpoint(standard-plus) { max-width: 2000px; }/*width: 100%;*/
+	
 }
 
 .parallax-nav { 

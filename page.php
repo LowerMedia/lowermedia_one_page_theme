@@ -28,6 +28,10 @@ get_header();
 						$pages = get_pages($args); 
 						$counter = 1;
 						$one_page_content='';
+						$lmopt_count=0;
+						foreach ($pages as $page_data) {
+							$lmopt_count++;
+						}
 
 						foreach ($pages as $page_data) {
 						    $content = apply_filters('the_content', $page_data->post_content); 
@@ -35,16 +39,14 @@ get_header();
 						    $title = $page_data->post_title;
 						    $ID = $page_data->ID;
 						    $lmopt_paralax_img;
+						    $position ='first';
 						    //if($counter!=1){$one_page_menu_holder='';}
 						    //use modulo operator to add even odd to correct divs
-						    if($counter % 2 == 0){$parity='even-photo';}else{$parity='odd-photo';}
+						    if($counter % 2 == 0){$parity='even';}else{$parity='odd';}
 						    
 						    if($counter  == 1){
-						    	//$section_menu_holder=lowermedia_return_menu("lmopt-section-menu");}else{$section_menu_holder='';
+
 								if(get_option('lmopt_menuloca_option')) {
-									//$sktc=esc_attr_e( 'Skip to content', 'lowermedia_one_page_theme' );
-									//$menutog=_e( 'Menu', 'lowermedia_one_page_theme' );
-									//$wp_nav_array_holder = wp_nav_menu( array( 'echo'=>'false' ));
 									$primary_menu = wp_nav_menu(array('echo' => false));
 									$section_menu_holder ='
 									<nav id="site-navigation" class="navigation-main" role="navigation">
@@ -53,14 +55,18 @@ get_header();
 									<a href="#content" title="Skip to content">Skip to content</a>
 									</div>'.$primary_menu.'</nav><!-- #site-navigation -->';
 								};
-						    } else {$section_menu_holder ='';}
+						    } else {
+						    	$section_menu_holder ='';
+						    	$position ='middle';
+						    	if ($counter==$lmopt_count){$position ='last';}
+						    }
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
-							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter."' >
+							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter." $parity $position ' >
 							    	".$section_menu_holder."
-								    <div id='lm-opt-content' class=''>".$content."</div>
-								    <div id='lmopt-img' class='photograph ".$parity."' style='background-image:url(".$url.");'></div>
+								    <div id='lm-opt-content' class='lm-opt-content $parity $position'>".$content."</div>
+								    <div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>
 							    </section>"; 
 						    $counter++;
 						}
