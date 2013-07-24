@@ -49,7 +49,7 @@ get_header();
 						    	$header_image_width = get_custom_header()->width;
 
 						    	$custom_header_img = "<center><img src=".$header_image_src." height=".$header_image_height." width=".$header_image_width." alt='' /></center>";
-						    	$custom_header_img = '<div data-speed="-2" data-xposition="50%" data-offsety="100" data-type="sprite" style="background: url('.'"'.$header_image_src.'"'.') 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0 auto; width: 100%; max-width: 1920px; position: relative; z-index:50;" class=""></div>';
+						    	$custom_header_img = "<div data-speed='-2' data-xposition='50%' data-offsety='100' data-type='sprite' style='background: url('".$header_image_src."') 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0 auto; width: 100%; max-width: 1920px; position: relative; z-index:50;' class=''></div>";
 								if(get_option('lmopt_menuloca_option')) {
 									$primary_menu = wp_nav_menu(array('echo' => false));
 									$section_menu_holder ='
