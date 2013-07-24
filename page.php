@@ -44,7 +44,12 @@ get_header();
 						    if($counter % 2 == 0){$parity='even';}else{$parity='odd';}
 						    
 						    if($counter  == 1){
-						    	$custom_header_img = "<img src=".header_image()." height=".get_custom_header()->height." width=".get_custom_header()->width." alt='' />";
+						    	$header_image_src = header_image();
+						    	$header_image_height = get_custom_header()->height;
+						    	$header_image_width = get_custom_header()->width;
+
+						    	$custom_header_img = "<img src=".$header_image_src." height=".$header_image_height." width=".$header_image_width." alt='' />";
+						    	
 								if(get_option('lmopt_menuloca_option')) {
 									$primary_menu = wp_nav_menu(array('echo' => false));
 									$section_menu_holder ='
