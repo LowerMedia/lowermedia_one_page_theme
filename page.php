@@ -48,7 +48,7 @@ get_header();
 						    	$header_image_height = get_custom_header()->height;
 						    	$header_image_width = get_custom_header()->width;
 
-						    	$custom_header_img = "<img src=".$header_image_src." height=".$header_image_height." width=".$header_image_width." alt='' />";
+						    	$custom_header_img = "<br/><img src=".$header_image_src." height=".$header_image_height." width=".$header_image_width." alt='' /><br/>";
 
 								if(get_option('lmopt_menuloca_option')) {
 									$primary_menu = wp_nav_menu(array('echo' => false));
@@ -57,17 +57,19 @@ get_header();
 									<h1 class="menu-toggle">Menu</h1>
 									<div class="screen-reader-text skip-link">
 									<a href="#content" title="Skip to content">Skip to content</a>
-									</div>'.$primary_menu.'</nav><!-- #site-navigation -->'.$custom_header_img;
+									</div>'.$primary_menu.'</nav><!-- #site-navigation -->';
 								};
 						    } else {
-						    	$section_menu_holder ='';
-						    	$position ='middle';
-						    	if ($counter==$lmopt_count){$position ='last';}
+						    	$section_menu_holder = '';
+						    	$custom_header_img = '';
+						    	$position = 'middle';
+						    	if ($counter == $lmopt_count){$position = 'last';}
 						    }
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter." $parity $position ' >
+							    	".$custom_header_img."
 							    	".$section_menu_holder."
 								    <div id='lm-opt-content' class='lm-opt-content $parity $position'>".$content."</div>
 								    <div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>
