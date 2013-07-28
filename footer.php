@@ -15,7 +15,7 @@
 				<?php do_action( 'lowermedia_one_page_theme_credits' ); ?>
 				<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'lowermedia_one_page_theme' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', 'lowermedia_one_page_theme' ), 'WordPress' ); ?></a>
 				<span class="sep"> | </span>
-				<?php printf( __( 'Theme: %1$s by %2$s.', 'lowermedia_one_page_theme' ), 'lowermedia_one_page_theme', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+				<?php printf( __( 'Theme: %1$s by %2$s.', 'lowermedia_one_page_theme' ), 'lowermedia_one_page_theme', '<a href="http://lowermedia.net/" rel="developer">lowermedia.net</a>' ); ?>
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	<?php

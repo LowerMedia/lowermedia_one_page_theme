@@ -220,7 +220,7 @@ class lowermedia_one_page_theme_admin_options{
 	
     public function lowermedia_one_page_theme_menu(){
 	    // This page will be under "Settings"
-		add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', array($this, 'create_admin_page') );
+		add_theme_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', array($this, 'create_admin_page') );
     }
 
     public function create_admin_page(){
@@ -416,7 +416,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_1" 
 	        name="lowermedia_opt_bkgrnd_1[lmopt_bkgrnd_1]" 
-	        value='<?=get_option('lmopt_bkgrnd_1_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_1_option'); ?>' 
 	        size='20'
 	    />
 	    <?php
@@ -448,7 +448,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_2" 
 	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
-	        value='<?=get_option('lmopt_bkgrnd_2_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_2_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -478,7 +478,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_3" 
 	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
-	        value='<?=get_option('lmopt_bkgrnd_3_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_3_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -510,7 +510,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_4" 
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_4]" 
-	        value='<?=get_option('lmopt_bkgrnd_4_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_4_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -541,7 +541,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_5" 
 	        name="lowermedia_opt_bkgrnd_5[lmopt_bkgrnd_5]" 
-	        value='<?=get_option('lmopt_bkgrnd_5_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_5_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -573,7 +573,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_6" 
 	        name="lowermedia_opt_bkgrnd_6[lmopt_bkgrnd_6]" 
-	        value='<?=get_option('lmopt_bkgrnd_6_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_6_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -604,7 +604,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_7" 
 	        name="lowermedia_opt_bkgrnd_7[lmopt_bkgrnd_7]" 
-	        value='<?=get_option('lmopt_bkgrnd_7_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_7_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -637,7 +637,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_bkgrnd_8" 
 	        name="lowermedia_opt_bkgrnd_8[lmopt_bkgrnd_8]" 
-	        value='<?=get_option('lmopt_bkgrnd_8_option');?>' 
+	        value='<?php get_option('lmopt_bkgrnd_8_option');?>' 
 	        size='20'
 	    />
 	    <?php
@@ -678,7 +678,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_numpages" 
 	        name="lowermedia_opt_numpages[lmopt_numpages]" 
-	        value='<?=get_option('lmopt_numpages_option');?>' 
+	        value='<?php get_option('lmopt_numpages_option');?>' 
 	        size='1'
         />
         <?php 
@@ -852,7 +852,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_customstyles[lmopt_customstyles]" 
 	        value='' 
 	        ROWS=3 COLS=30 
-	    ><?=get_option('lmopt_customstyles_option');?>
+	    ><?php get_option('lmopt_customstyles_option');?>
 	    </TEXTAREA>
 	    <?php
 	    //if(get_option('lmopt_customstyles_option')){echo"<img src='".get_option('lmopt_bkgrnd_8_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
