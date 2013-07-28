@@ -44,6 +44,8 @@
 	margin:0;
 }
 
+
+
 .navigation-main {
 	position: relative;
 	top:20px;
@@ -52,7 +54,7 @@
 	/*border-top: groove black 1px;
 	border-bottom: groove black 1px;*/
 
-	li {
+	.lmopt_menu_loca li {
 		float: left;
 		position: relative;
 		/*border-bottom: 1px solid black;
@@ -76,6 +78,18 @@
 			color: whitesmoke;
 			text-shadow: 1px 1px black;
 		}
+	}
+
+	.lowermedia-admin-menu li{
+		padding: .5% 1%;
+		border-radius: 5px;
+		margin: 0 .5%;
+		background:grey;
+		a {
+			color: whitesmoke;
+			text-shadow: 1px 1px black;
+		}
+
 	}
 
 	nav.lowermedia_add_sticky {

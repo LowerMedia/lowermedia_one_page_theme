@@ -946,9 +946,9 @@ add_theme_support( 'custom-header', $args );
 #   //
 */
 
-function lowermedia_add_admin_menu_link($link){
+function lowermedia_add_admin_menu_link($link, $name){
 	if ( current_user_can( 'manage_options' ) ) {
     	/* A user with admin privileges */
-    	return '<a class="admin-class edit-menu-link" href="'.$link.'">EDIT</a>';
+    	return '<a class="admin-class edit-menu-link" href="'.$link.'">EDIT '.$name.'</a>';
 	} 
 }
