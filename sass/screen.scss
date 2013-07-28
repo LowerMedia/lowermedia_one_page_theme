@@ -95,10 +95,6 @@ article h2 {
 	box-shadow: 0 0 50px rgba(0,0,0,0.8);
 	width: 100%;
 	
-	
-	
-	
-	
 	@include breakpoint(iphone-vert) { max-width: 480px; }
 	@include breakpoint(iphone-horiz) { max-width: 640px; }
 	@include breakpoint(smartphone) { max-width: 768px; }
@@ -125,18 +121,41 @@ article h2 {
 
 
 .photograph { 
-	background: url('') transparent 40% 100px no-repeat fixed; 
 	min-height: 1000px; 
 	padding: 0; 
 	width: 100%; 
 	max-width: 1920px; 
 	position: relative; 
 	margin: 0 auto; 
+	background-color: transparent;
+	background-size: 50% 100px;
+	background-repeat: no-repeat;
 }
 
-.lm-opt-1 .photograph { background: url('') transparent 50% 100px no-repeat fixed; }
-.lm-opt-2 .photograph { background: url('') transparent 20% 100px no-repeat fixed; }
-.lm-opt-3 .photograph { background: url('') transparent 70% 100px no-repeat fixed; }
+.lmopt-img.odd {
+	-webkit-transform: translate(10px) rotate(10deg);
+    -webkit-transform-origin: -20% 70%;
+
+    -o-transform:translate(10px) rotate(10deg); 
+    -o-transform-origin:-20% 70%;
+
+    transform: translate(10px) rotate(10deg);
+    transform-origin: -20% 70%;
+    background-color: transparent;
+	background-size: 30% auto;
+	background-repeat: no-repeat;
+}
+
+.alpha60 {
+    /* Fallback for web browsers that don't support RGBa */
+    background-color: rgb(0, 0, 0);
+    /* RGBa with 0.6 opacity */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
 
 /* Introduction 
 #lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
@@ -181,16 +200,7 @@ article { background: url(images/grain.png) repeat #333;}
 	border: 1px solid rgba(150,150,150,0.1); 
 	p { width: 300px; margin-bottom: 25px; }
 }
-.photograph { 
-	background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed; 
-	min-height: 1000px; 
-	padding: 0; 
-	margin: 0; 
-	width: 100%; 
-	max-width: 1920px; 
-	position: relative; 
-	margin: 0 auto; 
-}
+
 
 /* HTML5 Video */
 .lm-opt-4 article {  margin-left: 10%; text-shadow: 0 -1px 0 rgba(0,0,0,0.5); line-height: 1.5em; color: #fff; position: absolute; top: 0; }

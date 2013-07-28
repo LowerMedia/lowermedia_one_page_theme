@@ -184,7 +184,7 @@ article h2 {
   }
 }
 
-/* line 112, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .parallax-nav {
   padding: 2% 10%;
   width: 100%;
@@ -194,88 +194,100 @@ article h2 {
 }
 
 /*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/
-/* line 120, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 .lm-opt-1, .lm-opt-5 {
   background: url(../images/slide1.png) 50% 0 no-repeat fixed;
 }
 
-/* line 121, ../sass/screen.scss */
+/* line 117, ../sass/screen.scss */
 .lm-opt-2, .lm-opt-6 {
   background: url(../images/slide2.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 122, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 .lm-opt-3, .lm-opt-7 {
   background: url(../images/slide4.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .lm-opt-4, .lm-opt-8 {
   background: url(../images/slide3.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 .theend {
   background: url(../images/puckered.png) 50% bottom no-repeat fixed;
 }
 
-/* line 127, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 .photograph {
-  background: url("") transparent 40% 100px no-repeat fixed;
   min-height: 1000px;
   padding: 0;
   width: 100%;
   max-width: 1920px;
   position: relative;
   margin: 0 auto;
+  background-color: transparent;
+  background-size: 50% 100px;
+  background-repeat: no-repeat;
 }
 
-/* line 137, ../sass/screen.scss */
-.lm-opt-1 .photograph {
-  background: url("") transparent 50% 100px no-repeat fixed;
+/* line 135, ../sass/screen.scss */
+.lmopt-img.odd {
+  -webkit-transform: translate(10px) rotate(10deg);
+  -webkit-transform-origin: -20% 70%;
+  -o-transform: translate(10px) rotate(10deg);
+  -o-transform-origin: -20% 70%;
+  transform: translate(10px) rotate(10deg);
+  transform-origin: -20% 70%;
+  background-color: transparent;
+  background-size: 30% auto;
+  background-repeat: no-repeat;
 }
 
-/* line 138, ../sass/screen.scss */
-.lm-opt-2 .photograph {
-  background: url("") transparent 20% 100px no-repeat fixed;
-}
-
-/* line 139, ../sass/screen.scss */
-.lm-opt-3 .photograph {
-  background: url("") transparent 70% 100px no-repeat fixed;
+/* line 149, ../sass/screen.scss */
+.alpha60 {
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: black;
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* For IE 5.5 - 7*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
 
 /* Introduction 
 #lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
 */
-/* line 144, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 article {
   background: url(images/grain.png) repeat #333333;
 }
 
-/* line 146, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 .lm-opt-1 article {
   width: 100%;
   top: 300px;
   position: absolute;
   text-align: center;
 }
-/* line 151, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .lm-opt-1 article p, .lm-opt-1 article a {
   color: #ccc;
 }
-/* line 152, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .lm-opt-1 article a {
   text-decoration: underline;
 }
-/* line 153, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .lm-opt-1 article a:hover {
   color: #fff;
 }
 
 /* Background Only */
 /*#lm-opt-2 { padding: 50px 0;}*/
-/* line 159, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 .lm-opt-2 article {
   color: #fff;
   width: 600px;
@@ -286,17 +298,17 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 167, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 .lm-opt-2 article p {
   margin-bottom: 25px;
 }
-/* line 168, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 .lm-opt-2 article a {
   color: #ff0;
 }
 
 /* Photograph */
-/* line 172, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 .lm-opt-3 article {
   color: #fff;
   padding: 10px 20px;
@@ -308,26 +320,14 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 182, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 .lm-opt-3 article p {
   width: 300px;
   margin-bottom: 25px;
 }
 
-/* line 184, ../sass/screen.scss */
-.photograph {
-  background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed;
-  min-height: 1000px;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 1920px;
-  position: relative;
-  margin: 0 auto;
-}
-
 /* HTML5 Video */
-/* line 196, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 .lm-opt-4 article {
   margin-left: 10%;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
@@ -337,13 +337,13 @@ article {
   top: 0;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .lm-opt-4 article p {
   width: 300px;
   margin: 50px 0;
 }
 
-/* line 198, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 .lm-opt-4 video {
   position: fixed;
   left: 50%;
@@ -352,7 +352,7 @@ article {
 }
 
 /* The End */
-/* line 201, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 .theend .byebye {
   background: url(images/theend.png) 40% 100px no-repeat fixed;
   height: 1000px;
@@ -363,7 +363,7 @@ article {
   margin: 0 auto;
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 article.no-results.not-found {
   width: 50%;
   margin: auto;

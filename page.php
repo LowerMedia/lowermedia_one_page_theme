@@ -70,12 +70,17 @@ get_header();
 						    }
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
+							$section_content_output_1 ="<div id='lm-opt-content' class='lm-opt-content alpha60 $parity $position'>".$content."</div>";
+							$section_content_output_2 ="<div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>";
+
+							// if ($parity=='odd'){//if section is odd we output the image first
+							// 	$section_content_output_1 ="<div id='lmopt-img' class='lmopt-img lmopt-content photograph ".$parity."' style='background-image:url(".$url.");'></div>";
+							// 	$section_content_output_2 ="<div id='lm-opt-content' class='lm-opt-content $parity $position'>".$content."</div>";
+							// }
+							
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter." $parity $position ' >
-							    	".$section_menu_holder."
-							    	".$custom_header_img."
-								    <div id='lm-opt-content' class='lm-opt-content $parity $position'>".$content."</div>
-								    <div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>
+							    	".$section_menu_holder.$custom_header_img.$section_content_output_1.$section_content_output_2."
 							    </section>"; 
 						    $counter++;
 						}
