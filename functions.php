@@ -939,3 +939,16 @@ $args = array(
 	'default-image' => get_template_directory_uri() . '/images/header.jpg',
 );
 add_theme_support( 'custom-header', $args );
+
+/*############################################################################################
+#
+#   Function to add admin link to front end if is admin
+#   //
+*/
+
+function lowermedia_add_admin_menu_link($link){
+	if ( current_user_can( 'manage_options' ) ) {
+    	/* A user with admin privileges */
+    	return '<a class="admin-class edit-menu-link" href="'.$link.'">EDIT</a>';
+	} 
+}

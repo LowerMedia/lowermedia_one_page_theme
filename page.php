@@ -54,7 +54,12 @@ get_header();
 						    	$custom_header_img = "<div style='background: url(".$header_image_src.") 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0 auto; width: 100%; max-width: 1920px; position: relative; z-index:50;' data-type='sprite' data-offsety='100' data-xposition='50%'' data-speed='-2'></div>";
 
 								if(get_option('lmopt_menuloca_option')) {
-									$primary_menu = wp_nav_menu(array('echo' => false));
+									$primary_menu = wp_nav_menu(
+													array(
+														'echo' => false,
+														'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'.lowermedia_add_admin_menu_link('/wp-admin/nav-menus.php'),
+														)
+													);
 									$section_menu_holder ='
 									<nav id="site-navigation" class="navigation-main" role="navigation">
 									<h1 class="menu-toggle">Menu</h1>

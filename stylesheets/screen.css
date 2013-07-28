@@ -426,3 +426,8 @@ article.no-results.not-found {
   background-image: -moz-linear-gradient(center top, #f68a28, #f36c00);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f68a28), to(#f36c00));
 }
+
+/* line 267, ../sass/screen.scss */
+.admin-class {
+  /*display:none !important;*/
+}
