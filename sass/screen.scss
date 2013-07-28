@@ -46,7 +46,7 @@
 
 .navigation-main {
 	position: relative;
-	margin-top:20px;
+	top:20px;
 	z-index: 100;
 	background: whitesmoke;
 	background: #a90329; /* Old browsers */
@@ -172,7 +172,7 @@ article h2 {
 	background-repeat: no-repeat;
 }
 
-.alpha60 {
+.lowermedia-trans-back {
     /* Fallback for web browsers that don't support RGBa */
     background-color: rgb(0, 0, 0);
     /* RGBa with 0.6 opacity */

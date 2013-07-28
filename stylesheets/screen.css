@@ -84,7 +84,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 47, ../sass/screen.scss */
 .navigation-main {
   position: relative;
-  margin-top: 20px;
+  top: 20px;
   z-index: 100;
   background: whitesmoke;
   background: #a90329;
@@ -281,7 +281,7 @@ article h2 {
 }
 
 /* line 175, ../sass/screen.scss */
-.alpha60 {
+.lowermedia-trans-back {
   /* Fallback for web browsers that don't support RGBa */
   background-color: black;
   /* RGBa with 0.6 opacity */

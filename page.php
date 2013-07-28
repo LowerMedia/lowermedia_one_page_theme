@@ -70,7 +70,7 @@ get_header();
 						    }
 
 							$url = wp_get_attachment_url( get_post_thumbnail_id($page_data->ID) );
-							$section_content_output_1 ="<div id='lm-opt-content' class='lm-opt-content alpha60 $parity $position'>".$content."</div>";
+							$section_content_output_1 ="<div id='lm-opt-content' class='lm-opt-content lowermedia-trans-back $parity $position'>".$content."</div>";
 							$section_content_output_2 ="<div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>";
 
 							// if ($parity=='odd'){//if section is odd we output the image first
