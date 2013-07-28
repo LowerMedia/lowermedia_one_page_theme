@@ -86,7 +86,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: relative;
   top: 20px;
   z-index: 100;
-  background: whitesmoke;
+  /*border-top: groove black 1px;
+  border-bottom: groove black 1px;*/
+}
+/* line 55, ../sass/screen.scss */
+.navigation-main li {
+  float: left;
+  position: relative;
+  /*border-bottom: 1px solid black;
+  border-top: 1px solid black;*/
+  padding: 1% 2%;
+  border-radius: 25px;
+  margin: 0 1%;
   background: #a90329;
   /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -105,25 +116,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
   /* IE6-8 */
-  /*border-top: groove black 1px;
-  border-bottom: groove black 1px;*/
 }
-/* line 66, ../sass/screen.scss */
-.navigation-main li {
-  float: left;
-  position: relative;
-  /*border-bottom: 1px solid black;
-  border-top: 1px solid black;*/
-  padding: 1% 2%;
-}
-/* line 72, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 .navigation-main li a {
   color: whitesmoke;
   text-shadow: 1px 1px black;
-}
-/* line 77, ../sass/screen.scss */
-.navigation-main li:first-child {
-  padding-left: 0;
 }
 /* line 81, ../sass/screen.scss */
 .navigation-main nav.lowermedia_add_sticky {
