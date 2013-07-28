@@ -101,21 +101,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 50%;
   padding: 2%;
   margin: 5%;
+  max-height: 800px;
+  overflow: scroll;
 }
 
-/* line 66, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 .lm-opt-content.middle.odd {
   float: right;
 }
 
-/* line 71, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 .lm-opt-content.first,
 .lm-opt-content.last {
   margin: auto;
   margin-top: 5%;
 }
 
-/* line 76, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 article h2 {
   font-family: 'Lobster Two';
   font-size: 60px;
@@ -124,7 +126,7 @@ article h2 {
   text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* line 84, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 .parallax-section {
   height: 1000px;
   padding: 0;
@@ -140,49 +142,49 @@ article h2 {
   /*width: 100%;*/
 }
 @media (min-width: 320px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 480px;
   }
 }
 @media (min-width: 480px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 640px;
   }
 }
 @media (min-width: 640px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 768px;
   }
 }
 @media (min-width: 768px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 1024px;
   }
 }
 @media (min-width: 1024px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 1600px;
   }
 }
 @media (min-width: 1600px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 1600px;
   }
 }
 @media (min-width: 1670px) {
-  /* line 84, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   .parallax-section {
     max-width: 2000px;
   }
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 .parallax-nav {
   padding: 2% 10%;
   width: 100%;
@@ -192,32 +194,32 @@ article h2 {
 }
 
 /*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/
-/* line 118, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 .lm-opt-1, .lm-opt-5 {
   background: url(../images/slide1.png) 50% 0 no-repeat fixed;
 }
 
-/* line 119, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 .lm-opt-2, .lm-opt-6 {
   background: url(../images/slide2.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 .lm-opt-3, .lm-opt-7 {
   background: url(../images/slide4.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 121, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 .lm-opt-4, .lm-opt-8 {
   background: url(../images/slide3.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 122, ../sass/screen.scss */
+/* line 124, ../sass/screen.scss */
 .theend {
   background: url(../images/puckered.png) 50% bottom no-repeat fixed;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 .photograph {
   background: url("") transparent 40% 100px no-repeat fixed;
   min-height: 1000px;
@@ -228,17 +230,17 @@ article h2 {
   margin: 0 auto;
 }
 
-/* line 135, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 .lm-opt-1 .photograph {
   background: url("") transparent 50% 100px no-repeat fixed;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 .lm-opt-2 .photograph {
   background: url("") transparent 20% 100px no-repeat fixed;
 }
 
-/* line 137, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .lm-opt-3 .photograph {
   background: url("") transparent 70% 100px no-repeat fixed;
 }
@@ -246,34 +248,34 @@ article h2 {
 /* Introduction 
 #lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
 */
-/* line 142, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 article {
   background: url(images/grain.png) repeat #333333;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 .lm-opt-1 article {
   width: 100%;
   top: 300px;
   position: absolute;
   text-align: center;
 }
-/* line 149, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 .lm-opt-1 article p, .lm-opt-1 article a {
   color: #ccc;
 }
-/* line 150, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 .lm-opt-1 article a {
   text-decoration: underline;
 }
-/* line 151, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 .lm-opt-1 article a:hover {
   color: #fff;
 }
 
 /* Background Only */
 /*#lm-opt-2 { padding: 50px 0;}*/
-/* line 157, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 .lm-opt-2 article {
   color: #fff;
   width: 600px;
@@ -284,17 +286,17 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 165, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 .lm-opt-2 article p {
   margin-bottom: 25px;
 }
-/* line 166, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 .lm-opt-2 article a {
   color: #ff0;
 }
 
 /* Photograph */
-/* line 170, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .lm-opt-3 article {
   color: #fff;
   padding: 10px 20px;
@@ -306,13 +308,13 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 180, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 .lm-opt-3 article p {
   width: 300px;
   margin-bottom: 25px;
 }
 
-/* line 182, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 .photograph {
   background: url(images/i9mh-max-bob-mutiny-chicago-nov-2012.jpg) transparent 40% 100px no-repeat fixed;
   min-height: 1000px;
@@ -325,7 +327,7 @@ article {
 }
 
 /* HTML5 Video */
-/* line 194, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .lm-opt-4 article {
   margin-left: 10%;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
@@ -335,13 +337,13 @@ article {
   top: 0;
 }
 
-/* line 195, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 .lm-opt-4 article p {
   width: 300px;
   margin: 50px 0;
 }
 
-/* line 196, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .lm-opt-4 video {
   position: fixed;
   left: 50%;
@@ -350,7 +352,7 @@ article {
 }
 
 /* The End */
-/* line 199, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 .theend .byebye {
   background: url(images/theend.png) 40% 100px no-repeat fixed;
   height: 1000px;
@@ -361,7 +363,7 @@ article {
   margin: 0 auto;
 }
 
-/* line 201, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 article.no-results.not-found {
   width: 50%;
   margin: auto;
