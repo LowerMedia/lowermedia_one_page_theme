@@ -2,3 +2,7 @@
 .DS_Store
 
 *.scssc
+
+.sass-cache/b6dbe874d8c1f07ab98984d270aa4eebc1f4724d/screen.scssc
+
+*.scssc
