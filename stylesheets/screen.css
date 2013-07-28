@@ -440,6 +440,6 @@ article.no-results.not-found {
 }
 
 /* line 281, ../sass/screen.scss */
-.admin-class {
-  /*display:none !important;*/
+.lowermedia-admin-menu {
+  display: none !important;
 }
