@@ -281,4 +281,7 @@ article.no-results.not-found {
 .lowermedia-admin-menu {
 	display:none !important;
 }
-							
+
+.logged-in .lowermedia-admin-menu {
+	display: inline !important;
+}							
