@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -95,9 +95,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: relative;
   /*border-bottom: 1px solid black;
   border-top: 1px solid black;*/
-  padding: 1% 2%;
+  padding: 10px 20px;
   border-radius: 25px;
-  margin: 0 1%;
+  margin: 0 10px;
   background: #a90329;
   /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -179,9 +179,6 @@ article h2 {
   overflow: hidden;
   position: relative;
   margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
   width: 100%;
   /*width: 100%;*/
 }
@@ -228,7 +225,24 @@ article h2 {
   }
 }
 
-/* line 148, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
+.px-shadows {
+  /*order-top: 1px solid rgba(255,255,255,0.3); 
+  border-bottom: 1px solid rgba(0,0,0,0.4); 
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);*/
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+/* line 155, ../sass/screen.scss */
+.no-shadows {
+  border-top: 0px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 0px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.8);
+}
+
+/* line 161, ../sass/screen.scss */
 .parallax-nav {
   padding: 2% 10%;
   width: 100%;
@@ -238,32 +252,32 @@ article h2 {
 }
 
 /*#lm-opt-1 { background: url(images/puckered.png) 50% 0 no-repeat fixed; }*/
-/* line 156, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 .lm-opt-1, .lm-opt-5 {
   background: url(../images/slide1.png) 50% 0 no-repeat fixed;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .lm-opt-2, .lm-opt-6 {
   background: url(../images/slide2.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 158, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .lm-opt-3, .lm-opt-7 {
   background: url(../images/slide4.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .lm-opt-4, .lm-opt-8 {
   background: url(../images/slide3.jpg) 50% 0 no-repeat fixed;
 }
 
-/* line 160, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .theend {
   background: url(../images/puckered.png) 50% bottom no-repeat fixed;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .photograph {
   min-height: 1000px;
   padding: 0;
@@ -276,7 +290,7 @@ article h2 {
   background-repeat: no-repeat;
 }
 
-/* line 175, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 .lmopt-img.odd {
   -webkit-transform: translate(10px) rotate(10deg);
   -webkit-transform-origin: -20% 70%;
@@ -289,7 +303,7 @@ article h2 {
   background-repeat: no-repeat;
 }
 
-/* line 189, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 .lowermedia-trans-back {
   /* Fallback for web browsers that don't support RGBa */
   background-color: black;
@@ -301,7 +315,7 @@ article h2 {
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
 
-/* line 200, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 .center-outer {
   position: relative;
   left: 50%;
@@ -310,7 +324,7 @@ article h2 {
   margin-bottom: 10px;
 }
 
-/* line 207, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .center-inner {
   position: relative;
   left: -50%;
@@ -320,34 +334,34 @@ article h2 {
 /* Introduction 
 #lm-opt-1 { background: url(images/slide4.jpg) 50% 0 no-repeat fixed; } .i9mhlogo { background: url(images/item-9-mad-hatter_face-logo_transparent-back.png) 50% 100px no-repeat fixed; min-height: 1000px; padding: 0; margin: 0; width: 100%; max-width: 1920px; position: relative; margin: 0 auto; }
 */
-/* line 216, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 article {
   background: url(images/grain.png) repeat #333333;
 }
 
-/* line 218, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 .lm-opt-1 article {
   width: 100%;
   top: 300px;
   position: absolute;
   text-align: center;
 }
-/* line 223, ../sass/screen.scss */
+/* line 236, ../sass/screen.scss */
 .lm-opt-1 article p, .lm-opt-1 article a {
   color: #ccc;
 }
-/* line 224, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 .lm-opt-1 article a {
   text-decoration: underline;
 }
-/* line 225, ../sass/screen.scss */
+/* line 238, ../sass/screen.scss */
 .lm-opt-1 article a:hover {
   color: #fff;
 }
 
 /* Background Only */
 /*#lm-opt-2 { padding: 50px 0;}*/
-/* line 231, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 .lm-opt-2 article {
   color: #fff;
   width: 600px;
@@ -358,17 +372,17 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 239, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 .lm-opt-2 article p {
   margin-bottom: 25px;
 }
-/* line 240, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 .lm-opt-2 article a {
   color: #ff0;
 }
 
 /* Photograph */
-/* line 244, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 .lm-opt-3 article {
   color: #fff;
   padding: 10px 20px;
@@ -380,14 +394,14 @@ article {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(150, 150, 150, 0.1);
 }
-/* line 254, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 .lm-opt-3 article p {
   width: 300px;
   margin-bottom: 25px;
 }
 
 /* HTML5 Video */
-/* line 259, ../sass/screen.scss */
+/* line 272, ../sass/screen.scss */
 .lm-opt-4 article {
   margin-left: 10%;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
@@ -397,13 +411,13 @@ article {
   top: 0;
 }
 
-/* line 260, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 .lm-opt-4 article p {
   width: 300px;
   margin: 50px 0;
 }
 
-/* line 261, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 .lm-opt-4 video {
   position: fixed;
   left: 50%;
@@ -412,7 +426,7 @@ article {
 }
 
 /* The End */
-/* line 264, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 .theend .byebye {
   background: url(images/theend.png) 40% 100px no-repeat fixed;
   height: 1000px;
@@ -423,7 +437,7 @@ article {
   margin: 0 auto;
 }
 
-/* line 266, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 article.no-results.not-found {
   width: 50%;
   margin: auto;
@@ -439,12 +453,12 @@ article.no-results.not-found {
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f68a28), to(#f36c00));
 }
 
-/* line 281, ../sass/screen.scss */
+/* line 294, ../sass/screen.scss */
 .lowermedia-admin-menu {
   display: none !important;
 }
 
-/* line 285, ../sass/screen.scss */
+/* line 298, ../sass/screen.scss */
 .logged-in .lowermedia-admin-menu {
   display: inline !important;
 }

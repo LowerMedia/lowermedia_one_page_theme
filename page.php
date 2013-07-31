@@ -69,13 +69,12 @@ get_header();
 											)
 										);
 									$section_menu_holder ='
-										<section class="lm-opt-page-wrap" style="height:80px;">
-										<nav id="site-navigation" class="navigation-main" role="navigation">
+										
+										<nav id="site-navigation" class="navigation-main no-shadows lm-opt-page-wrap" style="height:60px;" role="navigation">
 										<h1 class="menu-toggle">Menu</h1>
 										<div class="screen-reader-text skip-link">
 										<a href="#content" title="Skip to content">Skip to content</a>
 										</div>'.$primary_menu.'</nav><!-- #site-navigation -->
-										</section>
 									';
 								};
 						    } else {
@@ -90,8 +89,11 @@ get_header();
 							$section_content_output_1 ="<div id='lm-opt-content' class='lm-opt-content lowermedia-trans-back $parity $position $ID'>".$content."</div>";
 							$section_content_output_2 ="<div id='lmopt-img' class='lmopt-img photograph ".$parity."' style='background-image:url(".$url.");'></div>";
 							
+
+							$op_section_classes ="lm-opt-page-wrap px-shadows parallax-section lm-opt-".$counter." $parity $position ";
+						   
 						   $one_page_content .= "
-							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter." $parity $position ' >
+							    <section id='lm-opt-".$counter."' class='".$op_section_classes."' >
 							    	".$section_edit_link.$custom_header_img.$section_content_output_1.$section_content_output_2."
 							    </section>".$section_menu_holder;
 						    $counter++;
