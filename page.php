@@ -69,11 +69,13 @@ get_header();
 											)
 										);
 									$section_menu_holder ='
+										<section class="lm-opt-page-wrap" style="height:80px;">
 										<nav id="site-navigation" class="navigation-main" role="navigation">
 										<h1 class="menu-toggle">Menu</h1>
 										<div class="screen-reader-text skip-link">
 										<a href="#content" title="Skip to content">Skip to content</a>
 										</div>'.$primary_menu.'</nav><!-- #site-navigation -->
+										</section>
 									';
 								};
 						    } else {
@@ -90,8 +92,8 @@ get_header();
 							
 						   $one_page_content .= "
 							    <section id='lm-opt-".$counter."' class='lm-opt-page-wrap parallax-section lm-opt-".$counter." $parity $position ' >
-							    	".$section_edit_link.$section_menu_holder.$custom_header_img.$section_content_output_1.$section_content_output_2."
-							    </section>";
+							    	".$section_edit_link.$custom_header_img.$section_content_output_1.$section_content_output_2."
+							    </section>".$section_menu_holder;
 						    $counter++;
 						}
 						echo $one_page_content;
