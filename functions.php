@@ -415,8 +415,6 @@ class lowermedia_one_page_theme_admin_options{
 	
 	public function lmopt_bkgrnd_setting(){
 		$this->count++;
-		echo $this->count;
-
 		$value_holder = get_option('lmopt_bkgrnd_'.$this->count.'_option');
 		$id_holder = "lmopt_bkgrnd_".$this->count;
 		$name_holder = "lowermedia_opt_bkgrnd_".$this->count."[lmopt_bkgrnd_".$this->count."]";
