@@ -469,7 +469,7 @@ class lowermedia_one_page_theme_admin_options{
 	        type="text" 
 	        id="lmopt_numpages" 
 	        name="lowermedia_opt_numpages[lmopt_numpages]" 
-	        value='<?php get_option('lmopt_numpages_option');?>' 
+	        value='<?php echo get_option('lmopt_numpages_option');?>' 
 	        size='1'
         />
         <?php 
