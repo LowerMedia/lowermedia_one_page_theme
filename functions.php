@@ -352,9 +352,28 @@ class lowermedia_one_page_theme_admin_options{
 				//set numpages variable with number of pages making up one page theme
 				$numpages = get_option('lmopt_numpages_option');
 
+
+				// function check_bkgrnd_url($input){
+				// 	//echo var_dump($input);
+			 //    	$valid_url = 'lowermedia_opt_bkgrnd_'.$input.'[lmopt_bkgrnd_'.$input.']';
+				// 	if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+				// 	    $valid_url = "ENTER URL (LAST ONE ENTERED NOT VALID)";
+				// 	} else {
+				// 		$valid_url = esc_attr($valid_url);
+				// 	}
+				//     if(get_option('lmopt_bkgrnd_'.$input.'_option') === FALSE){
+				// 		add_option('lmopt_bkgrnd_'.$input.'_option', $valid_url);
+				//     }else{
+				// 		update_option('lmopt_bkgrnd_'.$input.'_option', $valid_url);
+				//     }
+				// 	return $valid_url;
+				// }
+
 				while ($numpages != 0) {
 					//$check_name='check_bkgrnd_'.$bkgrnd_style;
-					$check_name='check_bkgrnd_'.$numpages;
+					//$check_name='check_bkgrnd_'.$numpages;
+					//$check_name=check_bkgrnd_url($numpages);
+					$check_name='check_bkgrnd_url';
 					$func_name='lowermedia_opt_bkgrnd_'.$numpages;
 					$setting_name='lmopt_bkgrnd_'.$numpages;
 					$form_txt='Background image url for page '.$numpages.':';
@@ -395,28 +414,54 @@ class lowermedia_one_page_theme_admin_options{
 		// return $valid_url;
   //   }
     /* #1 background funcs */
-	public function check_bkgrnd_1($input){
-    	$valid_url = $input['lmopt_bkgrnd_1'];
+
+    //public function check_bkgrnd_1_OLD($input){
+ //    	$valid_url = $input['lmopt_bkgrnd_1'];
+	// 	if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
+	// 	    $valid_url = "";
+	// 	} else {
+	// 		$valid_url = esc_attr($valid_url);
+	// 	}
+	//     if(get_option('lmopt_bkgrnd_1_option') === FALSE){
+	// 		add_option('lmopt_bkgrnd_1_option', $valid_url);
+	//     }else{
+	// 		update_option('lmopt_bkgrnd_1_option', $valid_url);
+	//     }
+	// 	return $valid_url;
+	// }
+
+    public function check_bkgrnd_url($input){
+		//echo var_dump(array_keys($input));
+		$array_key = array_keys($input);
+		//echo $array_key[0];
+		$get_op_txt = $array_key[0];
+		$get_op_txt_op = $array_key[0].'_option';
+
+    	$valid_url = $input[$get_op_txt];
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
+		    $valid_url = "ENTER URL: LAST URL WAS INVALID";
 		} else {
 			$valid_url = esc_attr($valid_url);
 		}
-	    if(get_option('lmopt_bkgrnd_1_option') === FALSE){
-			add_option('lmopt_bkgrnd_1_option', $valid_url);
+	    if(get_option($get_op_txt_op) === FALSE){
+			add_option($get_op_txt_op, $valid_url);
 	    }else{
-			update_option('lmopt_bkgrnd_1_option', $valid_url);
+			update_option($get_op_txt_op, $valid_url);
 	    }
 		return $valid_url;
 	}
+
+	// 
 	public function lmopt_bkgrnd_1(){
 		//echo '<br/>----------lmopt background 1----------';
+
+		$value_holder = get_option('lmopt_bkgrnd_1_option');
 	    ?>
 	    <input 
 	        type="text" 
 	        id="lmopt_bkgrnd_1" 
 	        name="lowermedia_opt_bkgrnd_1[lmopt_bkgrnd_1]" 
-	        value='<?php get_option('lmopt_bkgrnd_1_option'); ?>' 
+	        value="<?php echo $value_holder; ?>" 
 	        size='20'
 	    />
 	    <?php
@@ -443,12 +488,13 @@ class lowermedia_one_page_theme_admin_options{
 
 	}
 	public function lmopt_bkgrnd_2(){
+		$value_holder = get_option('lmopt_bkgrnd_2_option');
 	    ?>
 	    <input 
 	        type="text" 
 	        id="lmopt_bkgrnd_2" 
 	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
-	        value='<?php get_option('lmopt_bkgrnd_2_option');?>' 
+	        value='<?php echo $value_holder; ?>' 
 	        size='20'
 	    />
 	    <?php
