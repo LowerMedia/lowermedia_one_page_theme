@@ -435,9 +435,10 @@ class lowermedia_one_page_theme_admin_options{
 	}
 
 	// 
-	public function lmopt_bkgrnd_1(){
+	public function lmopt_bkgrnd_1($input){
 		//echo '<br/>----------lmopt background 1----------';
-
+		//echo var_dump($input);
+		//echo '-----------'.$counter;
 		$value_holder = get_option('lmopt_bkgrnd_1_option');
 	    ?>
 	    <input 
@@ -453,23 +454,6 @@ class lowermedia_one_page_theme_admin_options{
 
 
 	/* #2 background funcs */
-	public function check_bkgrnd_2($input){
-    	$valid_url = $input['lmopt_bkgrnd_2'];
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	    if(get_option('lmopt_bkgrnd_2_option') === FALSE){
-			add_option('lmopt_bkgrnd_2_option', $valid_url);
-	    }else{
-			update_option('lmopt_bkgrnd_2_option', $valid_url);
-	    }
-	
-		return $valid_url;
-
-	}
 	public function lmopt_bkgrnd_2(){
 		$value_holder = get_option('lmopt_bkgrnd_2_option');
 	    ?>
@@ -484,30 +468,15 @@ class lowermedia_one_page_theme_admin_options{
 	     if(get_option('lmopt_bkgrnd_2_option')){echo"<img src='".get_option('lmopt_bkgrnd_2_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 	/* #3 background funcs */
-	public function check_bkgrnd_3($input){
-    	$valid_url = $input['lmopt_bkgrnd_3'];
 
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	    if(get_option('lmopt_bkgrnd_3_option') === FALSE){
-				add_option('lmopt_bkgrnd_3_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_3_option', $valid_url);
-		    }
-		
-		return $valid_url;
-	}
 	public function lmopt_bkgrnd_3(){
+		$value_holder = get_option('lmopt_bkgrnd_3_option');
 	    ?>
 	    <input 
 	        type="text" 
 	        id="lmopt_bkgrnd_3" 
 	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
-	        value='<?php get_option('lmopt_bkgrnd_3_option');?>' 
+	        value='<?php echo $value_holder; ?>' 
 	        size='20'
 	    />
 	    <?php
@@ -515,31 +484,15 @@ class lowermedia_one_page_theme_admin_options{
 	}
 
 	/* #4 background funcs */
-	public function check_bkgrnd_4($input){
 
-    	$valid_url = $input['lmopt_bkgrnd_4'];
-
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	    if(get_option('lmopt_bkgrnd_4_option') === FALSE){
-			add_option('lmopt_bkgrnd_4_option', $valid_url);
-	    }else{
-			update_option('lmopt_bkgrnd_4_option', $valid_url);
-	    }
-	
-		return $valid_url;
-	}
 	public function lmopt_bkgrnd_4(){
+		$value_holder = get_option('lmopt_bkgrnd_4_option');
 	    ?>
 	    <input 
 	        type="text" 
 	        id="lmopt_bkgrnd_4" 
 	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_4]" 
-	        value='<?php get_option('lmopt_bkgrnd_4_option');?>' 
+	        value='<?php echo $value_holder; ?>' 
 	        size='20'
 	    />
 	    <?php
@@ -547,22 +500,7 @@ class lowermedia_one_page_theme_admin_options{
 	}
 
 	/* #5 background funcs */
-	public function check_bkgrnd_5($input){
-    	$valid_url = $input['lmopt_bkgrnd_5'];
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $exists = false;
-		    $valid_url = "";
-		} else {
-			$exists = true;
-			$valid_url = esc_attr($valid_url);
-		}
-	    if(get_option('lmopt_bkgrnd_5_option') === FALSE){
-			add_option('lmopt_bkgrnd_5_option', $valid_url);
-	    }else{
-			update_option('lmopt_bkgrnd_5_option', $valid_url);
-	    }
-		return $valid_url;
-	}
+
 	public function lmopt_bkgrnd_5(){
 		//echo '<br/>----------lmopt background 1----------';
 	    ?>
@@ -577,25 +515,7 @@ class lowermedia_one_page_theme_admin_options{
 	   if(get_option('lmopt_bkgrnd_5_option')){echo"<img src='".get_option('lmopt_bkgrnd_5_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
 	}
 
-
 	/* #6 background funcs */
-	public function check_bkgrnd_6($input){
-    	$valid_url = $input['lmopt_bkgrnd_6'];
-
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	    if(get_option('lmopt_bkgrnd_6_option') === FALSE){
-				add_option('lmopt_bkgrnd_6_option', $valid_url);
-	    }else{
-			update_option('lmopt_bkgrnd_6_option', $valid_url);
-	    }
-	
-		return $valid_url;
-	}
 	public function lmopt_bkgrnd_6(){
 	    ?>
 	    <input 
@@ -610,23 +530,6 @@ class lowermedia_one_page_theme_admin_options{
 	}
 
 	/* #7 background funcs */
-	public function check_bkgrnd_7($input){
-    	$valid_url = $input['lmopt_bkgrnd_7'];
-
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	   if(get_option('lmopt_bkgrnd_7_option') === FALSE){
-				add_option('lmopt_bkgrnd_7_option', $valid_url);
-		    }else{
-				update_option('lmopt_bkgrnd_7_option', $valid_url);
-		    }
-		
-		return $valid_url;
-	}
 	public function lmopt_bkgrnd_7(){
 	    ?>
 	    <input 
@@ -641,25 +544,6 @@ class lowermedia_one_page_theme_admin_options{
 	}
 
 	/* #8 background funcs */
-	public function check_bkgrnd_8($input){
-
-    	$valid_url = $input['lmopt_bkgrnd_8'];
-
-		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "";
-		} else {
-			$valid_url = esc_attr($valid_url);
-		}
-
-	   if(get_option('lmopt_bkgrnd_8_option') === FALSE){
-				add_option('lmopt_bkgrnd_8_option', $valid_url);
-	    }else{
-			update_option('lmopt_bkgrnd_8_option', $valid_url);
-	    }
-	
-		return $valid_url;
-
-	}
 	public function lmopt_bkgrnd_8(){
 	    ?>
 	    <input 
