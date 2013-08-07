@@ -181,11 +181,21 @@ class lowermedia_one_page_theme_admin_options{
 	    <?php screen_icon(); ?>
 	    <h2>LowerMedia One Page Theme Options</h2>			
 	    <form method="post" action="options.php">
-	        <?php
-            // This prints out all hidden setting fields
-		    settings_fields('lowermedia-one-page-theme_option_group');	
-		    do_settings_sections('lowermedia-one-page-theme');
-		?>
+            
+		    <div id='lowermedia-one-page-theme_option_group' style='width:40%;display:inline-block;float:left;'>
+		    	<?php 
+			    	// This prints out all hidden setting fields
+			    	settings_fields('lowermedia-one-page-theme_option_group');
+			    	do_settings_sections('lowermedia-one-page-theme');
+			    	do_settings_sections('lowermedia-one-page-theme_options');
+			    ?>
+			</div>
+		    <div id='lowermedia-one-page-theme_backgrounds' style='width:40%;display:inline-block;float:left;'>
+		    	<?php 
+		    		do_settings_sections('lowermedia-one-page-theme_backgrounds');
+		    	?>
+		    </div>
+		
 	        <?php submit_button(); ?>
 	    </form>
 	</div>
@@ -226,35 +236,35 @@ class lowermedia_one_page_theme_admin_options{
 			    'lowermedia_opt_numpages',
 			    '<!-- Text Field -->',
 			    array($this, 'print_section_info'),
-			    'lowermedia-one-page-theme'
+			    'lowermedia-one-page-theme_options'
 			);
 
 			add_settings_section(
 			    'lowermedia_opt_header',
 			    '<!-- Check Box -->',
 			    array($this, 'print_section_info'),
-			    'lowermedia-one-page-theme'
+			    'lowermedia-one-page-theme_options'
 			);	
 
 			add_settings_section(
 			    'lowermedia_opt_footer',
 			    '<!-- Check Box -->',
 			    array($this, 'print_section_info'),
-			    'lowermedia-one-page-theme'
+			    'lowermedia-one-page-theme_options'
 			);
 
 			add_settings_section(
 			    'lowermedia_opt_menuloca',
 			    '<!-- Check Box -->',
 			    array($this, 'print_section_info'),
-			    'lowermedia-one-page-theme'
+			    'lowermedia-one-page-theme_options'
 			);	
 
 			add_settings_section(
 			    'lowermedia_opt_customstyles',
 			    '<!-- Text Field -->',
 			    array($this, 'print_section_info'),
-			    'lowermedia-one-page-theme'
+			    'lowermedia-one-page-theme_options'
 			);
 			
 			/*--------------ADD FIELD-------------*/
@@ -263,7 +273,7 @@ class lowermedia_one_page_theme_admin_options{
 			    'lmopt_numpages', 
 			    'Number of Pages to Combine:', 
 			    array($this, 'lmopt_numpages'), 
-			    'lowermedia-one-page-theme',
+			    'lowermedia-one-page-theme_options',
 			    'lowermedia_opt_numpages'			
 			);
 
@@ -271,7 +281,7 @@ class lowermedia_one_page_theme_admin_options{
 			    'lmopt_header', 
 			    'Hide Header?', 
 			    array($this, 'lmopt_header'), 
-			    'lowermedia-one-page-theme',
+			    'lowermedia-one-page-theme_options',
 			    'lowermedia_opt_header'			
 			);	
 
@@ -279,7 +289,7 @@ class lowermedia_one_page_theme_admin_options{
 			    'lmopt_footer', 
 			    'Hide Footer?', 
 			    array($this, 'lmopt_footer'), 
-			    'lowermedia-one-page-theme',
+			    'lowermedia-one-page-theme_options',
 			    'lowermedia_opt_footer'			
 			);	
 
@@ -287,7 +297,7 @@ class lowermedia_one_page_theme_admin_options{
 			    'lmopt_menuloca', 
 			    'Show Primary Menu in First Parallax Section? (Default is in header)', 
 			    array($this, 'lmopt_menuloca'), 
-			    'lowermedia-one-page-theme',
+			    'lowermedia-one-page-theme_options',
 			    'lowermedia_opt_menuloca'			
 			);	
 
@@ -295,7 +305,7 @@ class lowermedia_one_page_theme_admin_options{
 			    'lmopt_customstyles', 
 			    'Add Custom CSS Styles Here:', 
 			    array($this, 'lmopt_customstyles'), 
-			    'lowermedia-one-page-theme',
+			    'lowermedia-one-page-theme_options',
 			    'lowermedia_opt_customstyles'			
 			);
 
@@ -317,21 +327,21 @@ class lowermedia_one_page_theme_admin_options{
 
 					$form_txt='Background image url for page '.$numcount.':';
 					//register db option holding style into the options group
-					register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
+					register_setting('lowermedia-one-page-theme_option_backgrounds', $func_name, array($this, $check_name)); //only accepts numbers
 
 					/*--------------ADD SECTION-------------*/
 					add_settings_section(
 					    $func_name,
 					    '<!-- Text Field -->',
 					    array($this, 'print_section_info'),
-					    'lowermedia-one-page-theme'
+					    'lowermedia-one-page-theme_backgrounds'
 					);
 
 					add_settings_field(
 					    $setting_name, 
 					    $form_txt, 
 					    array($this, $setting_name), 
-					    'lowermedia-one-page-theme',
+					    'lowermedia-one-page-theme_backgrounds',
 					    $func_name			
 					);
 					$numcount++;
@@ -591,6 +601,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_customstyles[lmopt_customstyles]" 
 	        value='' 
 	        ROWS=3 COLS=30 
+	        style="margin: 1px; height: 462px; width: 353px;"
 	    ><?php echo get_option('lmopt_customstyles_option');?>
 	    </TEXTAREA>
 	    <?php
