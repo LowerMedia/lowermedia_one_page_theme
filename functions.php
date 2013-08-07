@@ -352,23 +352,6 @@ class lowermedia_one_page_theme_admin_options{
 				//set numpages variable with number of pages making up one page theme
 				$numpages = get_option('lmopt_numpages_option');
 
-
-				// function check_bkgrnd_url($input){
-				// 	//echo var_dump($input);
-			 //    	$valid_url = 'lowermedia_opt_bkgrnd_'.$input.'[lmopt_bkgrnd_'.$input.']';
-				// 	if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-				// 	    $valid_url = "ENTER URL (LAST ONE ENTERED NOT VALID)";
-				// 	} else {
-				// 		$valid_url = esc_attr($valid_url);
-				// 	}
-				//     if(get_option('lmopt_bkgrnd_'.$input.'_option') === FALSE){
-				// 		add_option('lmopt_bkgrnd_'.$input.'_option', $valid_url);
-				//     }else{
-				// 		update_option('lmopt_bkgrnd_'.$input.'_option', $valid_url);
-				//     }
-				// 	return $valid_url;
-				// }
-
 				while ($numpages != 0) {
 					//$check_name='check_bkgrnd_'.$bkgrnd_style;
 					//$check_name='check_bkgrnd_'.$numpages;
