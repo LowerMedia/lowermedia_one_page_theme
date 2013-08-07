@@ -435,7 +435,7 @@ class lowermedia_one_page_theme_admin_options{
     	}
 	}
 
-/*--------------------*/
+	/*--------------------*/
 
     public function check_numpages($input){//only accepts numbers
 		$pages = get_pages($input); 
@@ -643,7 +643,7 @@ class lowermedia_one_page_theme_admin_options{
 	        name="lowermedia_opt_customstyles[lmopt_customstyles]" 
 	        value='' 
 	        ROWS=3 COLS=30 
-	    ><?php get_option('lmopt_customstyles_option');?>
+	    ><?php echo get_option('lmopt_customstyles_option');?>
 	    </TEXTAREA>
 	    <?php
 	    //if(get_option('lmopt_customstyles_option')){echo"<img src='".get_option('lmopt_bkgrnd_8_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
