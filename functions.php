@@ -155,68 +155,18 @@ function lowermedia_add_styles()
 }
 add_action('wp_enqueue_scripts', 'lowermedia_add_styles', 100);
 
- /**
- * Register with hook 'wp_enqueue_scripts', which can be used for front end CSS and JavaScript
- */
-//add_action( 'wp_enqueue_scripts', 'lowermedia_add_stylesheet' );
+/*############################################################################################
+#
+#   ADMIN OPTIONS CLASS
+#   
+*/	
 
-/**
- * Enqueue plugin style-file
- */
-// function lowermedia_add_stylesheet() {
-//     // Respects SSL, Style.css is relative to the current file
-//     //wp_register_style( 'lowermedia-styles', plugins_url('lowermedia-styles.css', __FILE__) );
-//     //wp_enqueue_style( 'lowermedia-styles' );
-// }					
-
-/**
- * Implement the Custom Header feature
- */
-//require( get_template_directory() . '/inc/custom-header.php' );
-
-
-/** Step 1. */
-// function lowermedia_one_page_theme_menu() {
-// 	add_menu_page( 'One Page Theme Options', 'One Page Theme', 'manage_options', 'lowermedia-one-page-theme', 'lowermedia_one_page_theme_options' );
-// }
-/** Step 2 (from codex). */
-//add_action( 'admin_menu', 'lowermedia_one_page_theme_menu' );
-
-/** Step 3. */
-// function lowermedia_one_page_theme_options() {
-// 	if ( !current_user_can( 'manage_options' ) )  {
-// 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-// 	}
-// 	echo "<div class='wrap'>
-// 	<h2>LowerMedia One Page Theme Options</h2>
-// 	<p>
-// 	-Combine All Pages  OR<br/>
-// 	-Activate home page as splash page  OR<br/>
-// 	-Normal Setup
-
-// 	<form method='post' action='options.php'> ";
-// 	settings_fields( 'lowermedia_one_page_theme_options' );
-// 	do_settings_fields( 'lowermedia_one_page_theme_options' );
-// 	submit_button();
-// 	echo "</form>
-// 	</p>
-// 	<p>
-// 	-upload background image?
-//  -header/footer on of switch
-//
-// 	</p>
-// 	</div>";
-// }
-
-
-/*------------------------------------------------------------------------------------------------*/
 class lowermedia_one_page_theme_admin_options{
     public function __construct(){
         if(is_admin()){
 		    add_action('admin_menu', array($this, 'lowermedia_one_page_theme_menu'));
 		    add_action('admin_init', array($this, 'page_init'));
 		}
-    
 		$this->count = 0;
     }
 	
@@ -649,7 +599,6 @@ class lowermedia_one_page_theme_admin_options{
 
 
 }
-
 $lowermedia_one_page_theme_admin_options = new lowermedia_one_page_theme_admin_options();
 
 /*############################################################################################
@@ -674,7 +623,6 @@ function lowermedia_add_opt_styles() {
 					$lmopt_styles .='
 						#lm-opt-'.$numpages.' { background: url("'.$style_from_setting.'") 50% 0 repeat fixed; }
 					';
-					//echo $numpages.':'.$lmopt_styles.'<br/>';
 				} 
 				$numpages--;
 			}
@@ -695,7 +643,6 @@ add_action('wp_head', 'lowermedia_add_opt_styles');
 /*############################################################################################
 #
 #   ADD MENUS
-#   //
 */	
 
 function register_my_menus() {
@@ -712,14 +659,15 @@ add_action( 'init', 'register_my_menus' );
 /*############################################################################################
 #
 #   ADD FEATURED IMAGE TO PAGES
-#   //
 */	
-add_theme_support( 'post-thumbnails', array( 'page' ) );          // Pages only
+
+add_theme_support( 'post-thumbnails', array( 'page' ) );// Pages only
+
 /*############################################################################################
 #
 #   ADD CUSTOM HEADER IMAGE CAPABILITY
-#   //
 */	
+
 $args = array(
 	'flex-width'    => true,
 	'width'         => 980,
@@ -731,8 +679,9 @@ add_theme_support( 'custom-header', $args );
 
 /*############################################################################################
 #
+#	ADD ADMIN LINKS
 #   Function to add admin link to front end if is admin
-#   //
+#   
 */
 
 function lowermedia_add_admin_menu_link($link, $name){
