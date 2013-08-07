@@ -216,6 +216,8 @@ class lowermedia_one_page_theme_admin_options{
 		    add_action('admin_menu', array($this, 'lowermedia_one_page_theme_menu'));
 		    add_action('admin_init', array($this, 'page_init'));
 		}
+    
+		$this->count = 0;
     }
 	
     public function lowermedia_one_page_theme_menu(){
@@ -351,15 +353,19 @@ class lowermedia_one_page_theme_admin_options{
 			if (get_option('lmopt_numpages_option') && get_option('lmopt_numpages_option') != 0) {
 				//set numpages variable with number of pages making up one page theme
 				$numpages = get_option('lmopt_numpages_option');
+				
+				$numcount = 1;
 
-				while ($numpages != 0) {
-					//$check_name='check_bkgrnd_'.$bkgrnd_style;
-					//$check_name='check_bkgrnd_'.$numpages;
-					//$check_name=check_bkgrnd_url($numpages);
+				while ($numcount != $numpages + 1) {
+					//echo 'NUMPAGES:'.$numpages;
+					//echo 'NUMCOUNT:'.$numcount;
 					$check_name='check_bkgrnd_url';
-					$func_name='lowermedia_opt_bkgrnd_'.$numpages;
-					$setting_name='lmopt_bkgrnd_'.$numpages;
-					$form_txt='Background image url for page '.$numpages.':';
+					$func_name='lowermedia_opt_bkgrnd_'.$numcount;
+					//$setting_name='lmopt_bkgrnd_'.$numcount;
+					$setting_name='lmopt_bkgrnd_setting';
+
+
+					$form_txt='Background image url for page '.$numcount.':';
 					//register db option holding style into the options group
 					register_setting('lowermedia-one-page-theme_option_group', $func_name, array($this, $check_name)); //only accepts numbers
 
@@ -378,40 +384,13 @@ class lowermedia_one_page_theme_admin_options{
 					    'lowermedia-one-page-theme',
 					    $func_name			
 					);
-					$numpages--;
+					$numcount++;
 				}
 			}	
 		}	
     }
 
     /*---------BACKGROUND FUNCTIONS-----------*/
-
-  //   public function lowermedia_validate_url($input){
-  //   	$valid_url = $input;
-		// if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		//     $valid_url = "";
-		// } else {
-		// 	$valid_url = esc_attr($valid_url);
-		// }
-
-		// return $valid_url;
-  //   }
-    /* #1 background funcs */
-
-    //public function check_bkgrnd_1_OLD($input){
- //    	$valid_url = $input['lmopt_bkgrnd_1'];
-	// 	if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-	// 	    $valid_url = "";
-	// 	} else {
-	// 		$valid_url = esc_attr($valid_url);
-	// 	}
-	//     if(get_option('lmopt_bkgrnd_1_option') === FALSE){
-	// 		add_option('lmopt_bkgrnd_1_option', $valid_url);
-	//     }else{
-	// 		update_option('lmopt_bkgrnd_1_option', $valid_url);
-	//     }
-	// 	return $valid_url;
-	// }
 
     public function check_bkgrnd_url($input){
 		//echo var_dump(array_keys($input));
@@ -422,7 +401,7 @@ class lowermedia_one_page_theme_admin_options{
 
     	$valid_url = $input[$get_op_txt];
 		if (filter_var($valid_url, FILTER_VALIDATE_URL) === FALSE) {
-		    $valid_url = "ENTER URL: LAST URL WAS INVALID";
+		    $valid_url = "";
 		} else {
 			$valid_url = esc_attr($valid_url);
 		}
@@ -433,128 +412,27 @@ class lowermedia_one_page_theme_admin_options{
 	    }
 		return $valid_url;
 	}
+	
+	public function lmopt_bkgrnd_setting(){
+		$this->count++;
+		echo $this->count;
 
-	// 
-	public function lmopt_bkgrnd_1($input){
-		//echo '<br/>----------lmopt background 1----------';
-		//echo var_dump($input);
-		//echo '-----------'.$counter;
-		$value_holder = get_option('lmopt_bkgrnd_1_option');
+		$value_holder = get_option('lmopt_bkgrnd_'.$this->count.'_option');
+		$id_holder = "lmopt_bkgrnd_".$this->count;
+		$name_holder = "lowermedia_opt_bkgrnd_".$this->count."[lmopt_bkgrnd_".$this->count."]";
 	    ?>
 	    <input 
 	        type="text" 
-	        id="lmopt_bkgrnd_1" 
-	        name="lowermedia_opt_bkgrnd_1[lmopt_bkgrnd_1]" 
+	        id="<?php echo $id_holder; ?>"
+	        name="<?php echo $name_holder; ?>" 
 	        value="<?php echo $value_holder; ?>" 
 	        size='20'
 	    />
 	    <?php
-	    if(get_option('lmopt_bkgrnd_1_option')){echo"<img src='".get_option('lmopt_bkgrnd_1_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-
-	/* #2 background funcs */
-	public function lmopt_bkgrnd_2(){
-		$value_holder = get_option('lmopt_bkgrnd_2_option');
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_2" 
-	        name="lowermedia_opt_bkgrnd_2[lmopt_bkgrnd_2]" 
-	        value='<?php echo $value_holder; ?>' 
-	        size='20'
-	    />
-	    <?php
-	     if(get_option('lmopt_bkgrnd_2_option')){echo"<img src='".get_option('lmopt_bkgrnd_2_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-	/* #3 background funcs */
-
-	public function lmopt_bkgrnd_3(){
-		$value_holder = get_option('lmopt_bkgrnd_3_option');
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_3" 
-	        name="lowermedia_opt_bkgrnd_3[lmopt_bkgrnd_3]" 
-	        value='<?php echo $value_holder; ?>' 
-	        size='20'
-	    />
-	    <?php
-	    if(get_option('lmopt_bkgrnd_3_option')){echo"<img src='".get_option('lmopt_bkgrnd_3_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-	/* #4 background funcs */
-
-	public function lmopt_bkgrnd_4(){
-		$value_holder = get_option('lmopt_bkgrnd_4_option');
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_4" 
-	        name="lowermedia_opt_bkgrnd_4[lmopt_bkgrnd_4]" 
-	        value='<?php echo $value_holder; ?>' 
-	        size='20'
-	    />
-	    <?php
-	   if(get_option('lmopt_bkgrnd_4_option')){echo"<img src='".get_option('lmopt_bkgrnd_4_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-	/* #5 background funcs */
-
-	public function lmopt_bkgrnd_5(){
-		//echo '<br/>----------lmopt background 1----------';
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_5" 
-	        name="lowermedia_opt_bkgrnd_5[lmopt_bkgrnd_5]" 
-	        value='<?php get_option('lmopt_bkgrnd_5_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	   if(get_option('lmopt_bkgrnd_5_option')){echo"<img src='".get_option('lmopt_bkgrnd_5_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-	/* #6 background funcs */
-	public function lmopt_bkgrnd_6(){
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_6" 
-	        name="lowermedia_opt_bkgrnd_6[lmopt_bkgrnd_6]" 
-	        value='<?php get_option('lmopt_bkgrnd_6_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	    if(get_option('lmopt_bkgrnd_6_option')){echo"<img src='".get_option('lmopt_bkgrnd_6_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-	/* #7 background funcs */
-	public function lmopt_bkgrnd_7(){
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_7" 
-	        name="lowermedia_opt_bkgrnd_7[lmopt_bkgrnd_7]" 
-	        value='<?php get_option('lmopt_bkgrnd_7_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	    if(get_option('lmopt_bkgrnd_7_option')){echo"<img src='".get_option('lmopt_bkgrnd_7_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
-	}
-
-	/* #8 background funcs */
-	public function lmopt_bkgrnd_8(){
-	    ?>
-	    <input 
-	        type="text" 
-	        id="lmopt_bkgrnd_8" 
-	        name="lowermedia_opt_bkgrnd_8[lmopt_bkgrnd_8]" 
-	        value='<?php get_option('lmopt_bkgrnd_8_option');?>' 
-	        size='20'
-	    />
-	    <?php
-	    if(get_option('lmopt_bkgrnd_8_option')){echo"<img src='".get_option('lmopt_bkgrnd_8_option')."' height=150px width=150px class='lm-opt-preview-img'/>";}
+	    if($value_holder)
+    	{
+    		echo"<img src='".$value_holder."' height=150px width=150px class='lm-opt-preview-img'/>";
+    	}
 	}
 
 /*--------------------*/
