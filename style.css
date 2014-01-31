@@ -551,7 +551,6 @@ object {
 ----------------------------------------------- */
 
 .site-content [class*="navigation"] {
-	margin: 0 0 1.5em;
 	overflow: hidden;
 }
 [class*="navigation"] .nav-previous {
