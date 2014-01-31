@@ -81,7 +81,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 42, ../sass/screen.scss */
 .navigation-main {
   position: relative;
-  top: 20px;
+  padding-top: 20px;
   z-index: 100;
   /*border-top: groove black 1px;
   border-bottom: groove black 1px;*/
